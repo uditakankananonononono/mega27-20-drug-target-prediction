@@ -183,3 +183,15 @@ def test_alphafold_prediction(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
     out = ex.alphafold_prediction("P10721")
     assert out["gene"] == "KIT"
+
+
+def test_quickgo_annotations(monkeypatch):
+    import targetscan.external as ex, json as j
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return j.dumps({"numberOfHits": 1, "results": [{"goId": "GO:0000086"}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
+    out = ex.quickgo_annotations("P53350")
+    assert out["go_ids"] == ["GO:0000086"]

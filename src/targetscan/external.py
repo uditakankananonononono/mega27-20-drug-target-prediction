@@ -217,3 +217,14 @@ def alphafold_prediction(uniprot_acc):
     return {"accession": uniprot_acc, "model": m["modelEntityId"],
             "gene": m.get("gene"), "mean_plddt": m["globalMetricValue"],
             "frac_very_high": m.get("fractionPlddtVeryHigh")}
+
+
+def quickgo_annotations(uniprot_acc, aspect="biological_process", limit=100):
+    """QuickGO (EBI GOA): GO annotations for a UniProt accession."""
+    import urllib.request as u
+    url = (f"https://www.ebi.ac.uk/QuickGO/services/annotation/search"
+           f"?geneProductId=UniProtKB:{uniprot_acc}&goAspect={aspect}&limit={limit}")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    return {"accession": uniprot_acc, "n_hits": d["numberOfHits"],
+            "go_ids": sorted({x["goId"] for x in d["results"]})}
