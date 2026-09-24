@@ -337,3 +337,25 @@ def test_hpa_search_handles_gzip_and_exact_match(monkeypatch):
     out = hpa_search("PLK1")
     assert out["n_rows"] == 2
     assert out["hits"] == [{"Gene": "PLK1", "Ensembl": "ENSG00000166851"}]
+
+
+def test_openfda_label_parses(monkeypatch):
+    from targetscan.external import openfda_label
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps({"results": [{
+        "openfda": {"generic_name": ["imatinib mesylate"]},
+        "indications_and_usage": ["GLEEVEC is indicated for CML."],
+        "set_id": "abc-123"}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(payload))
+    out = openfda_label("Gleevec")
+    assert out["found"] is True
+    assert out["generic"] == "imatinib mesylate"
+    assert "CML" in out["indications"]

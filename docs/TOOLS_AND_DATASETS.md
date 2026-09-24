@@ -61,12 +61,15 @@ Staged (client live, cached, wired into verification pipeline):
 27. Human Protein Atlas search_download API - gene/Ensembl mapping for all
     7 screen-hit kinases (PLK1->ENSG00000166851 etc.)
     (results/external_pull3.json hpa_kinases)
+28. openFDA drug label API - FDA labels for 3 DAVIS drugs (Gleevec/Sprycel/
+    Nexavar): generics + indications heads
+    (results/external_pull3.json openfda_labels)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 34 (27 resources cited/staged, 7 packages incl. pytest; 38 tests)
+Honest tool count: 35 (28 resources cited/staged, 7 packages incl. pytest; 39 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

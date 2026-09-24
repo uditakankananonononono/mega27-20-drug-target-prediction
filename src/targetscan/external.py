@@ -332,3 +332,21 @@ def hpa_search(symbol, columns="g,gs,eg"):
     rows = json.loads(raw.decode())
     hits = [x for x in rows if x.get("Gene") == symbol]
     return {"query": symbol, "n_rows": len(rows), "hits": hits}
+
+
+def openfda_label(brand_name):
+    """openFDA drug label API: indications for a brand-name drug."""
+    import urllib.request as u
+    from urllib.parse import quote
+    url = (f"https://api.fda.gov/drug/label.json"
+           f"?search=openfda.brand_name:%22{quote(brand_name)}%22&limit=1")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    res = d.get("results", [])
+    if not res:
+        return {"brand": brand_name, "found": False}
+    r0 = res[0]
+    return {"brand": brand_name, "found": True,
+            "generic": (r0.get("openfda", {}).get("generic_name") or [None])[0],
+            "indications": (r0.get("indications_and_usage") or [""])[0][:400],
+            "set_id": r0.get("set_id")}
