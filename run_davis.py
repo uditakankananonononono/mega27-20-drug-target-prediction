@@ -10,6 +10,9 @@ from targetscan.models.dti import DTINet
 from targetscan.train import FeatureStore, evaluate, train_dti
 
 EPOCHS = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+CKPT = sys.argv[2] if len(sys.argv) > 2 else "results/davis_ckpt.pt"
+PROT = sys.argv[3] if len(sys.argv) > 3 else "cnn"
+LOG = sys.argv[4] if len(sys.argv) > 4 else "results/davis_log.jsonl"
 ds = load_davis()
 store = FeatureStore(ds.smiles, ds.sequences, max_len=600)
 rng = np.random.default_rng(0)
@@ -20,8 +23,8 @@ tr_all, val_pairs = ds.train_pairs[tr_mask], ds.train_pairs[val_idx]
 y = ds.y_train
 y_all, y_val = y[tr_mask], y[val_idx]
 
-ckpt = "results/davis_ckpt.pt"
-net = DTINet(N_ATOM_FEATS, out_dim=32)
+ckpt = CKPT
+net = DTINet(N_ATOM_FEATS, out_dim=32, prot_encoder=PROT)
 start_ep = 0
 opt_state = None
 if os.path.exists(ckpt):
@@ -42,6 +45,6 @@ torch.save({"model": net.state_dict(), "epoch": abs_ep, "opt": opt.state_dict()}
 m = evaluate(net, store, ds.test_pairs, ds.y_test)
 rec = {"epoch": abs_ep, "test_mse": m["mse"], "test_ci": m["ci"],
        "wall_s": round(time.time() - t0, 1)}
-with open("results/davis_log.jsonl", "a") as fh:
+with open(LOG, "a") as fh:
     fh.write(json.dumps(rec) + "\n")
 print("CHUNK DONE", rec, flush=True)
