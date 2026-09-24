@@ -110,11 +110,17 @@ def hgnc_symbol(symbol):
 
 
 def chebi_entry(chebi_id):
-    """ChEBI web service: compound record by ChEBI id (e.g. CHEBI:166785)."""
-    url = f"https://www.ebi.ac.uk/webservices/chebi/2.0/test/getCompleteEntity?chebiId={chebi_id}"
+    """ChEBI record via EBI OLS4 REST (official ChEBI ontology route)."""
     import urllib.request as u
+    url = f"https://www.ebi.ac.uk/ols4/api/ontologies/chebi/terms?obo_id={chebi_id}"
     with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=20) as r:
-        return r.read().decode()[:4000]
+        d = json.loads(r.read().decode())
+    terms = d.get("_embedded", {}).get("terms", [])
+    if not terms:
+        raise KeyError(chebi_id)
+    t0 = terms[0]
+    return {"chebi_id": chebi_id, "label": t0.get("label"),
+            "description": (t0.get("description") or [""])[0][:300]}
 
 
 def reactome_pathways(uniprot_acc):

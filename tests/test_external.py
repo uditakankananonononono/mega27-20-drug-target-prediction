@@ -102,3 +102,15 @@ def test_opentargets(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=25: R())
     out = ex.opentargets_associations("ENSG00000166851")
     assert out == [{"disease": "X", "score": 0.5}]
+
+
+def test_chebi_entry(monkeypatch):
+    import targetscan.external as ex, json as j
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return j.dumps({"_embedded": {"terms": [{"label": "imatinib", "description": ["A benzamide."]}]}}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=20: R())
+    out = ex.chebi_entry("CHEBI:45783")
+    assert out["label"] == "imatinib"
