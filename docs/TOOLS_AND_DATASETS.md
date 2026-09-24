@@ -64,13 +64,16 @@ Staged (client live, cached, wired into verification pipeline):
 28. openFDA drug label API - FDA labels for 3 DAVIS drugs (Gleevec/Sprycel/
     Nexavar): generics + indications heads
     (results/external_pull3.json openfda_labels)
+29. OmniPath REST - signed directed interaction network for PLK1: 182
+    interactions, 175 partners, 43 source databases incl. phospho-KEA sets
+    (results/external_pull3.json omnipath_plk1)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. SciPy  18. matplotlib (paper figure, paper/figures/make_fig1.py)
 (pytest excluded - infra per program-wide ruling, not counted)
 
-Honest tool count: 34 (28 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 39 tests)
+Honest tool count: 35 (29 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 40 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

@@ -350,3 +350,19 @@ def openfda_label(brand_name):
             "generic": (r0.get("openfda", {}).get("generic_name") or [None])[0],
             "indications": (r0.get("indications_and_usage") or [""])[0][:400],
             "set_id": r0.get("set_id")}
+
+
+def omnipath_interactions(symbol, fields="sources"):
+    """OmniPath REST: signed directed interactions for a gene symbol."""
+    import urllib.request as u
+    from urllib.parse import quote
+    url = (f"https://omnipathdb.org/interactions?genesymbols=1"
+           f"&partners={quote(symbol)}&fields={fields}&format=json")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        rows = json.loads(r.read().decode())
+    partners = sorted({(x.get("source_genesymbol") if x.get("target_genesymbol") == symbol
+                        else x.get("target_genesymbol")) for x in rows})
+    dbs = sorted({s for x in rows for s in x.get("sources", [])})
+    return {"symbol": symbol, "n_interactions": len(rows),
+            "n_partners": len(partners), "partners_sample": partners[:10],
+            "databases": dbs}

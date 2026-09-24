@@ -359,3 +359,24 @@ def test_openfda_label_parses(monkeypatch):
     assert out["found"] is True
     assert out["generic"] == "imatinib mesylate"
     assert "CML" in out["indications"]
+
+
+def test_omnipath_interactions_parses(monkeypatch):
+    from targetscan.external import omnipath_interactions
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps([
+        {"source_genesymbol": "NFYA", "target_genesymbol": "PLK1", "sources": ["SPIKE"]},
+        {"source_genesymbol": "PLK1", "target_genesymbol": "WE1", "sources": ["SIGNOR"]}]).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(payload))
+    out = omnipath_interactions("PLK1")
+    assert out["n_interactions"] == 2
+    assert out["n_partners"] == 2
+    assert out["databases"] == ["SIGNOR", "SPIKE"]
