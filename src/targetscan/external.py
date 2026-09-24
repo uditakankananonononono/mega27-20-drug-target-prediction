@@ -270,3 +270,14 @@ def ensembl_lookup(symbol):
            "?content-type=application/json")
     with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
         return json.loads(r.read().decode())
+
+
+def pubchem_bioassays(gene_id, max_aids=200):
+    """PubChem PUG REST: bioassay AIDs targeting a GeneID."""
+    import urllib.request as u
+    url = (f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/assay/target/geneid/"
+           f"{gene_id}/aids/JSON?MaxRecords={max_aids}")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    aids = d.get("IdentifierList", {}).get("AID", [])
+    return {"gene_id": gene_id, "aids": aids, "n_aids": len(aids)}

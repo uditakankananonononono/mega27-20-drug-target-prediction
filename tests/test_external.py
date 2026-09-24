@@ -239,3 +239,22 @@ def test_ensembl_lookup(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
     out = ex.ensembl_lookup("KIT")
     assert out["id"] == "ENSG00000157404"
+
+
+def test_pubchem_bioassays_parses_aid_list(monkeypatch):
+    from targetscan.external import pubchem_bioassays
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps({"IdentifierList": {"AID": [101, 202, 303]}}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(payload))
+    out = pubchem_bioassays(5347)
+    assert out["gene_id"] == 5347
+    assert out["aids"] == [101, 202, 303]
+    assert out["n_aids"] == 3
