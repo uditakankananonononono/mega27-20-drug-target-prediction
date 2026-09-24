@@ -429,3 +429,19 @@ def civic_genes(symbols):
     nodes = d.get("data", {}).get("genes", {}).get("nodes", [])
     return {"query": list(symbols),
             "genes": [{"symbol": g.get("name"), "entrez_id": g.get("entrezId")} for g in nodes]}
+
+
+def gwas_catalog_snps(symbol, size=200):
+    """GWAS Catalog REST: SNPs mapped to a gene symbol (functional classes)."""
+    import urllib.request as u
+    from urllib.parse import quote
+    url = (f"https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms"
+           f"/search/findByGene?geneName={quote(symbol)}&size={size}")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    snps = d.get("_embedded", {}).get("singleNucleotidePolymorphisms", [])
+    classes = {}
+    for s in snps:
+        fc = s.get("functionalClass") or "unknown"
+        classes[fc] = classes.get(fc, 0) + 1
+    return {"symbol": symbol, "n_snps": len(snps), "functional_classes": classes}
