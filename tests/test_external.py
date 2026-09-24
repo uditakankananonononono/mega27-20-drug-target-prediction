@@ -464,3 +464,23 @@ def test_gwas_catalog_snps_parses(monkeypatch):
     out = gwas_catalog_snps("KIT")
     assert out["n_snps"] == 2
     assert out["functional_classes"] == {"missense_variant": 2}
+
+
+def test_openalex_works_parses(monkeypatch):
+    from targetscan.external import openalex_works
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps({"meta": {"count": 500}, "results": [
+        {"id": "https://openalex.org/W1", "display_name": "DeepDTA",
+         "publication_year": 2018, "cited_by_count": 1500}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(payload))
+    out = openalex_works("DeepDTA")
+    assert out["count"] == 500
+    assert out["top"][0]["year"] == 2018

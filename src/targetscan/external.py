@@ -445,3 +445,17 @@ def gwas_catalog_snps(symbol, size=200):
         fc = s.get("functionalClass") or "unknown"
         classes[fc] = classes.get(fc, 0) + 1
     return {"symbol": symbol, "n_snps": len(snps), "functional_classes": classes}
+
+
+def openalex_works(search, per_page=5):
+    """OpenAlex API: literature search (works count + top hits)."""
+    import urllib.request as u
+    from urllib.parse import quote
+    url = (f"https://api.openalex.org/works?search={quote(search)}"
+           f"&per-page={per_page}&select=id,display_name,publication_year,cited_by_count")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    return {"search": search, "count": d.get("meta", {}).get("count"),
+            "top": [{"id": w.get("id"), "title": w.get("display_name"),
+                     "year": w.get("publication_year"),
+                     "cited_by": w.get("cited_by_count")} for w in d.get("results", [])]}

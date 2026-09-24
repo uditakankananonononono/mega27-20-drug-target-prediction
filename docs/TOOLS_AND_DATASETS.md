@@ -81,13 +81,17 @@ Staged (client live, cached, wired into verification pipeline):
     (results/external_pull3.json civic_kinases)
 33. GWAS Catalog REST - SNPs mapped to KIT/FLT3/BRAF with functional
     classes (results/external_pull3.json gwas_catalog_kinases)
+34. OpenAlex API - literature verification: DeepDTA (2018) and DAVIS (2011)
+    papers resolved with citation counts - the sources behind our 0.878
+    reference number and benchmark (results/external_pull3.json
+    openalex_queries)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. SciPy  18. matplotlib (paper figure, paper/figures/make_fig1.py)
 (pytest excluded - infra per program-wide ruling, not counted)
 
-Honest tool count: 39 (33 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 44 tests)
+Honest tool count: 40 (34 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 45 tests) - GATE MET
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,
