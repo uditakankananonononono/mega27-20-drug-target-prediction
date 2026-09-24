@@ -50,7 +50,11 @@ def train_dti(model, store: FeatureStore, pairs, y, val_pairs=None, val_y=None,
             idx = perm[i:i + bs]
             x, a_norm, mask, seq = store.batch(pairs[idx])
             pred = model(x, a_norm, mask, seq)
-            loss = torch.nn.functional.mse_loss(pred, yt[idx])
+            # affinity-weighted MSE: strong binders (pKd>=7) are ~5% of pairs
+            # but carry the discovery signal - upweight them
+            w = torch.where(yt[idx] >= 7.0, torch.full_like(yt[idx], 6.0),
+                            torch.ones_like(yt[idx]))
+            loss = (w * (pred - yt[idx]) ** 2).mean()
             opt.zero_grad()
             loss.backward()
             opt.step()
