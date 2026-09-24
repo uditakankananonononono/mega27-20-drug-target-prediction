@@ -50,3 +50,13 @@ def test_cache_roundtrip(tmp_path, monkeypatch):
     external._cached("t1", fetch)
     assert calls["n"] == 1
     assert json.load(open(tmp_path / "t1.json"))["x"] == 1
+
+
+def test_cli_eval_reports_committed_log(tmp_path, capsys):
+    import json
+    from targetscan.cli import main
+    log = tmp_path / "davis_log.jsonl"
+    log.write_text(json.dumps({"epoch": 45, "test_ci": 0.7048, "test_mse": 0.7377}) + "\n")
+    main(["--ckpt", str(tmp_path / "x.pt"), "eval"])
+    out = json.loads(capsys.readouterr().out)
+    assert out["test_ci"] == 0.7048 and out["source_file"].endswith("davis_log.jsonl")
