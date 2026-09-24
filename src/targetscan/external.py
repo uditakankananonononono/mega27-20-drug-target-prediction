@@ -123,3 +123,17 @@ def reactome_pathways(uniprot_acc):
     import urllib.request as u
     with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=20) as r:
         return json.loads(r.read().decode())
+
+
+def opentargets_associations(ensembl_id, size=5):
+    """Open Targets Platform GraphQL: top disease associations for a target."""
+    q = {"query": '{ target(ensemblId: "%s") { approvedSymbol associatedDiseases(page: {index: 0, size: %d}) { rows { disease { name } score } } } }' % (ensembl_id, size)}
+    import urllib.request as u
+    req = u.Request("https://api.platform.opentargets.org/api/v4/graphql",
+                    data=json.dumps(q).encode(),
+                    headers={"Content-Type": "application/json", "User-Agent": "targetscan/0.1"})
+    with u.urlopen(req, timeout=25) as r:
+        d = json.loads(r.read().decode())
+    t = d.get("data", {}).get("target") or {}
+    rows = (t.get("associatedDiseases") or {}).get("rows", [])
+    return [{"disease": r["disease"]["name"], "score": r["score"]} for r in rows]

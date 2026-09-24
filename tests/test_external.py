@@ -90,3 +90,15 @@ def test_rcsb_search(monkeypatch):
             return b'{"result_set": [{"identifier": "4J52"}]}'
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=25: R())
     assert ex.rcsb_search("PLK1") == ["4J52"]
+
+
+def test_opentargets(monkeypatch):
+    import targetscan.external as ex
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return b'{"data": {"target": {"approvedSymbol": "PLK1", "associatedDiseases": {"rows": [{"disease": {"name": "X"}, "score": 0.5}]}}}}'
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=25: R())
+    out = ex.opentargets_associations("ENSG00000166851")
+    assert out == [{"disease": "X", "score": 0.5}]

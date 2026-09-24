@@ -20,12 +20,14 @@ Staged (client live, cached, wired into verification pipeline):
 10. RCSB PDB search API - structures incl. 3D5U (the BI-2536/PLK1 co-crystal)
 11. HGNC REST - approved symbols/names for hit kinases
 12. Reactome Content Service - pathway mapping via UniProt accessions
+13. Open Targets Platform GraphQL - disease associations (KIT->GIST 0.89,
+    FLT3->AML 0.83, textbook-correct)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 19 (12 resources cited/staged, 6 packages)
+Honest tool count: 20 (13 resources cited/staged + OT pull, 6 packages; 24 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,
