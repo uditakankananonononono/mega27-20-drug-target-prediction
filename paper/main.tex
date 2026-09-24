@@ -177,6 +177,19 @@ $\Delta z > 0$ criterion) cannot be passed on this distribution, and we
 withdraw that criterion as a model gate: the defect is in the data, not
 the models. The fix is to re-source mutant sequences (e.g.\ UniProt
 canonical sequence plus variant features) before any mutation-aware claim.
+\paragraph{Rescue experiment.} We rebuilt the true KIT(V559D) and
+KIT(L576P) sequences by editing the wild-type string at the
+ClinVar-validated positions (EBI Proteins variation API: both Pathogenic,
+positions 559/576 inside the encoder window) and re-ran inference.
+Predictions now \emph{do} separate mutant from wild type (R1 criterion:
+mean $|\Delta\hat y| = 0.018$ and $0.009$ pK$_d$ respectively), so the
+encoder is not intrinsically mutation-blind --- the dataset made it so.
+But the response is 5--20$\times$ smaller than the true DAVIS deltas
+(0.098, 0.183 mean $|\Delta y|$) with unreliable direction (Spearman
+$+0.15$ / $-0.07$), and a KIT(D816V) negative control at position 816
+remains exactly bit-identical: beyond the 600-residue window, corrected
+data alone cannot help. Both limits are now measured rather than assumed
+(\texttt{results/mutant\_rescue.json}).
 \paragraph{Auditor shipped.} The check is packaged as
 \texttt{python -m targetscan audit}, which runs the name/sequence/label
 consistency test on any \{name: sequence\} map plus affinity matrix and

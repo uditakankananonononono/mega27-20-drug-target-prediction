@@ -1,0 +1,28 @@
+{
+ "protocol": {
+  "ckpt": "results/davis_ckpt.pt",
+  "ckpt_epoch": 53,
+  "encoder": "cnn",
+  "max_len": 600
+ },
+ "KIT(V559D)_rescued": {
+  "mean_abs_pred_delta": 0.01794,
+  "bit_identical_preds": false,
+  "true_mean_abs_delta": 0.0984,
+  "spearman_pred_vs_true": 0.1457
+ },
+ "KIT(L576P)_rescued": {
+  "mean_abs_pred_delta": 0.00936,
+  "bit_identical_preds": false,
+  "true_mean_abs_delta": 0.183,
+  "spearman_pred_vs_true": -0.0715
+ },
+ "KIT(D816V)_rescued": {
+  "mean_abs_pred_delta": 0.0,
+  "bit_identical_preds": true,
+  "true_mean_abs_delta": 0.8946,
+  "spearman_pred_vs_true": NaN
+ },
+ "R1_visible_inputs_give_nonzero_deltas": true,
+ "negative_control_D816V_still_invisible": true
+}
