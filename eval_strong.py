@@ -20,9 +20,12 @@ pred = predict(net, store, ds.test_pairs)
 true = ds.y_test
 m = true >= 7.0
 import json
-print(json.dumps({"ckpt": ckpt, "epoch": state["epoch"], "n_strong": int(m.sum()),
+rec = {"ckpt": ckpt, "epoch": state["epoch"], "n_strong": int(m.sum()),
                   "strong_pred_mean": round(float(pred[m].mean()), 3),
                   "strong_true_mean": round(float(true[m].mean()), 3),
                   "strong_mse": round(float(((pred[m]-true[m])**2).mean()), 3),
                   "all_pred_mean": round(float(pred.mean()), 3),
-                  "all_pred_std": round(float(pred.std()), 3)}))
+                  "all_pred_std": round(float(pred.std()), 3)}
+print(json.dumps(rec))
+with open("results/strong_eval_log.jsonl", "a") as fh:
+    fh.write(json.dumps(rec) + "\n")
