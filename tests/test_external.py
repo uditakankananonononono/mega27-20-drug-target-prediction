@@ -258,3 +258,27 @@ def test_pubchem_bioassays_parses_aid_list(monkeypatch):
     assert out["gene_id"] == 5347
     assert out["aids"] == [101, 202, 303]
     assert out["n_aids"] == 3
+
+
+def test_klifs_structures_parses(monkeypatch):
+    from targetscan.external import klifs_structures
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payloads = iter([
+        J.dumps([{"kinase_ID": 311, "gene_name": "PLK1", "species": "Human",
+                  "accession": "P53350"}]).encode(),
+        J.dumps([{"pdb": "3D5U"}, {"pdb": "4J52"}, {"pdb": "3D5U"}]).encode(),
+    ])
+    monkeypatch.setattr("urllib.request.urlopen",
+                        lambda req, timeout=60: R(next(payloads)))
+    out = klifs_structures("PLK1")
+    assert out["kinase_id"] == 311
+    assert out["n_structures"] == 3
+    assert out["pdbs"] == ["3D5U", "4J52"]

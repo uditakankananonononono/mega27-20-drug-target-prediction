@@ -51,12 +51,15 @@ Staged (client live, cached, wired into verification pipeline):
 24. PubChem BioAssay (PUG assay/target/geneid) - 774 assay AIDs targeting
     PLK1 (GeneID 5347, chr16 verified via NCBI E-utilities)
     (results/external_pull3.json pubchem_bioassay_plk1)
+25. KLIFS API v2 - 28 curated kinase structures for PLK1 (kinase_ID 311;
+    UniProt accession P53350 cross-checked against verified cache)
+    (results/external_pull3.json klifs_plk1)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 31 (24 resources cited/staged, 7 packages incl. pytest; 35 tests)
+Honest tool count: 32 (25 resources cited/staged, 7 packages incl. pytest; 36 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

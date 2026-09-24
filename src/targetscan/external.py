@@ -281,3 +281,20 @@ def pubchem_bioassays(gene_id, max_aids=200):
         d = json.loads(r.read().decode())
     aids = d.get("IdentifierList", {}).get("AID", [])
     return {"gene_id": gene_id, "aids": aids, "n_aids": len(aids)}
+
+
+def klifs_structures(symbol, species="Human"):
+    """KLIFS API v2: PDB structure list for a kinase symbol (human)."""
+    import urllib.request as u
+    def _get(url):
+        with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=60) as r:
+            return json.loads(r.read().decode())
+    names = _get("https://klifs.net/api_v2/kinase_names")
+    hits = [k for k in names if k.get("gene_name") == symbol and k.get("species") == species]
+    if not hits:
+        raise KeyError(symbol)
+    kin = hits[0]
+    structs = _get(f"https://klifs.net/api_v2/structures_list?kinase_ID={kin['kinase_ID']}")
+    return {"symbol": symbol, "kinase_id": kin["kinase_ID"], "uniprot": kin.get("accession"),
+            "n_structures": len(structs),
+            "pdbs": sorted({s.get("pdb") for s in structs if s.get("pdb")})}
