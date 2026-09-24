@@ -203,3 +203,17 @@ def mobidb_entry(uniprot_acc):
     return {"accession": uniprot_acc, "gene": m.get("gene"), "length": m.get("length"),
             "disorder_fraction": dis.get("content_fraction"),
             "pfam_domains": pfam.get("regions_names", [])[:4]}
+
+
+def alphafold_prediction(uniprot_acc):
+    """AlphaFold DB API: predicted-structure metadata for a UniProt accession."""
+    import urllib.request as u
+    url = f"https://alphafold.ebi.ac.uk/api/prediction/{uniprot_acc}"
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    if not d:
+        raise KeyError(uniprot_acc)
+    m = d[0]
+    return {"accession": uniprot_acc, "model": m["modelEntityId"],
+            "gene": m.get("gene"), "mean_plddt": m["globalMetricValue"],
+            "frac_very_high": m.get("fractionPlddtVeryHigh")}

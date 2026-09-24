@@ -170,3 +170,16 @@ def test_mobidb_entry(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
     out = ex.mobidb_entry("P10721")
     assert out["gene"] == "KIT" and out["pfam_domains"] == ["Ig-like", "Kinase"]
+
+
+def test_alphafold_prediction(monkeypatch):
+    import targetscan.external as ex, json as j
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return j.dumps([{"modelEntityId": "AF-P10721-F1", "gene": "KIT",
+                             "globalMetricValue": 80.0, "fractionPlddtVeryHigh": 0.5}]).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
+    out = ex.alphafold_prediction("P10721")
+    assert out["gene"] == "KIT"

@@ -34,12 +34,14 @@ Staged (client live, cached, wired into verification pipeline):
     (results/external_pull3.json interpro_kinases)
 18. MobiDB API - disorder + Pfam for KIT (Ig-like + kinase domains) and PLK1
     (POLO boxes), gene-name verified (results/external_pull3.json mobidb_kinases)
+19. AlphaFold DB API - models for KIT (pLDDT 78.2), PLK1 (84.1), FLT3 (75.9),
+    gene-name verified (results/external_pull3.json alphafold_kinases)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 25 (18 resources cited/staged + OT pull, 6 packages; 29 tests)
+Honest tool count: 26 (19 resources cited/staged + OT pull, 6 packages; 30 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,
