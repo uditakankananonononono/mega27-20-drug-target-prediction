@@ -426,3 +426,21 @@ def test_ebi_proteins_variants_filters_positions(monkeypatch):
     assert out["variants"] == [{"pos": "559", "wt": "V", "mut": "D",
                                 "type": "VARIANT", "consequence": "missense",
                                 "clinical": ["Pathogenic"]}]
+
+
+def test_civic_genes_parses(monkeypatch):
+    from targetscan.external import civic_genes
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps({"data": {"genes": {"nodes": [
+        {"name": "KIT", "entrezId": 3815}]}}}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(payload))
+    out = civic_genes(["KIT"])
+    assert out["genes"] == [{"symbol": "KIT", "entrez_id": 3815}]

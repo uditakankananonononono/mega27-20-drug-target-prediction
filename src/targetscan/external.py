@@ -411,3 +411,21 @@ def ebi_proteins_variants(accession, positions=None, size=400):
                     "clinical": [c.get("type") for c in clin]})
     return {"accession": accession, "n_features_total": len(feats),
             "variants": out}
+
+
+def civic_genes(symbols):
+    """CIViC GraphQL: clinical-interpretation gene records by entrez symbol."""
+    import urllib.request as u
+    syms = ", ".join(f'"{s}"' for s in symbols)
+    body = json.dumps({"query":
+        "{ genes(entrezSymbols: [" + syms + "]) { nodes { name entrezId } } }"}).encode()
+    req = u.Request("https://civicdb.org/api/graphql", data=body,
+                    headers={"Content-Type": "application/json",
+                             "User-Agent": "targetscan/0.1"})
+    with u.urlopen(req, timeout=30) as r:
+        d = json.loads(r.read().decode())
+    if d.get("errors"):
+        raise RuntimeError(d["errors"][0]["message"][:120])
+    nodes = d.get("data", {}).get("genes", {}).get("nodes", [])
+    return {"query": list(symbols),
+            "genes": [{"symbol": g.get("name"), "entrez_id": g.get("entrezId")} for g in nodes]}
