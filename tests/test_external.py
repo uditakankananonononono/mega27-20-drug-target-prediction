@@ -317,3 +317,23 @@ def test_gprofiler_enrichment_parses(monkeypatch):
     out = gprofiler_enrichment(["PLK1", "CDK1"])
     assert out["n_terms"] == 1
     assert out["terms"][0]["id"] == "GO:0000278"
+
+
+def test_hpa_search_handles_gzip_and_exact_match(monkeypatch):
+    from targetscan.external import hpa_search
+    import gzip, io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = gzip.compress(J.dumps([
+        {"Gene": "PLK1", "Ensembl": "ENSG00000166851"},
+        {"Gene": "KIZ", "Ensembl": "ENSG00000088970"}]).encode())
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(payload))
+    out = hpa_search("PLK1")
+    assert out["n_rows"] == 2
+    assert out["hits"] == [{"Gene": "PLK1", "Ensembl": "ENSG00000166851"}]

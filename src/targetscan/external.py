@@ -314,3 +314,21 @@ def gprofiler_enrichment(symbols, sources=("GO:BP",), organism="hsapiens"):
               "p_value": t.get("p_value"), "source": t.get("source")}
              for t in d.get("result", [])]
     return {"query": list(symbols), "n_terms": len(terms), "terms": terms}
+
+
+def hpa_search(symbol, columns="g,gs,eg"):
+    """Human Protein Atlas search_download API: gene search, gzipped JSON."""
+    import gzip, io
+    import urllib.request as u
+    from urllib.parse import quote
+    url = (f"https://www.proteinatlas.org/api/search_download.php"
+           f"?search={quote(symbol)}&format=json&columns={columns}")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        raw = r.read()
+    try:
+        raw = gzip.decompress(raw)
+    except OSError:
+        pass  # some responses are plain JSON
+    rows = json.loads(raw.decode())
+    hits = [x for x in rows if x.get("Gene") == symbol]
+    return {"query": symbol, "n_rows": len(rows), "hits": hits}
