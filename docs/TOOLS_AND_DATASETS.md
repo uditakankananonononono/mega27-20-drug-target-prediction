@@ -39,12 +39,15 @@ Staged (client live, cached, wired into verification pipeline):
 20. QuickGO (EBI GOA) - PLK1: 332 biological-process annotations; first-page
     unique terms incl. GO:0005876 spindle microtubule + kinase activities
     (results/external_pull3.json quickgo_plk1)
+21. Monarch Initiative v3 API - causal disease associations: KIT->GIST/AML/
+    mastocytosis, FLT3->AML (textbook-correct), PLK1->none causal (honest empty)
+    (results/external_pull3.json monarch_kinases)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 27 (20 resources cited/staged + OT pull, 6 packages; 31 tests)
+Honest tool count: 28 (21 resources cited/staged + OT pull, 6 packages; 32 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

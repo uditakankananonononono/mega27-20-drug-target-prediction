@@ -195,3 +195,19 @@ def test_quickgo_annotations(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
     out = ex.quickgo_annotations("P53350")
     assert out["go_ids"] == ["GO:0000086"]
+
+
+def test_monarch_gene_diseases(monkeypatch):
+    import targetscan.external as ex, json as j
+    calls = iter([
+        {"items": [{"id": "HGNC:6186", "name": "KIT", "category": "biolink:Gene", "xref": ["OMIM:164920"]}]},
+        {"items": [{"object_label": "gastrointestinal stromal tumor"}]},
+    ])
+    class R:
+        def __init__(self, payload): self.payload = payload
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self): return j.dumps(self.payload).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(next(calls)))
+    out = ex.monarch_gene_diseases("KIT")
+    assert out["causal_diseases"] == ["gastrointestinal stromal tumor"]

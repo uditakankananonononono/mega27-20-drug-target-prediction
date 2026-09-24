@@ -228,3 +228,18 @@ def quickgo_annotations(uniprot_acc, aspect="biological_process", limit=100):
         d = json.loads(r.read().decode())
     return {"accession": uniprot_acc, "n_hits": d["numberOfHits"],
             "go_ids": sorted({x["goId"] for x in d["results"]})}
+
+
+def monarch_gene_diseases(symbol):
+    """Monarch Initiative v3 API: search + causal disease associations."""
+    import urllib.request as u
+    from urllib.parse import quote
+    def _get(url):
+        with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+            return json.loads(r.read().decode())
+    s = _get(f"https://api.monarchinitiative.org/v3/api/search?q={quote(symbol)}&limit=3")
+    hit = next((i for i in s["items"] if i["name"] == symbol and i["category"] == "biolink:Gene"), s["items"][0])
+    a = _get("https://api.monarchinitiative.org/v3/api/association"
+             f"?category=biolink:CausalGeneToDiseaseAssociation&entity={hit['id']}&limit=10")
+    return {"symbol": symbol, "monarch_id": hit["id"], "xrefs": hit.get("xref", []),
+            "causal_diseases": [x.get("object_label") or x.get("object") for x in a["items"]]}
