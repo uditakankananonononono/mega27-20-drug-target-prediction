@@ -1,0 +1,189 @@
+{
+ "protocol": {
+  "max_len": 600,
+  "ckpt": "results/davis_ckpt.pt",
+  "ckpt_epoch": 53,
+  "encoder": "cnn",
+  "criteria": "C1 truncation bit-identity, C2 nonzero deltas for visible, C3 median visible Spearman>0"
+ },
+ "families": {
+  "KIT": {
+   "ckpt_epoch": 53,
+   "mutants": [
+    {
+     "mutant": "KIT(A829P)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "KIT(D816H)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "KIT(D816V)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "KIT(L576P)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "KIT(V559D)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "KIT(V559D-T670I)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "KIT(V559D-V654A)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    }
+   ]
+  },
+  "EGFR": {
+   "ckpt_epoch": 53,
+   "mutants": [
+    {
+     "mutant": "EGFR(E746A750del)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(G719C)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(G719S)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(L747E749del)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(L747S752del)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(L747T751del)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(L858R)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(L858RT790M)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(L861Q)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(S752I759del)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    },
+    {
+     "mutant": "EGFR(T790M)",
+     "first_diff_pos": null,
+     "visible": false,
+     "bit_identical_preds": true,
+     "mean_abs_pred_delta": 0.0,
+     "n_measured_pairs": 68,
+     "spearman_pred_vs_true_delta": null
+    }
+   ]
+  }
+ },
+ "C1_truncation_bit_identity": true,
+ "C2_visible_nonzero_deltas": true,
+ "median_visible_spearman": null,
+ "n_visible_with_rho": 0,
+ "verdict": "mutation-blind (dataset-guaranteed: mutant sequences erased in DAVIS-as-distributed)",
+ "root_cause_correction": "all 54 DAVIS mutant entries are byte-identical to WT in the shipped sequences (see results/benchmark_audit_davis_mutants.json); bit-identical predictions are dataset-guaranteed, not an encoder-truncation artifact as previously hypothesized"
+}
