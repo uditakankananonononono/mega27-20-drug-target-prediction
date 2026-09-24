@@ -13,6 +13,7 @@ EPOCHS = int(sys.argv[1]) if len(sys.argv) > 1 else 1
 CKPT = sys.argv[2] if len(sys.argv) > 2 else "results/davis_ckpt.pt"
 PROT = sys.argv[3] if len(sys.argv) > 3 else "cnn"
 LOG = sys.argv[4] if len(sys.argv) > 4 else "results/davis_log.jsonl"
+NSUB = int(sys.argv[5]) if len(sys.argv) > 5 else 8000  # 0 = full training set
 ds = load_davis()
 store = FeatureStore(ds.smiles, ds.sequences, max_len=600)
 rng = np.random.default_rng(0)
@@ -34,7 +35,12 @@ if os.path.exists(ckpt):
     start_ep = state["epoch"]
     print("resumed at epoch", start_ep, flush=True)
 
-sub = np.random.default_rng(start_ep + 1).permutation(len(tr_all))[:8000]
+if NSUB > 0:
+    sub = np.random.default_rng(start_ep + 1).permutation(len(tr_all))[:NSUB]
+elif NSUB < 0:  # fixed subset, same pairs every chunk (no sampling noise)
+    sub = np.random.default_rng(0).permutation(len(tr_all))[:-NSUB]
+else:
+    sub = np.arange(len(tr_all))
 t0 = time.time()
 net, opt = train_dti(net, store, tr_all[sub], y_all[sub], val_pairs, y_val,
                      epochs=EPOCHS, bs=512, lr=3e-4, patience=99,
