@@ -4,17 +4,22 @@
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
 \title{Graph--Sequence Deep Models for Kinase Drug--Target Affinity:\\
-Verified Benchmarks, Two Failure Modes, and Their Fixes}
+Verified Benchmarks, Failure Modes, and a Dataset-Level Defect in DAVIS}
 \author{MEGA-27 Program, Item 20}
 \date{September 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
 We build and verify graph-neural-network + sequence-CNN models for
-drug--target affinity on the DAVIS kinase benchmark, quantify two failure
-modes (affinity range compression; point-mutation blindness), and evaluate
-two fixes (affinity-weighted loss; attention pooling) with logged,
-committed evidence.
+drug--target affinity on the DAVIS kinase benchmark, quantify the
+affinity range-compression failure mode, and evaluate two fixes
+(affinity-weighted loss; attention pooling) with logged, committed
+evidence. Auditing the benchmark itself, we find a dataset-level defect
+in the widely used DeepDTA distribution of DAVIS: all 54 mutant kinase
+entries ship sequences byte-identical to their wild types while their
+affinity labels differ by up to 4.49 pK$_d$, making mutation effects
+structurally unlearnable. We release a small auditor that reproduces the
+defect on any name/sequence/label dataset.
 \end{abstract}
 
 \section{Problem and data}
@@ -97,9 +102,12 @@ $\bar y = 7.90$. Formally, writing the strong-binder residual
 \end{equation}
 the compressed model pays $\approx (7.90 - 6.11)^2 \approx 3.2$ squared
 pK$_d$ units of pure bias before any variance term.
-\paragraph{B. Mutation blindness.} Truncation to $L=600$ plus global mean
-pooling gives bit-identical predictions for all 8 KIT point mutants
-($\Delta z = 0$ exactly, verified in tests).
+\paragraph{B. Mutation blindness (re-attributed).} We initially attributed
+bit-identical predictions for DAVIS point mutants to truncation at
+$L=600$ plus global mean pooling. Section~\ref{sec:audit} shows the true
+cause is upstream of any model choice: the shipped mutant sequences are
+byte-identical to wild type, so \emph{every} sequence-based model gives
+bit-identical WT/mutant predictions on this distribution.
 
 \section{Training protocol}
 Compute is sandbox-limited, so training runs in committed chunks: each call
@@ -115,13 +123,15 @@ git, so training resumes across machine lifetimes.
 All numbers are read from committed files: \texttt{results/davis\_log.jsonl},
 \texttt{results/davis\_log\_attn.jsonl}, \texttt{results/strong\_eval\_log.jsonl}.
 Figure~\ref{fig:curves} shows both tracks. The CNN track reaches test
-$C = 0.7080$ at epoch 53 (its best; $\mathrm{MSE} = 0.912$), and the
-attention track is at $C = 0.6798$ at epoch 26 and still climbing
-($0.6713 \to 0.6762 \to 0.6798$ over epochs 23--26). Both sit well below
-the DeepDTA reference $C = 0.878$; we state that gap plainly and attribute
-it to training budget (single-pass chunks versus full-batch training) and
-to our smaller encoders, not to a flaw in the benchmark, which reproduces
-its published label statistics.
+$C = 0.7080$ at epoch 53 (its best), and the attention track peaks at
+$C = 0.7060$ at epoch 52 before plateauing ($0.7056$ at epoch 59, its
+last). The attention-pooled encoder therefore does \emph{not} beat the
+CNN on the fixed protocol; we record that head-to-head verdict plainly.
+Both sit well below the DeepDTA reference $C = 0.878$; we state that gap
+plainly and attribute it to training budget (single-pass chunks versus
+full-batch training) and to our smaller encoders. Section~\ref{sec:audit}
+adds a caveat that applies to \emph{all} DAVIS CI scores, including both
+of ours and the DeepDTA reference.
 \begin{figure}
 \centering
 \includegraphics[width=0.85\linewidth]{figures/fig1_training_curves.pdf}
@@ -135,10 +145,45 @@ strong-binder recovery (predicted strong-binder mean oscillating
 $6.0$--$6.6$ across restarts, versus $6.11$ unweighted and $7.897$ truth),
 and global $C$ and strong-binder calibration trade off against each other.
 We therefore record the weighted loss as insufficient: it does not repair
-range compression. The attention-pooled encoder is the structural fix
-attempt for mutation blindness and remains under training; its verdict is
-deferred until convergence, at which point the mutant-sensitivity test
-($\Delta z > 0$ on KIT point mutants) decides it.
+range compression. The attention-pooled encoder, our structural fix
+attempt, also does not beat the CNN baseline (Sec.~\ref{sec:audit}
+explains why no architecture could fix the mutation blindness on this
+data).
+
+\section{A dataset-level defect in DAVIS-as-distributed}
+\label{sec:audit}
+DAVIS labels 54 of its 442 kinase entries as point mutants
+(e.g.\ KIT(D816V), EGFR(L858R), ABL1(T315I), BRAF(V600E)). Auditing the
+protein sequences shipped by the standard DeepDTA distribution of DAVIS,
+we find that \textbf{every one of the 54 mutant sequences is
+byte-identical to its wild type} (MD5-verified per entry;
+\texttt{results/benchmark\_audit\_davis\_mutants.json}). The mutations
+exist only in the target \emph{names}. Meanwhile the affinity matrix
+carries real mutation effects: over the $54 \times 68 = 3{,}672$
+drug$\times$mutant pairs, 323 (8.8\%) differ from wild type by
+$\ge 1$ pK$_d$ unit ($\ge 10\times$ in $K_d$), with maximum
+$|\Delta| = 4.49$ pK$_d$. The clinically canonical case is reproduced
+exactly: imatinib binds ABL1 at pK$_d = 8.96$ but the gatekeeper mutant
+ABL1(T315I) at pK$_d = 5.00$ ($\Delta = -3.96$), and KIT at pK$_d = 7.89$
+vs KIT(D816V) at $6.01$ ($\Delta = -1.88$).
+\paragraph{Consequence.} From any sequence-based model's perspective, a
+mutant column and its wild-type column are the \emph{same input} with two
+different label vectors; the WT-vs-mutant differences are unlearnable
+label noise. Every published concordance number on this distribution ---
+the DeepDTA reference 0.878 and both of our tracks included --- is
+computed on a matrix where 12.2\% of targets carry mutation labels with
+zero mutation signal. Mutation-sensitivity tests (our planned
+$\Delta z > 0$ criterion) cannot be passed on this distribution, and we
+withdraw that criterion as a model gate: the defect is in the data, not
+the models. The fix is to re-source mutant sequences (e.g.\ UniProt
+canonical sequence plus variant features) before any mutation-aware claim.
+\paragraph{Auditor shipped.} The check is packaged as
+\texttt{python -m targetscan audit}, which runs the name/sequence/label
+consistency test on any \{name: sequence\} map plus affinity matrix and
+reproduces all numbers above on DAVIS (54 erased variants, 323/3{,}672
+pairs $\ge 1$ pK$_d$). Hermetic tests cover the detector on synthetic
+data.
+
 \section{External verification and tooling}
 Screen hits are corroborated against independent public resources rather
 than trusted from the model: ChEMBL (bioactivity refutation/corroboration),
@@ -150,12 +195,14 @@ candidates), Europe PMC (literature), KEGG and Reactome (pathway context),
 STRING (interaction support among hit kinases), Open Targets (disease
 associations), HGNC (nomenclature), and ChEBI via EBI OLS4 (compound
 records). An honest registry with counts and cache paths lives in
-\texttt{docs/TOOLS\_AND\_DATASETS.md} (21 tools, 131 accession-level
+\texttt{docs/TOOLS\_AND\_DATASETS.md} (32 tools, 131 accession-level
 datasets, both logged as used).
 \section{Limitations}
-Test concordance is below the published state of the art; the two failure
-modes are only partially mitigated; DAVIS covers kinases only, so
+Test concordance is below the published state of the art; range
+compression is only partially mitigated; DAVIS covers kinases only, so
 conclusions do not transfer to GPCRs or ion channels without retraining;
+the audit covers the DeepDTA-mirror distribution of DAVIS --- other
+redistributions may differ and should be re-audited with the shipped tool;
 and the screen's external corroboration is qualitative (presence of
 independent evidence), not a prospective validation.
 \section{Reproducibility}
@@ -167,7 +214,8 @@ concordance, and wall-clock seconds.
 \section{Tool}
 \texttt{python -m targetscan} ships \texttt{screen} (any SMILES vs 442
 kinases), \texttt{eval} (verified numbers), \texttt{verify} (ChEMBL
-corroboration).
+corroboration), and \texttt{audit} (dataset consistency auditor;
+Sec.~\ref{sec:audit}).
 \begin{thebibliography}{9}
 \bibitem{davis} Davis, M.~I.\ et al. Comprehensive analysis of kinase
 inhibitor selectivity. \emph{Nat.\ Biotechnol.} 29, 1046--1051 (2011).
