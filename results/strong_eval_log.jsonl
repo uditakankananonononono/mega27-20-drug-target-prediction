@@ -1,3 +1,4 @@
 {"ckpt": "results/davis_ckpt.pt", "epoch": 43, "n_strong": 417, "strong_pred_mean": 6.615, "strong_true_mean": 7.897, "strong_mse": 2.436, "all_pred_mean": 6.067, "all_pred_std": 0.582}
 {"ckpt": "results/davis_ckpt.pt", "epoch": 44, "n_strong": 417, "strong_pred_mean": 6.442, "strong_true_mean": 7.897, "strong_mse": 2.914, "all_pred_mean": 5.889, "all_pred_std": 0.578}
 {"ckpt": "results/davis_ckpt.pt", "epoch": 45, "n_strong": 417, "strong_pred_mean": 5.999, "strong_true_mean": 7.897, "strong_mse": 4.375, "all_pred_mean": 5.459, "all_pred_std": 0.564}
+{"ckpt": "results/davis_ckpt.pt", "epoch": 47, "n_strong": 417, "strong_pred_mean": 6.273, "strong_true_mean": 7.897, "strong_mse": 3.45, "all_pred_mean": 5.699, "all_pred_std": 0.6}
