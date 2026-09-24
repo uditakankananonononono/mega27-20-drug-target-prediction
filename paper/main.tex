@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\title{Graph--Sequence Deep Models for Kinase Drug--Target Affinity:\\
+Verified Benchmarks, Two Failure Modes, and Their Fixes}
+\author{MEGA-27 Program, Item 20}
+\date{September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We build and verify graph-neural-network + sequence-CNN models for
+drug--target affinity on the DAVIS kinase benchmark, quantify two failure
+modes (affinity range compression; point-mutation blindness), and evaluate
+two fixes (affinity-weighted loss; attention pooling) with logged,
+committed evidence.
+\end{abstract}
+
+\section{Problem and data}
+DAVIS: 68 drugs $\times$ 442 kinases, affinities as $K_d$ in nM. We model
+\begin{equation}
+  \mathrm{p}K_d = -\log_{10}\!\big(K_d / 10^{9}\big), \qquad
+  K_d = 0 \;\Rightarrow\; K_d := 10^{5}\ \mathrm{nM}
+\end{equation}
+following the DeepDTA convention.
+
+\section{Models}
+\subsection{Molecular graph encoder}
+Each drug is a graph $G=(V,E)$ with atom features $x_v \in \mathbb{R}^{F}$.
+With $\tilde A = A + I$ and degree matrix
+\begin{equation}
+  D_{ii} = \sum_{j} \tilde A_{ij}, \qquad \hat A = D^{-1/2} \tilde A D^{-1/2},
+\end{equation}
+graph convolution with normalized adjacency $\hat A$:
+\begin{equation}
+  H^{(l+1)} = \phi\!\left( \hat A H^{(l)} W^{(l)} \right), \qquad
+  z_{\mathrm{lig}} = \mathrm{meanpool}(H^{(L)}) .
+\end{equation}
+\subsection{Protein sequence encoders}
+Baseline CNN over residue one-hots $S \in \{0,1\}^{L \times 21}$:
+\begin{equation}
+  h^{(l+1)} = \phi\!\big( W^{(l)} * h^{(l)} \big), \qquad
+  z_{\mathrm{prot}} = \frac{1}{L}\sum_{i} h^{(L)}_i .
+\end{equation}
+Attention-pooled variant (fix for mutation blindness), with mask
+$m_i = \mathbb{1}[\text{residue } i \text{ real}]$:
+\begin{equation}
+  \alpha = \mathrm{softmax}\!\big( (U h_i) + \log m_i \big), \qquad
+  z_{\mathrm{prot}}^{\mathrm{attn}} = \sum_{i=1}^{L} \alpha_i\, V h_i,
+  \qquad \sum_i \alpha_i = 1,\ \alpha_i = 0 \ \forall\ i \in \mathrm{pad}.
+\end{equation}
+\subsection{Affinity head and losses}
+\begin{equation}
+  \hat y = w^\top [\, z_{\mathrm{lig}} \,;\, z_{\mathrm{prot}} \,] + b .
+\end{equation}
+Plain training minimizes $\mathrm{MSE} = \frac{1}{n}\sum_i (y_i - \hat y_i)^2$.
+The affinity-weighted loss (fix for range compression) upweights strong
+binders:
+\begin{equation}
+  \mathcal{L}_w = \frac{1}{n}\sum_{i=1}^{n} w_i (y_i - \hat y_i)^2, \qquad
+  w_i = \begin{cases} 6 & y_i \ge 7 \\ 1 & \text{otherwise} \end{cases} .
+\end{equation}
+
+\section{Metrics}
+Ranking quality by the concordance index over held-out pairs:
+\begin{equation}
+  C = \frac{\sum_{i<j} \mathbb{1}[y_i > y_j]\,
+    \big( \mathbb{1}[\hat y_i > \hat y_j] + \tfrac12 \mathbb{1}[\hat y_i = \hat y_j]\big)}
+  {\sum_{i<j} \mathbb{1}[y_i \ne y_j]} .
+\end{equation}
+Calibration on strong binders ($y \ge 7$): we report
+$\bar{\hat y}_{\mathrm{strong}}$, $\bar y_{\mathrm{strong}}$, and
+$\mathrm{MSE}_{\mathrm{strong}}$ on the 417 held-out strong pairs.
+Gradient steps use Adam:
+\begin{equation}
+  m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t, \quad
+  \hat m_t = m_t / (1-\beta_1^t), \quad
+  \theta_t = \theta_{t-1} - \eta\, \hat m_t / (\sqrt{\hat v_t} + \epsilon) .
+\end{equation}
+
+\section{Failure modes (verified)}
+\paragraph{A. Range compression.} The MSE-optimal predictor is the
+conditional mean,
+\begin{equation}
+  \hat y^{\star}(x) = \mathbb{E}[\,y \mid x\,], \qquad
+  \mathrm{Var}(\hat y^{\star}) \le \mathrm{Var}(y),
+\end{equation}
+so whenever the model cannot separate strong from weak binders its
+predictions contract toward the global mean. With $\approx 95\%$ of
+training pairs weak ($\mathrm{p}K_d \approx 5$), predictions collapse
+toward the weak affinity: strong-binder $\bar{\hat y} = 6.11$ vs
+$\bar y = 7.90$. Formally, writing the strong-binder residual
+\begin{equation}
+  \mathrm{MSE}_{\mathrm{strong}} = \tfrac{1}{|S|} \sum_{i \in S}
+  (y_i - \hat y_i)^2, \quad S = \{ i : y_i \ge 7 \},\ |S| = 417,
+\end{equation}
+the compressed model pays $\approx (7.90 - 6.11)^2 \approx 3.2$ squared
+pK$_d$ units of pure bias before any variance term.
+\paragraph{B. Mutation blindness.} Truncation to $L=600$ plus global mean
+pooling gives bit-identical predictions for all 8 KIT point mutants
+($\Delta z = 0$ exactly, verified in tests).
+
+\section{Results}
+All numbers are read from committed files: \texttt{results/davis\_log.jsonl},
+\texttt{results/davis\_log\_attn.jsonl}, \texttt{results/strong\_eval\_log.jsonl}.
+Current state: baseline track test $C = 0.7048$ (epoch 45), attention track
+$C = 0.6575$ (epoch 18, still converging); weighted loss yields only
+unstable strong-binder recovery (series 6.0--6.6 vs 6.11 baseline).
+Negative results are kept.
+
+\section{Tool}
+\texttt{python -m targetscan} ships \texttt{screen} (any SMILES vs 442
+kinases), \texttt{eval} (verified numbers), \texttt{verify} (ChEMBL
+corroboration).
+\end{document}
