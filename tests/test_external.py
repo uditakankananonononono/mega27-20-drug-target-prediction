@@ -227,3 +227,15 @@ def test_ncbi_gene(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(next(calls)))
     out = ex.ncbi_gene("KIT")
     assert out["gene_id"] == "3815" and out["chromosome"] == "4"
+
+
+def test_ensembl_lookup(monkeypatch):
+    import targetscan.external as ex, json as j
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return j.dumps({"id": "ENSG00000157404", "biotype": "protein_coding", "display_name": "KIT"}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
+    out = ex.ensembl_lookup("KIT")
+    assert out["id"] == "ENSG00000157404"

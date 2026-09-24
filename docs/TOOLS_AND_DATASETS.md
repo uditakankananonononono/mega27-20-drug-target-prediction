@@ -44,12 +44,16 @@ Staged (client live, cached, wired into verification pipeline):
     (results/external_pull3.json monarch_kinases)
 22. NCBI E-utilities - KIT->GeneID 3815 (chr4), FLT3->2322 (chr13);
     PLK1 lookup rate-limited 429, recorded (results/external_pull3.json ncbi_kinases)
+23. Ensembl REST (lookup/symbol) - BRAF->ENSG00000157764 (chr7, protein_coding)
+    via targetscan.external.ensembl_lookup; KIT/FLT3 lookups hit transient
+    Ensembl 500s (recorded, not counted as results)
+    (results/external_pull3.json ensembl_kinases)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 29 (22 resources cited/staged + OT pull, 6 packages; 33 tests)
+Honest tool count: 30 (23 resources cited/staged, 7 packages incl. pytest; 34 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

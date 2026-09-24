@@ -261,3 +261,12 @@ def ncbi_gene(symbol, organism="human"):
     doc = summ["result"][ids[0]]
     return {"symbol": symbol, "gene_id": ids[0], "name": doc.get("name"),
             "description": doc.get("description"), "chromosome": doc.get("chromosome")}
+
+
+def ensembl_lookup(symbol):
+    """Ensembl REST: gene id + biotype for a human symbol."""
+    import urllib.request as u
+    url = (f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/{symbol}"
+           "?content-type=application/json")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        return json.loads(r.read().decode())
