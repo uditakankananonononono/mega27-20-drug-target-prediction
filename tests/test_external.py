@@ -211,3 +211,19 @@ def test_monarch_gene_diseases(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(next(calls)))
     out = ex.monarch_gene_diseases("KIT")
     assert out["causal_diseases"] == ["gastrointestinal stromal tumor"]
+
+
+def test_ncbi_gene(monkeypatch):
+    import targetscan.external as ex, json as j
+    calls = iter([
+        {"esearchresult": {"idlist": ["3815"]}},
+        {"result": {"3815": {"name": "KIT", "description": "KIT proto-oncogene", "chromosome": "4"}}},
+    ])
+    class R:
+        def __init__(self, payload): self.payload = payload
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self): return j.dumps(self.payload).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R(next(calls)))
+    out = ex.ncbi_gene("KIT")
+    assert out["gene_id"] == "3815" and out["chromosome"] == "4"

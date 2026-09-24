@@ -243,3 +243,21 @@ def monarch_gene_diseases(symbol):
              f"?category=biolink:CausalGeneToDiseaseAssociation&entity={hit['id']}&limit=10")
     return {"symbol": symbol, "monarch_id": hit["id"], "xrefs": hit.get("xref", []),
             "causal_diseases": [x.get("object_label") or x.get("object") for x in a["items"]]}
+
+
+def ncbi_gene(symbol, organism="human"):
+    """NCBI E-utilities: GeneID + summary for a gene symbol."""
+    import urllib.request as u
+    from urllib.parse import quote
+    def _get(url):
+        with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+            return json.loads(r.read().decode())
+    q = quote(f"{symbol}[sym] AND {organism}[orgn]")
+    s = _get(f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=gene&term={q}&retmode=json")
+    ids = s["esearchresult"]["idlist"]
+    if not ids:
+        raise KeyError(symbol)
+    summ = _get(f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gene&id={ids[0]}&retmode=json")
+    doc = summ["result"][ids[0]]
+    return {"symbol": symbol, "gene_id": ids[0], "name": doc.get("name"),
+            "description": doc.get("description"), "chromosome": doc.get("chromosome")}

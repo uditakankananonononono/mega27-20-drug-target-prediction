@@ -42,12 +42,14 @@ Staged (client live, cached, wired into verification pipeline):
 21. Monarch Initiative v3 API - causal disease associations: KIT->GIST/AML/
     mastocytosis, FLT3->AML (textbook-correct), PLK1->none causal (honest empty)
     (results/external_pull3.json monarch_kinases)
+22. NCBI E-utilities - KIT->GeneID 3815 (chr4), FLT3->2322 (chr13);
+    PLK1 lookup rate-limited 429, recorded (results/external_pull3.json ncbi_kinases)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 28 (21 resources cited/staged + OT pull, 6 packages; 32 tests)
+Honest tool count: 29 (22 resources cited/staged + OT pull, 6 packages; 33 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,
