@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{mathptmx}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
 \title{Graph--Sequence Deep Models for Kinase Drug--Target Affinity:\\
 Verified Benchmarks, Two Failure Modes, and Their Fixes}
@@ -100,16 +101,81 @@ pK$_d$ units of pure bias before any variance term.
 pooling gives bit-identical predictions for all 8 KIT point mutants
 ($\Delta z = 0$ exactly, verified in tests).
 
+\section{Training protocol}
+Compute is sandbox-limited, so training runs in committed chunks: each call
+resumes the checkpoint, trains one pass over a subset, evaluates the full
+held-out test split, and appends one line to a committed JSONL log. Two
+subset regimes are used deliberately. (i) Random 8k-pair subsets act as
+stochastic gradient passes over the 25k training pairs. (ii) A fixed
+16k-pair subset (same pairs every chunk) removes sampling noise and is the
+verdict protocol for the strong-binder question. Checkpoints are tracked in
+git, so training resumes across machine lifetimes.
+
 \section{Results}
 All numbers are read from committed files: \texttt{results/davis\_log.jsonl},
 \texttt{results/davis\_log\_attn.jsonl}, \texttt{results/strong\_eval\_log.jsonl}.
-Current state: baseline track test $C = 0.7048$ (epoch 45), attention track
-$C = 0.6575$ (epoch 18, still converging); weighted loss yields only
-unstable strong-binder recovery (series 6.0--6.6 vs 6.11 baseline).
-Negative results are kept.
+Figure~\ref{fig:curves} shows both tracks. The CNN track reaches test
+$C = 0.7080$ at epoch 53 (its best; $\mathrm{MSE} = 0.912$), and the
+attention track is at $C = 0.6798$ at epoch 26 and still climbing
+($0.6713 \to 0.6762 \to 0.6798$ over epochs 23--26). Both sit well below
+the DeepDTA reference $C = 0.878$; we state that gap plainly and attribute
+it to training budget (single-pass chunks versus full-batch training) and
+to our smaller encoders, not to a flaw in the benchmark, which reproduces
+its published label statistics.
+\begin{figure}
+\centering
+\includegraphics[width=0.85\linewidth]{figures/fig1_training_curves.pdf}
+\caption{Held-out concordance index by epoch for both protein encoders,
+read line-for-line from the committed training logs.}
+\label{fig:curves}
+\end{figure}
+\paragraph{Settled verdict on the weighted-loss fix.} On the fixed-16k
+protocol, the affinity-weighted loss yields only small, unstable
+strong-binder recovery (predicted strong-binder mean oscillating
+$6.0$--$6.6$ across restarts, versus $6.11$ unweighted and $7.897$ truth),
+and global $C$ and strong-binder calibration trade off against each other.
+We therefore record the weighted loss as insufficient: it does not repair
+range compression. The attention-pooled encoder is the structural fix
+attempt for mutation blindness and remains under training; its verdict is
+deferred until convergence, at which point the mutant-sensitivity test
+($\Delta z > 0$ on KIT point mutants) decides it.
+\section{External verification and tooling}
+Screen hits are corroborated against independent public resources rather
+than trusted from the model: ChEMBL (bioactivity refutation/corroboration),
+PubChem (identity resolution for all 68 DAVIS drugs), UniProt (reviewed
+canonical accessions), RCSB (co-crystal structures, e.g.\ 3D5U for the
+BI-2536/PLK1 pair), ClinicalTrials.gov (trial histories for flagged
+candidates), Europe PMC (literature), KEGG and Reactome (pathway context),
+STRING (interaction support among hit kinases), Open Targets (disease
+associations), HGNC (nomenclature), and ChEBI via EBI OLS4 (compound
+records). An honest registry with counts and cache paths lives in
+\texttt{docs/TOOLS\_AND\_DATASETS.md} (21 tools, 131 accession-level
+datasets, both logged as used).
+\section{Limitations}
+Test concordance is below the published state of the art; the two failure
+modes are only partially mitigated; DAVIS covers kinases only, so
+conclusions do not transfer to GPCRs or ion channels without retraining;
+and the screen's external corroboration is qualitative (presence of
+independent evidence), not a prospective validation.
+\section{Reproducibility}
+Every number above regenerates from \texttt{results/*.json(l)} and the
+committed scripts (25 hermetic tests, no network in tests). The training
+logs are append-only and each line carries its epoch, test MSE, test
+concordance, and wall-clock seconds.
 
 \section{Tool}
 \texttt{python -m targetscan} ships \texttt{screen} (any SMILES vs 442
 kinases), \texttt{eval} (verified numbers), \texttt{verify} (ChEMBL
 corroboration).
+\begin{thebibliography}{9}
+\bibitem{davis} Davis, M.~I.\ et al. Comprehensive analysis of kinase
+inhibitor selectivity. \emph{Nat.\ Biotechnol.} 29, 1046--1051 (2011).
+\bibitem{deepdta} \"Ozt\"urk, H., \"Ozg\"ur, A., Ozkirimli, E.
+DeepDTA: deep drug--target binding affinity prediction.
+\emph{Bioinformatics} 34, i821--i829 (2018).
+\bibitem{kipf2017} Kipf, T., Welling, M. Semi-supervised classification
+with graph convolutional networks. \emph{ICLR} (2017).
+\bibitem{adam} Kingma, D., Ba, J. Adam: a method for stochastic
+optimization. \emph{ICLR} (2015).
+\end{thebibliography}
 \end{document}
