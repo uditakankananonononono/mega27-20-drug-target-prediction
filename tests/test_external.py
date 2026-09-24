@@ -143,3 +143,16 @@ def test_pdbe_entry(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=20: R(next(calls)))
     out = ex.pdbe_entry("3D5U")
     assert out["entities"][0]["name"] == "PLK"
+
+
+def test_interpro_domains(monkeypatch):
+    import targetscan.external as ex, json as j
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return j.dumps({"count": 1, "results": [{"metadata": {
+                "accession": "IPR000719", "name": "Protein kinase domain", "type": "domain"}}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
+    out = ex.interpro_domains("P10721")
+    assert out["domains"][0]["accession"] == "IPR000719"

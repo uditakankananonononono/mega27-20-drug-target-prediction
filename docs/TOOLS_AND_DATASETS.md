@@ -29,12 +29,15 @@ Staged (client live, cached, wired into verification pipeline):
 16. PDBe API - 3D5U entry summary + entity inventory (polypeptide PLK + water;
     NOTE: no BI-2536 ligand entity in this entry - earlier BI-2536/3D5U
     co-crystal claim was wrong, corrected) (results/external_pull3.json pdbe_3d5u)
+17. InterPro API - domain architectures for 5 hit kinases via verified UniProt
+    accessions: PLK1 POLO box, KIT/FLT3 class III RTK site, BRAF CRD
+    (results/external_pull3.json interpro_kinases)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 23 (16 resources cited/staged + OT pull, 6 packages; 27 tests)
+Honest tool count: 24 (17 resources cited/staged + OT pull, 6 packages; 28 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

@@ -174,3 +174,16 @@ def pdbe_entry(pdb_id):
             "method": s.get("experimental_method", [None])[0],
             "entities": [{"type": m.get("molecule_type"),
                           "name": (m.get("molecule_name") or [""])[0]} for m in mols]}
+
+
+def interpro_domains(uniprot_acc, page_size=25):
+    """InterPro API: integrated domain/family entries for a UniProt protein."""
+    import urllib.request as u
+    url = (f"https://www.ebi.ac.uk/interpro/api/entry/interpro/protein/uniprot/"
+           f"{uniprot_acc}/?page_size={page_size}")
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    return {"accession": uniprot_acc, "count": d["count"],
+            "domains": [{"accession": x["metadata"]["accession"],
+                         "name": x["metadata"]["name"],
+                         "type": x["metadata"]["type"]} for x in d["results"]]}
