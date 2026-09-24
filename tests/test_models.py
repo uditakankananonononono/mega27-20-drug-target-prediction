@@ -88,3 +88,33 @@ def test_dtinet_can_overfit_tiny_batch():
             loss0 = loss.item()
         opt.zero_grad(); loss.backward(); opt.step()
     assert loss.item() < 0.05 * loss0
+
+
+def test_attn_pooling_weights_and_mutation_sensitivity():
+    from targetscan.models.attn_prot import AttnProtCNN
+    torch.manual_seed(0)
+    net = AttnProtCNN(out_dim=8)
+    net.eval()
+    n_res = len("MKTAYIAKQRSTVWYACDEFGHIKLMNPQRSTVWY")
+    wt = encode_sequence("MKTAYIAKQRSTVWYACDEFGHIKLMNPQRSTVWY")
+    mut = wt.copy()
+    mut[10] = encode_sequence("W")[0]  # single-residue change
+    seq = torch.tensor(np.stack([wt, mut]))
+    with torch.no_grad():
+        z, alpha = net(seq, return_attn=True)
+    assert z.shape == (2, 8)
+    # attention is a distribution over real residues
+    assert torch.allclose(alpha.sum(-1), torch.ones(2), atol=1e-5)
+    assert (alpha[:, n_res:] == 0).all()  # nothing on padding
+    # point mutation changes the embedding
+    delta = (z[0] - z[1]).abs().max().item()
+    assert delta > 1e-4
+
+
+def test_attn_dtinet_forward():
+    from targetscan.models.dti import DTINet as D2
+    x, a_norm, mask = _batch(["CCO", "c1ccccc1"])
+    seq = torch.tensor([encode_sequence("MKTAYIAK"), encode_sequence("ACDEFGHI")])
+    net = D2(x.shape[-1], out_dim=8, prot_encoder="attn")
+    out = net(x, a_norm, mask, seq)
+    assert out.shape == (2,)
