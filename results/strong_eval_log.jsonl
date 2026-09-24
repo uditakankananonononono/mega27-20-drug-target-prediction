@@ -3,3 +3,4 @@
 {"ckpt": "results/davis_ckpt.pt", "epoch": 45, "n_strong": 417, "strong_pred_mean": 5.999, "strong_true_mean": 7.897, "strong_mse": 4.375, "all_pred_mean": 5.459, "all_pred_std": 0.564}
 {"ckpt": "results/davis_ckpt.pt", "epoch": 47, "n_strong": 417, "strong_pred_mean": 6.273, "strong_true_mean": 7.897, "strong_mse": 3.45, "all_pred_mean": 5.699, "all_pred_std": 0.6}
 {"ckpt": "results/davis_ckpt.pt", "epoch": 48, "n_strong": 417, "strong_pred_mean": 6.616, "strong_true_mean": 7.897, "strong_mse": 2.5, "all_pred_mean": 5.992, "all_pred_std": 0.647}
+{"ckpt": "results/davis_ckpt.pt", "epoch": 50, "n_strong": 417, "strong_pred_mean": 6.148, "strong_true_mean": 7.897, "strong_mse": 3.839, "all_pred_mean": 5.595, "all_pred_std": 0.568}
