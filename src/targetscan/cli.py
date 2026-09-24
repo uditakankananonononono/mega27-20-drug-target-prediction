@@ -3,6 +3,7 @@
   python -m targetscan screen --smiles "CCO" [--top 10]   score a drug vs 442 DAVIS kinases
   python -m targetscan eval                               verified benchmark numbers
   python -m targetscan verify --inchikey X --gene PLK1    ChEMBL corroboration
+  python -m targetscan audit [--threshold 1.0]            dataset consistency audit
 """
 import argparse, json, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -55,6 +56,16 @@ def cmd_eval(a):
                       "reference_DeepDTA_ci": 0.878}, indent=1))
 
 
+def cmd_audit(a):
+    from targetscan.audit import audit
+    from targetscan.data.davis_kiba import load_davis, _fetch
+    ds = load_davis()
+    raw = json.loads(_fetch("davis/proteins.txt"))
+    rep = audit(raw, ds.affinity, list(raw.keys()), threshold=a.threshold)
+    rep["dataset"] = "davis (DeepDTA mirror)"
+    print(json.dumps(rep, indent=1, default=str))
+
+
 def cmd_verify(a):
     from targetscan import chembl
     res = chembl.corroborate(a.inchikey, a.gene)
@@ -70,8 +81,9 @@ def main(argv=None):
     sub.add_parser("eval")
     v = sub.add_parser("verify"); v.add_argument("--inchikey", required=True)
     v.add_argument("--gene", required=True)
+    au = sub.add_parser("audit"); au.add_argument("--threshold", type=float, default=1.0)
     a = ap.parse_args(argv)
-    {"screen": cmd_screen, "eval": cmd_eval, "verify": cmd_verify}[a.cmd](a)
+    {"screen": cmd_screen, "eval": cmd_eval, "verify": cmd_verify, "audit": cmd_audit}[a.cmd](a)
 
 
 if __name__ == "__main__":

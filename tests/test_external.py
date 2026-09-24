@@ -282,3 +282,18 @@ def test_klifs_structures_parses(monkeypatch):
     assert out["kinase_id"] == 311
     assert out["n_structures"] == 3
     assert out["pdbs"] == ["3D5U", "4J52"]
+
+
+def test_audit_detects_erased_variants():
+    from targetscan.audit import audit, find_erased_variants
+    seqs = {"KIT": "AAAA", "KIT(D816V)": "AAAA", "EGFR": "MMMM", "EGFR(L858R)": "MMMN"}
+    erased = find_erased_variants(seqs)
+    assert [e["mutant"] for e in erased] == ["KIT(D816V)"]
+    import numpy as np
+    aff = np.array([[1.0, 1.0, 2.0, 3.0], [1.0, 3.5, 2.0, 3.2]])
+    rep = audit(seqs, aff, ["KIT", "KIT(D816V)", "EGFR", "EGFR(L858R)"], threshold=1.0)
+    assert rep["label_variance"]["n_mutant_entries"] == 1
+    assert rep["label_variance"]["n_pairs_ge_threshold"] == 1
+    assert rep["verdict"].startswith("FAIL")
+    clean = audit({"A": "AAAA", "B": "CCCC"})
+    assert clean["verdict"].startswith("PASS")
