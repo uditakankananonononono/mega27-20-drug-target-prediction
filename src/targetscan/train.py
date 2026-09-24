@@ -38,6 +38,8 @@ def train_dti(model, store: FeatureStore, pairs, y, val_pairs=None, val_y=None,
     opt = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=wd)
     if opt_state is not None:
         opt.load_state_dict(opt_state)
+        for g in opt.param_groups:  # allow lr schedule changes across chunks
+            g["lr"] = lr
     best = {"loss": np.inf, "state": None, "stall": 0}
     n = len(pairs)
     for ep in range(epochs):

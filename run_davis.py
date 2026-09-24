@@ -34,7 +34,7 @@ if os.path.exists(ckpt):
 sub = np.random.default_rng(start_ep + 1).permutation(len(tr_all))[:8000]
 t0 = time.time()
 net, opt = train_dti(net, store, tr_all[sub], y_all[sub], val_pairs, y_val,
-                     epochs=EPOCHS, bs=512, lr=1e-3, patience=99,
+                     epochs=EPOCHS, bs=512, lr=3e-4, patience=99,
                      seed=start_ep + 1, log=lambda *a: print(*a, flush=True),
                      opt_state=opt_state)
 abs_ep = start_ep + EPOCHS
