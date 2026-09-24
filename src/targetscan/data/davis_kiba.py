@@ -7,7 +7,9 @@ Network access lives only in fetch_text; parsing is pure and testable.
 """
 from __future__ import annotations
 
+import ast
 import io
+import json
 import os
 import pickle
 import urllib.request
@@ -58,12 +60,21 @@ def _load_matrix(raw: bytes) -> np.ndarray:
     return pickle.loads(raw, encoding="latin1")
 
 
+def _load_fold(rel: str) -> list:
+    """DeepDTA fold files are Python literals; train files hold 5 CV folds
+    which we flatten into one training index set (GraphDTA protocol)."""
+    parsed = ast.literal_eval(_fetch(rel))
+    if isinstance(parsed[0], list):
+        return [int(i) for fold in parsed for i in fold]
+    return [int(i) for i in parsed]
+
+
 def load_davis() -> DTIBenchmark:
-    smiles = _fetch("davis/ligands_can.txt").splitlines()
-    sequences = _fetch("davis/proteins.txt").splitlines()
+    smiles = list(json.loads(_fetch("davis/ligands_can.txt")).values())
+    sequences = list(json.loads(_fetch("davis/proteins.txt")).values())
     Y = _load_matrix(_fetch("davis/Y", binary=True)).astype(np.float64)
-    train_idx = [int(v) for v in _fetch("davis/folds/train_fold_setting1.txt").split()]
-    test_idx = [int(v) for v in _fetch("davis/folds/test_fold_setting1.txt").split()]
+    train_idx = _load_fold("davis/folds/train_fold_setting1.txt")
+    test_idx = _load_fold("davis/folds/test_fold_setting1.txt")
     kd = Y.copy()
     kd[kd == 0] = 100000.0  # DeepDTA convention: missing -> weakest bin
     pkd = -np.log10(kd / 1e9)
@@ -82,11 +93,11 @@ def load_davis() -> DTIBenchmark:
 
 
 def load_kiba() -> DTIBenchmark:
-    smiles = _fetch("kiba/ligands_can.txt").splitlines()
-    sequences = _fetch("kiba/proteins.txt").splitlines()
+    smiles = list(json.loads(_fetch("kiba/ligands_can.txt")).values())
+    sequences = list(json.loads(_fetch("kiba/proteins.txt")).values())
     Y = _load_matrix(_fetch("kiba/Y", binary=True)).astype(np.float64)
-    train_idx = [int(v) for v in _fetch("kiba/folds/train_fold_setting1.txt").split()]
-    test_idx = [int(v) for v in _fetch("kiba/folds/test_fold_setting1.txt").split()]
+    train_idx = _load_fold("kiba/folds/train_fold_setting1.txt")
+    test_idx = _load_fold("kiba/folds/test_fold_setting1.txt")
     n_d, n_t = Y.shape
     flat = Y.ravel()
     pairs = np.array([[i // n_t, i % n_t] for i in range(n_d * n_t)],

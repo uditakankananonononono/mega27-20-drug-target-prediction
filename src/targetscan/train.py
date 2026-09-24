@@ -31,10 +31,13 @@ class FeatureStore:
 
 def train_dti(model, store: FeatureStore, pairs, y, val_pairs=None, val_y=None,
               epochs: int = 20, bs: int = 128, lr: float = 5e-4, wd: float = 1e-5,
-              patience: int = 4, seed: int = 0, log=lambda *a: None):
+              patience: int = 4, seed: int = 0, log=lambda *a: None,
+              opt_state: dict = None):
     set_seed(seed)
     yt = torch.tensor(np.asarray(y), dtype=torch.float32)
     opt = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=wd)
+    if opt_state is not None:
+        opt.load_state_dict(opt_state)
     best = {"loss": np.inf, "state": None, "stall": 0}
     n = len(pairs)
     for ep in range(epochs):
@@ -69,7 +72,7 @@ def train_dti(model, store: FeatureStore, pairs, y, val_pairs=None, val_y=None,
                 break
     if best["state"] is not None:
         model.load_state_dict(best["state"])
-    return model
+    return model, opt
 
 
 @torch.no_grad()
