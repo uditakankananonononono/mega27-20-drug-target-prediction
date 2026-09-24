@@ -64,3 +64,62 @@ def europepmc_search(query, page_size=5):
     url = (f"https://www.ebi.ac.uk/europepmc/webservices/rest/search"
            f"?query={q}&format=json&pageSize={page_size}")
     return _get(url).get("resultList", {}).get("result", [])
+
+
+def kegg_pathways(symbol):
+    """KEGG REST: pathways for a human gene symbol (resolves hsa id first)."""
+    import urllib.request as u
+    def _txt(url):
+        with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=20) as r:
+            return r.read().decode()
+    hits = [l for l in _txt(f"https://rest.kegg.jp/find/genes/{symbol}").strip().split("\n")
+            if l.split("\t")[0].startswith("hsa:")]
+    # exact symbol match first (field 2 is "SYM, ALIAS, ...; description")
+    exact = [l for l in hits if l.split("\t")[1].split(";")[0].split(",")[0].strip() == symbol]
+    pick = (exact or hits or [None])[0]
+    if pick is None:
+        return {"kegg_id": None, "pathways": []}
+    kegg_id = pick.split("\t")[0]
+    txt = _txt(f"https://rest.kegg.jp/link/pathway/{kegg_id}")
+    return {"kegg_id": kegg_id,
+            "pathways": [l.split("\t")[1] for l in txt.strip().split("\n") if "\t" in l]}
+
+
+def rcsb_search(query):
+    """RCSB PDB search API (GET): structures matching a free-text query."""
+    import urllib.parse
+    q = {"query": {"type": "terminal", "service": "full_text",
+                   "parameters": {"value": query}},
+         "return_type": "entry", "request_options": {"paginate": {"start": 0, "rows": 5}}}
+    url = "https://search.rcsb.org/rcsbsearch/v2/query?json=" + urllib.parse.quote(json.dumps(q))
+    import urllib.request as u
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=25) as r:
+        d = json.loads(r.read().decode())
+    return [e["identifier"] for e in d.get("result_set", [])]
+
+
+def hgnc_symbol(symbol):
+    """HGNC REST: approved symbol/name for a gene."""
+    url = f"https://rest.genenames.org/fetch/symbol/{symbol}"
+    req = urllib.request.Request(url, headers={"Accept": "application/json",
+                                               "User-Agent": "targetscan/0.1"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        d = json.loads(r.read().decode())
+    docs = d.get("response", {}).get("docs", [])
+    return docs[0] if docs else {}
+
+
+def chebi_entry(chebi_id):
+    """ChEBI web service: compound record by ChEBI id (e.g. CHEBI:166785)."""
+    url = f"https://www.ebi.ac.uk/webservices/chebi/2.0/test/getCompleteEntity?chebiId={chebi_id}"
+    import urllib.request as u
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=20) as r:
+        return r.read().decode()[:4000]
+
+
+def reactome_pathways(uniprot_acc):
+    """Reactome Content Service: pathways for a UniProt accession."""
+    url = f"https://reactome.org/ContentService/data/mapping/UniProt/{uniprot_acc}/pathways"
+    import urllib.request as u
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=20) as r:
+        return json.loads(r.read().decode())

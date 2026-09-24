@@ -60,3 +60,33 @@ def test_cli_eval_reports_committed_log(tmp_path, capsys):
     main(["--ckpt", str(tmp_path / "x.pt"), "eval"])
     out = json.loads(capsys.readouterr().out)
     assert out["test_ci"] == 0.7048 and out["source_file"].endswith("davis_log.jsonl")
+
+
+def test_kegg_and_hgnc(monkeypatch):
+    import targetscan.external as ex
+    class R:
+        def __init__(self, body): self.body = body
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self): return self.body
+    calls = {"n": 0}
+    def fake_urlopen(req, timeout=20):
+        calls["n"] += 1
+        url = req.full_url if hasattr(req, "full_url") else req
+        if "find/genes" in url:
+            return R(b"hsa:5347\tPLK1; serine/threonine-protein kinase PLK1\n")
+        return R(b"hsa:5347\tpath:hsa04110\n")
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    out = ex.kegg_pathways("PLK1")
+    assert out["kegg_id"] == "hsa:5347" and out["pathways"] == ["path:hsa04110"]
+
+
+def test_rcsb_search(monkeypatch):
+    import targetscan.external as ex
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return b'{"result_set": [{"identifier": "4J52"}]}'
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=25: R())
+    assert ex.rcsb_search("PLK1") == ["4J52"]
