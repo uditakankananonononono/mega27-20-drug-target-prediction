@@ -156,3 +156,17 @@ def test_interpro_domains(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
     out = ex.interpro_domains("P10721")
     assert out["domains"][0]["accession"] == "IPR000719"
+
+
+def test_mobidb_entry(monkeypatch):
+    import targetscan.external as ex, json as j
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return j.dumps([{"acc": "P10721", "gene": "KIT", "length": 976,
+                             "prediction-disorder-priority": {"content_fraction": 0.06},
+                             "homology-domain-pfam": {"regions_names": ["Ig-like", "Kinase"]}}]).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
+    out = ex.mobidb_entry("P10721")
+    assert out["gene"] == "KIT" and out["pfam_domains"] == ["Ig-like", "Kinase"]

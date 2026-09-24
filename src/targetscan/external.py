@@ -187,3 +187,19 @@ def interpro_domains(uniprot_acc, page_size=25):
             "domains": [{"accession": x["metadata"]["accession"],
                          "name": x["metadata"]["name"],
                          "type": x["metadata"]["type"]} for x in d["results"]]}
+
+
+def mobidb_entry(uniprot_acc):
+    """MobiDB API: disorder + Pfam domains for a UniProt accession."""
+    import urllib.request as u
+    url = f"https://mobidb.org/api/download?acc={uniprot_acc}"
+    with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=30) as r:
+        d = json.loads(r.read().decode())
+    if not d:
+        raise KeyError(uniprot_acc)
+    m = d[0]
+    dis = m.get("prediction-disorder-priority", {})
+    pfam = m.get("homology-domain-pfam", {})
+    return {"accession": uniprot_acc, "gene": m.get("gene"), "length": m.get("length"),
+            "disorder_fraction": dis.get("content_fraction"),
+            "pfam_domains": pfam.get("regions_names", [])[:4]}
