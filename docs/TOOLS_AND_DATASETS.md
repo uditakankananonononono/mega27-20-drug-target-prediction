@@ -71,13 +71,17 @@ Staged (client live, cached, wired into verification pipeline):
     drugs (imatinib Q177094 etc.); BindingDB REST attempted, server-side
     500/404 on documented endpoints - recorded, not counted
     (results/external_pull3.json wikidata_drugs)
+31. EBI Proteins variation API - 3,508 variant features for KIT (P10721);
+    DAVIS mutant names validated against ClinVar/UniProt records
+    (V559D Pathogenic etc.) - evidence the audit's fix direction is feasible
+    (results/external_pull3.json ebi_variation_kit)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. SciPy  18. matplotlib (paper figure, paper/figures/make_fig1.py)
 (pytest excluded - infra per program-wide ruling, not counted)
 
-Honest tool count: 36 (30 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 41 tests)
+Honest tool count: 37 (31 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 42 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

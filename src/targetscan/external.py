@@ -389,3 +389,25 @@ def wikidata_drug_targets(drug_label):
     targets = sorted({x["targetLabel"]["value"] for x in rows if "targetLabel" in x})
     return {"drug": drug_label, "qid": qid, "n_target_rows": len(rows),
             "interacts_with": targets}
+
+
+def ebi_proteins_variants(accession, positions=None, size=400):
+    """EBI Proteins variation API: variant features for a UniProt accession,
+    optionally filtered to 1-based positions (string compare)."""
+    import urllib.request as u
+    url = f"https://www.ebi.ac.uk/proteins/api/variation/{accession}?size={size}"
+    with u.urlopen(u.Request(url, headers={"Accept": "application/json",
+                                           "User-Agent": "targetscan/0.1"}), timeout=40) as r:
+        d = json.loads(r.read().decode())
+    feats = d.get("features", [])
+    out = []
+    for f in feats:
+        if positions and f.get("begin") not in positions:
+            continue
+        clin = f.get("clinicalSignificances") or []
+        out.append({"pos": f.get("begin"), "wt": f.get("wildType"),
+                    "mut": f.get("mutatedType"), "type": f.get("type"),
+                    "consequence": f.get("consequenceType"),
+                    "clinical": [c.get("type") for c in clin]})
+    return {"accession": accession, "n_features_total": len(feats),
+            "variants": out}

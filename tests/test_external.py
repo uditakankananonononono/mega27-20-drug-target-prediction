@@ -402,3 +402,27 @@ def test_wikidata_drug_targets_parses(monkeypatch):
     out = wikidata_drug_targets("imatinib")
     assert out["qid"] == "Q177094"
     assert out["interacts_with"] == ["ABL1", "KIT"]
+
+
+def test_ebi_proteins_variants_filters_positions(monkeypatch):
+    from targetscan.external import ebi_proteins_variants
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps({"features": [
+        {"begin": "559", "wildType": "V", "mutatedType": "D", "type": "VARIANT",
+         "consequenceType": "missense",
+         "clinicalSignificances": [{"type": "Pathogenic"}]},
+        {"begin": "10", "wildType": "A", "mutatedType": "T", "type": "VARIANT"}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=40: R(payload))
+    out = ebi_proteins_variants("P10721", positions={"559"})
+    assert out["n_features_total"] == 2
+    assert out["variants"] == [{"pos": "559", "wt": "V", "mut": "D",
+                                "type": "VARIANT", "consequence": "missense",
+                                "clinical": ["Pathogenic"]}]
