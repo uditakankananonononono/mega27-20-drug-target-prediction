@@ -143,3 +143,19 @@ def opentargets_associations(ensembl_id, size=5):
     t = d.get("data", {}).get("target") or {}
     rows = (t.get("associatedDiseases") or {}).get("rows", [])
     return [{"disease": r["disease"]["name"], "score": r["score"]} for r in rows]
+
+
+def dgidb_interactions(gene, max_rows=10):
+    """DGIdb GraphQL: known drug interactions for a gene."""
+    import urllib.request as u
+    q = {"query": '{ genes(names: ["%s"]) { nodes { name interactions { drug { name } interactionScore } } } }' % gene}
+    req = u.Request("https://dgidb.org/api/graphql", data=json.dumps(q).encode(),
+                    headers={"Content-Type": "application/json", "User-Agent": "targetscan/0.1"})
+    with u.urlopen(req, timeout=30) as r:
+        d = json.loads(r.read().decode())
+    nodes = d["data"]["genes"]["nodes"]
+    if not nodes:
+        return {"gene": gene, "interactions": []}
+    rows = [{"drug": i["drug"]["name"], "score": i["interactionScore"]}
+            for i in nodes[0]["interactions"][:max_rows]]
+    return {"gene": gene, "interactions": rows}

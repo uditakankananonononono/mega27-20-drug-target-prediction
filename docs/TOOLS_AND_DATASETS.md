@@ -24,12 +24,14 @@ Staged (client live, cached, wired into verification pipeline):
     FLT3->AML 0.83, textbook-correct)
 14. ChEBI via EBI OLS4 REST - imatinib (CHEBI:45783), sorafenib (CHEBI:50924),
     dasatinib (CHEBI:49375) records (results/external_pull3.json chebi)
+15. DGIdb GraphQL - known interactions for 5 screen-hit kinases (KIT->IMATINIB
+    recovered, a DAVIS drug) (results/external_pull3.json dgidb_hits)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 21 (14 resources cited/staged + OT pull, 6 packages; 25 tests)
+Honest tool count: 22 (15 resources cited/staged + OT pull, 6 packages; 26 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

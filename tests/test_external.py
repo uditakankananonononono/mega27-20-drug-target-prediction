@@ -114,3 +114,16 @@ def test_chebi_entry(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=20: R())
     out = ex.chebi_entry("CHEBI:45783")
     assert out["label"] == "imatinib"
+
+
+def test_dgidb_interactions(monkeypatch):
+    import targetscan.external as ex, json as j
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self):
+            return j.dumps({"data": {"genes": {"nodes": [{"name": "FLT3", "interactions": [
+                {"drug": {"name": "MIDOSTAURIN"}, "interactionScore": 0.9}]}]}}}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
+    out = ex.dgidb_interactions("FLT3")
+    assert out["interactions"][0]["drug"] == "MIDOSTAURIN"
