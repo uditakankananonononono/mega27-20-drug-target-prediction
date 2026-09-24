@@ -298,3 +298,19 @@ def klifs_structures(symbol, species="Human"):
     return {"symbol": symbol, "kinase_id": kin["kinase_ID"], "uniprot": kin.get("accession"),
             "n_structures": len(structs),
             "pdbs": sorted({s.get("pdb") for s in structs if s.get("pdb")})}
+
+
+def gprofiler_enrichment(symbols, sources=("GO:BP",), organism="hsapiens"):
+    """g:Profiler g:GOSt functional enrichment for a gene list (POST)."""
+    import urllib.request as u
+    body = json.dumps({"organism": organism, "query": list(symbols),
+                       "sources": list(sources), "no_evidences": True}).encode()
+    req = u.Request("https://biit.cs.ut.ee/gprofiler/api/gost/profile/",
+                    data=body, headers={"Content-Type": "application/json",
+                                        "User-Agent": "targetscan/0.1"})
+    with u.urlopen(req, timeout=60) as r:
+        d = json.loads(r.read().decode())
+    terms = [{"id": t.get("native"), "name": t.get("name"),
+              "p_value": t.get("p_value"), "source": t.get("source")}
+             for t in d.get("result", [])]
+    return {"query": list(symbols), "n_terms": len(terms), "terms": terms}

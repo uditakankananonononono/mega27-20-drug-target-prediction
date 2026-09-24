@@ -54,12 +54,16 @@ Staged (client live, cached, wired into verification pipeline):
 25. KLIFS API v2 - 28 curated kinase structures for PLK1 (kinase_ID 311;
     UniProt accession P53350 cross-checked against verified cache)
     (results/external_pull3.json klifs_plk1)
+26. g:Profiler g:GOSt - enrichment for 7 screen-hit kinases: top terms
+    protein phosphorylation / phosphorylation / myeloid progenitor
+    differentiation (FLT3/KIT signature) (results/external_pull3.json
+    gprofiler_hits)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. pytest (23 hermetic tests)  18. SciPy
 
-Honest tool count: 32 (25 resources cited/staged, 7 packages incl. pytest; 36 tests)
+Honest tool count: 33 (26 resources cited/staged, 7 packages incl. pytest; 37 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

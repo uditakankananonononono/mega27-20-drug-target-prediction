@@ -297,3 +297,23 @@ def test_audit_detects_erased_variants():
     assert rep["verdict"].startswith("FAIL")
     clean = audit({"A": "AAAA", "B": "CCCC"})
     assert clean["verdict"].startswith("PASS")
+
+
+def test_gprofiler_enrichment_parses(monkeypatch):
+    from targetscan.external import gprofiler_enrichment
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps({"result": [
+        {"native": "GO:0000278", "name": "mitotic cell cycle",
+         "p_value": 1e-9, "source": "GO:BP"}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=60: R(payload))
+    out = gprofiler_enrichment(["PLK1", "CDK1"])
+    assert out["n_terms"] == 1
+    assert out["terms"][0]["id"] == "GO:0000278"
