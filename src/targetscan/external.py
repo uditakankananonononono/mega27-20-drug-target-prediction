@@ -159,3 +159,18 @@ def dgidb_interactions(gene, max_rows=10):
     rows = [{"drug": i["drug"]["name"], "score": i["interactionScore"]}
             for i in nodes[0]["interactions"][:max_rows]]
     return {"gene": gene, "interactions": rows}
+
+
+def pdbe_entry(pdb_id):
+    """PDBe API: entry summary + entity inventory for a PDB id."""
+    import urllib.request as u
+    def _get(url):
+        with u.urlopen(u.Request(url, headers={"User-Agent": "targetscan/0.1"}), timeout=20) as r:
+            return json.loads(r.read().decode())
+    pid = pdb_id.lower()
+    s = _get(f"https://www.ebi.ac.uk/pdbe/api/pdb/entry/summary/{pid}")[pid][0]
+    mols = _get(f"https://www.ebi.ac.uk/pdbe/api/pdb/entry/molecules/{pid}").get(pid, [])
+    return {"pdb_id": pid, "title": s["title"],
+            "method": s.get("experimental_method", [None])[0],
+            "entities": [{"type": m.get("molecule_type"),
+                          "name": (m.get("molecule_name") or [""])[0]} for m in mols]}

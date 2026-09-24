@@ -127,3 +127,19 @@ def test_dgidb_interactions(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=30: R())
     out = ex.dgidb_interactions("FLT3")
     assert out["interactions"][0]["drug"] == "MIDOSTAURIN"
+
+
+def test_pdbe_entry(monkeypatch):
+    import targetscan.external as ex, json as j
+    calls = iter([
+        {"3d5u": [{"title": "Plk1 catalytic domain", "experimental_method": ["X-ray diffraction"]}]},
+        {"3d5u": [{"molecule_type": "polypeptide(L)", "molecule_name": ["PLK"]}]},
+    ])
+    class R:
+        def __init__(self, payload): self.payload = payload
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self): return j.dumps(self.payload).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=20: R(next(calls)))
+    out = ex.pdbe_entry("3D5U")
+    assert out["entities"][0]["name"] == "PLK"
