@@ -366,3 +366,26 @@ def omnipath_interactions(symbol, fields="sources"):
     return {"symbol": symbol, "n_interactions": len(rows),
             "n_partners": len(partners), "partners_sample": partners[:10],
             "databases": dbs}
+
+
+def wikidata_drug_targets(drug_label):
+    """Wikidata SPARQL: drug QID + 'interacts with' (P129) target labels."""
+    import urllib.request as u
+    from urllib.parse import quote
+    q = (
+        "SELECT ?drug ?drugLabel ?target ?targetLabel WHERE {"
+        f" ?drug rdfs:label \"{drug_label}\"@en ."
+        " OPTIONAL { ?drug wdt:P129 ?target . }"
+        " SERVICE wikibase:label { bd:serviceParam wikibase:language 'en'. }"
+        " } LIMIT 50")
+    url = ("https://query.wikidata.org/sparql?query=" + quote(q)
+           + "&format=json")
+    req = u.Request(url, headers={"Accept": "application/sparql-results+json",
+                                  "User-Agent": "targetscan/0.1 (research)"})
+    with u.urlopen(req, timeout=40) as r:
+        d = json.loads(r.read().decode())
+    rows = d.get("results", {}).get("bindings", [])
+    qid = rows[0]["drug"]["value"].rsplit("/", 1)[-1] if rows else None
+    targets = sorted({x["targetLabel"]["value"] for x in rows if "targetLabel" in x})
+    return {"drug": drug_label, "qid": qid, "n_target_rows": len(rows),
+            "interacts_with": targets}

@@ -67,13 +67,17 @@ Staged (client live, cached, wired into verification pipeline):
 29. OmniPath REST - signed directed interaction network for PLK1: 182
     interactions, 175 partners, 43 source databases incl. phospho-KEA sets
     (results/external_pull3.json omnipath_plk1)
+30. Wikidata SPARQL - knowledge-graph 'interacts with' (P129) for 3 DAVIS
+    drugs (imatinib Q177094 etc.); BindingDB REST attempted, server-side
+    500/404 on documented endpoints - recorded, not counted
+    (results/external_pull3.json wikidata_drugs)
 
 ## Packages
 13. PyTorch 2.14.0  14. NumPy  15. scikit-learn  16. RDKit 2026.03.6
 17. SciPy  18. matplotlib (paper figure, paper/figures/make_fig1.py)
 (pytest excluded - infra per program-wide ruling, not counted)
 
-Honest tool count: 35 (29 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 40 tests)
+Honest tool count: 36 (30 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 41 tests)
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,

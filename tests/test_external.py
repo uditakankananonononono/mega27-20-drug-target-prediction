@@ -380,3 +380,25 @@ def test_omnipath_interactions_parses(monkeypatch):
     assert out["n_interactions"] == 2
     assert out["n_partners"] == 2
     assert out["databases"] == ["SIGNOR", "SPIKE"]
+
+
+def test_wikidata_drug_targets_parses(monkeypatch):
+    from targetscan.external import wikidata_drug_targets
+    import io, json as J
+
+    class R(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    payload = J.dumps({"results": {"bindings": [
+        {"drug": {"value": "http://www.wikidata.org/entity/Q177094"},
+         "targetLabel": {"value": "ABL1"}},
+        {"drug": {"value": "http://www.wikidata.org/entity/Q177094"},
+         "targetLabel": {"value": "KIT"}}]}}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=40: R(payload))
+    out = wikidata_drug_targets("imatinib")
+    assert out["qid"] == "Q177094"
+    assert out["interacts_with"] == ["ABL1", "KIT"]
