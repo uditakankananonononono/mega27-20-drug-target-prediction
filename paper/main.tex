@@ -207,9 +207,11 @@ rather than a BI-2536 co-crystal), ClinicalTrials.gov (trial histories for flagg
 candidates), Europe PMC (literature), KEGG and Reactome (pathway context),
 STRING (interaction support among hit kinases), Open Targets (disease
 associations), HGNC (nomenclature), and ChEBI via EBI OLS4 (compound
-records). An honest registry with counts and cache paths lives in
-\texttt{docs/TOOLS\_AND\_DATASETS.md} (32 tools, 131 accession-level
-datasets, both logged as used).
+records). An audit-corrected registry with cache paths is in
+\texttt{docs/TOOLS\_AND\_DATASETS.md}. It records at most 37 distinct
+research/data tools before direct-use scrutiny and only two datasets
+used in scientific results. The 129 staged entries do not satisfy a
+120-used-dataset gate. Neither quantitative gate is met.
 \section{Limitations}
 Test concordance is below the published state of the art; range
 compression is only partially mitigated; DAVIS covers kinases only, so
@@ -220,7 +222,8 @@ and the screen's external corroboration is qualitative (presence of
 independent evidence), not a prospective validation.
 \section{Reproducibility}
 Every number above regenerates from \texttt{results/*.json(l)} and the
-committed scripts (25 hermetic tests, no network in tests). The training
+committed scripts (46 passing hermetic tests with one warning; no network
+in tests). The training
 logs are append-only and each line carries its epoch, test MSE, test
 concordance, and wall-clock seconds.
 
