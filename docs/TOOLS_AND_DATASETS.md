@@ -91,7 +91,7 @@ Staged (client live, cached, wired into verification pipeline):
 17. SciPy  18. matplotlib (paper figure, paper/figures/make_fig1.py)
 (pytest excluded - infra per program-wide ruling, not counted)
 
-Honest tool count: 40 (34 resources cited/staged + 6 analysis packages; pytest/git/GitHub/Drive excluded as infra per ruling; 45 tests) - GATE MET
+Audit-corrected tool count: at most 37 distinct research/data sources and science libraries from the existing 40-row roster. PubChem identity and PUG-REST are one source; RCSB/PDB and PDBe are aliases for the same structure source; OpenAlex is literature-only. Additional staged services do not become genuinely used scientific analysis tools merely by a successful pull. The 40-tool gate is NOT MET; verify every remaining row against a committed scientific result before promotion.
 Path to 40: BindingDB, PDB/RCSB, KLIFS, Open Targets, DrugCentral, TTD,
 Guide to PHARM, ZINC, Pharos, GDSC, DepMap, KEGG, Reactome, g:Profiler,
 Ensembl REST, AlphaFold DB, SwissTargetPrediction, admetSAR, ProTox, PK-DB,
@@ -102,6 +102,6 @@ Used in results: DAVIS (1), ChEMBL assay doc CHEMBL1908390 (1) = 2
 Staged: 68 PubChem CID records + 10 UniProt entries + 5 NCT trials +
 5 Europe PMC articles + STRING network (1) + 5 KEGG gene ids +
 25 PDB accessions (5 per kinase) + 5 HGNC ids + Reactome pathway sets (5) = 129
-Honest dataset count: 131 (2 used in results, 129 staged for the screen)
+Audit-corrected dataset count: 2 used in results; 129 staged entries, not counted. The 120 used-dataset gate is NOT MET. Promotion requires a recorded analysis using each distinct accession, not just a pull/cache.
 Path to 120+: KIBA (1), Metz (1), per-kinase ChEMBL assay sets (~10),
 PDB structures for hit complexes (~10), remaining bioassay records.
