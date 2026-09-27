@@ -171,15 +171,18 @@ def main():
         {"params": unfrozen, "lr": 1e-5},
         {"params": heads, "lr": 1e-3}], weight_decay=1e-5)
 
-    start_chunk, best_val, stall, done = 0, -1.0, 0, False
+    start_chunk, start_batch, best_val, stall, done = 0, 0, -1.0, 0, False
+    torch_rng, np_rng = None, None
     if os.path.exists(CKPT):
         state = torch.load(CKPT, weights_only=False)
         net.load_state_dict(state["model"])
         opt.load_state_dict(state["opt"])
         start_chunk = state["chunk"]
+        start_batch = state.get("batch_in_chunk", 0)
         best_val, stall, done = state["best_val"], state["stall"], state["done"]
-        print(f"resumed at chunk {start_chunk} best_val {best_val:.4f} "
-              f"stall {stall} done {done}", flush=True)
+        torch_rng, np_rng = state.get("torch_rng"), state.get("np_rng")
+        print(f"resumed chunk {start_chunk} batch {start_batch} "
+              f"best_val {best_val:.4f} stall {stall} done {done}", flush=True)
     if done:
         print("R3 already stopped; nothing to do", flush=True)
         return
@@ -192,9 +195,13 @@ def main():
         net.train()
         np.random.seed(chunk + 1); torch.manual_seed(chunk + 1)
         perm = np.random.permutation(len(pairs))
+        if chunk == start_chunk and start_batch and torch_rng is not None:
+            torch.set_rng_state(torch_rng)
+            np.random.set_state(np_rng)
         t0 = time.time(); tot = 0.0
         seqlen = np.array([len(s) for s in store.seqs])
-        for i in range(0, len(pairs), 256):
+        b0 = start_batch if chunk == start_chunk else 0
+        for i in range(b0, len(pairs), 256):
             idx = perm[i:i + 256]
             # locked 256-pair optimizer step; attention memory forces
             # length-sorted adaptive micro-batches (implementation detail,
@@ -215,6 +222,11 @@ def main():
                 loss.backward()
                 tot += loss.item() * len(idx)
             opt.step()
+            torch.save({"model": net.state_dict(), "opt": opt.state_dict(),
+                        "chunk": chunk, "batch_in_chunk": i + 256,
+                        "best_val": best_val, "stall": stall, "done": False,
+                        "torch_rng": torch.get_rng_state(),
+                        "np_rng": np.random.get_state()}, CKPT)
         vm = evaluate(net, store, val_pairs, y_val, bc)
         improved = vm["ci"] >= best_val + MIN_DELTA
         best_val = max(best_val, vm["ci"])
@@ -228,8 +240,8 @@ def main():
         print("CHUNK", rec, flush=True)
         stop = (stall >= PATIENCE) or (chunk + 1 >= MAX_CHUNKS)
         torch.save({"model": net.state_dict(), "opt": opt.state_dict(),
-                    "chunk": chunk + 1, "best_val": best_val, "stall": stall,
-                    "done": stop}, CKPT)
+                    "chunk": chunk + 1, "batch_in_chunk": 0,
+                    "best_val": best_val, "stall": stall, "done": stop}, CKPT)
         if stop:
             tm = evaluate(net, store, ds.test_pairs, ds.y_test, bc)  # ONCE
             verdict = {
