@@ -98,6 +98,40 @@ class R3Store:
 
 
 @torch.no_grad()
+def prot_vectors(model, store, target_ids, bc):
+    """Eval-only: encode each unique target ONCE (mathematically identical to
+    per-pair encoding) - esm_forward + pool + prot_head per unique target."""
+    seqlen = np.array([len(s) for s in store.seqs])
+    order = np.array(sorted(target_ids, key=lambda t: seqlen[t]))
+    z = {}
+    j = 0
+    while j < len(order):
+        L = int(seqlen[order[j]]) + 2
+        mb = max(1, min(8, int(1_200_000 / (L * L))))
+        ts = order[j:j + mb]; j += mb
+        _, _, toks = bc([(str(t), store.seqs[t]) for t in ts])
+        h, pad = model.esm_forward(toks)
+        for k, t in enumerate(ts):
+            z[t] = model.prot_head(model.pool(h[k:k + 1], pad[k:k + 1]))[0]
+    return z
+
+
+@torch.no_grad()
+def predict_fast(model, store, pairs, bc, bs=512):
+    """Eval-only two-stage: unique-target protein vectors + per-pair head."""
+    model.eval()
+    zmap = prot_vectors(model, store, sorted(set(pairs[:, 1].tolist())), bc)
+    out = []
+    for i in range(0, len(pairs), bs):
+        d_idx, t_idx = pairs[i:i + bs, 0], pairs[i:i + bs, 1]
+        x, a_norm, mask = collate_graphs([store.graphs[d] for d in d_idx])
+        zp = torch.stack([zmap[t] for t in t_idx])
+        z = torch.cat([model.mol(x, a_norm, mask), zp], dim=1)
+        out.append(model.head(z).squeeze(-1).numpy())
+    return np.concatenate(out)
+
+
+@torch.no_grad()
 def predict(model, store, pairs, bc, bs=256):
     model.eval()
     seqlen = np.array([len(s) for s in store.seqs])
@@ -119,7 +153,7 @@ def predict(model, store, pairs, bc, bs=256):
 
 
 def evaluate(model, store, pairs, y, bc, bs=256):
-    p = predict(model, store, pairs, bc, bs)
+    p = predict_fast(model, store, pairs, bc)
     return {"mse": mse(y, p), "ci": concordance_index_fast(np.asarray(y), p),
             "n": int(len(y))}
 
@@ -172,7 +206,7 @@ def main():
         {"params": heads, "lr": 1e-3}], weight_decay=1e-5)
 
     start_chunk, start_batch, best_val, stall, done = 0, 0, -1.0, 0, False
-    torch_rng, np_rng = None, None
+    torch_rng, np_rng, tot0 = None, None, 0.0
     if os.path.exists(CKPT):
         state = torch.load(CKPT, weights_only=False)
         net.load_state_dict(state["model"])
@@ -181,6 +215,7 @@ def main():
         start_batch = state.get("batch_in_chunk", 0)
         best_val, stall, done = state["best_val"], state["stall"], state["done"]
         torch_rng, np_rng = state.get("torch_rng"), state.get("np_rng")
+        tot0 = state.get("tot", 0.0)
         print(f"resumed chunk {start_chunk} batch {start_batch} "
               f"best_val {best_val:.4f} stall {stall} done {done}", flush=True)
     if done:
@@ -198,7 +233,8 @@ def main():
         if chunk == start_chunk and start_batch and torch_rng is not None:
             torch.set_rng_state(torch_rng)
             np.random.set_state(np_rng)
-        t0 = time.time(); tot = 0.0
+        t0 = time.time()
+        tot = tot0 if chunk == start_chunk else 0.0
         seqlen = np.array([len(s) for s in store.seqs])
         b0 = start_batch if chunk == start_chunk else 0
         for i in range(b0, len(pairs), 256):
@@ -226,7 +262,7 @@ def main():
                         "chunk": chunk, "batch_in_chunk": i + 256,
                         "best_val": best_val, "stall": stall, "done": False,
                         "torch_rng": torch.get_rng_state(),
-                        "np_rng": np.random.get_state()}, CKPT)
+                        "np_rng": np.random.get_state(), "tot": tot}, CKPT)
         vm = evaluate(net, store, val_pairs, y_val, bc)
         improved = vm["ci"] >= best_val + MIN_DELTA
         best_val = max(best_val, vm["ci"])
