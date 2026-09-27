@@ -1,0 +1,410 @@
+{
+ "script": "src/pull_uniprot_variants.py",
+ "source": "davis_proteins.txt",
+ "uniprot_api": "rest.uniprot.org/uniprotkb (reviewed, human canonical)",
+ "retrieved_utc": "2026-09-27T03:40:12Z",
+ "entries": [
+  {
+   "mutant": "ABL1(E255K)",
+   "wt": "ABL1",
+   "mutation": "E255K",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 292,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "ABL1(F317I)",
+   "wt": "ABL1",
+   "mutation": "F317I",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 354,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "ABL1(F317I)p",
+   "wt": "ABL1",
+   "mutation": "F317I",
+   "method": "p_suffix_reuse",
+   "note": "phospho state not sequence-encoded; reused ABL1(F317I)"
+  },
+  {
+   "mutant": "ABL1(F317L)",
+   "wt": "ABL1",
+   "mutation": "F317L",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 354,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "ABL1(F317L)p",
+   "wt": "ABL1",
+   "mutation": "F317L",
+   "method": "p_suffix_reuse",
+   "note": "phospho state not sequence-encoded; reused ABL1(F317L)"
+  },
+  {
+   "mutant": "ABL1(H396P)",
+   "wt": "ABL1",
+   "mutation": "H396P",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 433,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "ABL1(H396P)p",
+   "wt": "ABL1",
+   "mutation": "H396P",
+   "method": "p_suffix_reuse",
+   "note": "phospho state not sequence-encoded; reused ABL1(H396P)"
+  },
+  {
+   "mutant": "ABL1(M351T)",
+   "wt": "ABL1",
+   "mutation": "M351T",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 388,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "ABL1(Q252H)",
+   "wt": "ABL1",
+   "mutation": "Q252H",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 289,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "ABL1(Q252H)p",
+   "wt": "ABL1",
+   "mutation": "Q252H",
+   "method": "p_suffix_reuse",
+   "note": "phospho state not sequence-encoded; reused ABL1(Q252H)"
+  },
+  {
+   "mutant": "ABL1(T315I)",
+   "wt": "ABL1",
+   "mutation": "T315I",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 352,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "ABL1(T315I)p",
+   "wt": "ABL1",
+   "mutation": "T315I",
+   "method": "p_suffix_reuse",
+   "note": "phospho state not sequence-encoded; reused ABL1(T315I)"
+  },
+  {
+   "mutant": "ABL1(Y253F)",
+   "wt": "ABL1",
+   "mutation": "Y253F",
+   "uniprot_accession": "P00519",
+   "method": "offset",
+   "offset": 37,
+   "applied_position": 290,
+   "anchor_votes": 1084,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "BRAF(V600E)",
+   "wt": "BRAF",
+   "mutation": "V600E",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "EGFR(G719C)",
+   "wt": "EGFR",
+   "mutation": "G719C",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "EGFR(G719S)",
+   "wt": "EGFR",
+   "mutation": "G719S",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "EGFR(L858R)",
+   "wt": "EGFR",
+   "mutation": "L858R",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "EGFR(L861Q)",
+   "wt": "EGFR",
+   "mutation": "L861Q",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "EGFR(T790M)",
+   "wt": "EGFR",
+   "mutation": "T790M",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "FGFR3(G697C)",
+   "wt": "FGFR3",
+   "mutation": "G697C",
+   "uniprot_accession": "P22607",
+   "method": "offset",
+   "offset": -326,
+   "applied_position": 371,
+   "anchor_votes": 455,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "FLT3(D835H)",
+   "wt": "FLT3",
+   "mutation": "D835H",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "FLT3(D835Y)",
+   "wt": "FLT3",
+   "mutation": "D835Y",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "FLT3(K663Q)",
+   "wt": "FLT3",
+   "mutation": "K663Q",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "FLT3(N841I)",
+   "wt": "FLT3",
+   "mutation": "N841I",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "FLT3(R834Q)",
+   "wt": "FLT3",
+   "mutation": "R834Q",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "KIT(A829P)",
+   "wt": "KIT",
+   "mutation": "A829P",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "KIT(D816H)",
+   "wt": "KIT",
+   "mutation": "D816H",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "KIT(D816V)",
+   "wt": "KIT",
+   "mutation": "D816V",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "KIT(L576P)",
+   "wt": "KIT",
+   "mutation": "L576P",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "KIT(V559D)",
+   "wt": "KIT",
+   "mutation": "V559D",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "LRRK2(G2019S)",
+   "wt": "LRRK2",
+   "mutation": "G2019S",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "MET(M1250T)",
+   "wt": "MET",
+   "mutation": "M1250T",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "MET(Y1235D)",
+   "wt": "MET",
+   "mutation": "Y1235D",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "PIK3CA(C420R)",
+   "wt": "PIK3CA",
+   "mutation": "C420R",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 421,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "PIK3CA(E542K)",
+   "wt": "PIK3CA",
+   "mutation": "E542K",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 543,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "PIK3CA(E545A)",
+   "wt": "PIK3CA",
+   "mutation": "E545A",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 546,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "PIK3CA(E545K)",
+   "wt": "PIK3CA",
+   "mutation": "E545K",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 546,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "PIK3CA(H1047L)",
+   "wt": "PIK3CA",
+   "mutation": "H1047L",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 1048,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "PIK3CA(H1047Y)",
+   "wt": "PIK3CA",
+   "mutation": "H1047Y",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 1048,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "PIK3CA(I800L)",
+   "wt": "PIK3CA",
+   "mutation": "I800L",
+   "method": "direct",
+   "note": "davis_wt residue matches at stated position"
+  },
+  {
+   "mutant": "PIK3CA(M1043I)",
+   "wt": "PIK3CA",
+   "mutation": "M1043I",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 1044,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "PIK3CA(Q546K)",
+   "wt": "PIK3CA",
+   "mutation": "Q546K",
+   "uniprot_accession": "P42336",
+   "method": "offset",
+   "offset": 1,
+   "applied_position": 547,
+   "anchor_votes": 1048,
+   "note": "UniProt canonical matches at stated position; offset via dominant 21-mer vote"
+  },
+  {
+   "mutant": "RET(M918T)",
+   "wt": "RET",
+   "mutation": "M918T",
+   "uniprot_accession": "P07949",
+   "method": "manual_review",
+   "reason": "DAVIS RET entry is 458 aa, aligns to UniProt canonical RET (P07949, 1114 aa) head region with offset 0 (410 21-mer votes); the RET kinase domain (~residues 724-1016, containing V804 and M918) is ABSENT from the distributed sequence - mutations unplaceable. Additional dataset-level defect: RET entry lacks the inhibitor-binding domain its labels describe."
+  },
+  {
+   "mutant": "RET(V804L)",
+   "wt": "RET",
+   "mutation": "V804L",
+   "uniprot_accession": "P07949",
+   "method": "manual_review",
+   "reason": "DAVIS RET entry is 458 aa, aligns to UniProt canonical RET (P07949, 1114 aa) head region with offset 0 (410 21-mer votes); the RET kinase domain (~residues 724-1016, containing V804 and M918) is ABSENT from the distributed sequence - mutations unplaceable. Additional dataset-level defect: RET entry lacks the inhibitor-binding domain its labels describe."
+  },
+  {
+   "mutant": "RET(V804M)",
+   "wt": "RET",
+   "mutation": "V804M",
+   "uniprot_accession": "P07949",
+   "method": "manual_review",
+   "reason": "DAVIS RET entry is 458 aa, aligns to UniProt canonical RET (P07949, 1114 aa) head region with offset 0 (410 21-mer votes); the RET kinase domain (~residues 724-1016, containing V804 and M918) is ABSENT from the distributed sequence - mutations unplaceable. Additional dataset-level defect: RET entry lacks the inhibitor-binding domain its labels describe."
+  }
+ ],
+ "manual_review": [
+  "RET(M918T)",
+  "RET(V804L)",
+  "RET(V804M)"
+ ],
+ "counts": {
+  "direct": 20,
+  "offset": 17,
+  "p_suffix_reuse": 5,
+  "manual_review": 3
+ },
+ "n_targets_out": 442,
+ "md5": "df2f8d8b5826c1920766500fa04524a7",
+ "additional_findings": [
+  "RET (wt + 3 mutant entries): distributed sequence (458 aa) covers the canonical head region only; kinase domain absent. Mutations V804L/V804M/M918T cannot be placed on the distributed sequence. For R2 delta-pKd evaluation, RET pairs must use full canonical RET (P07949) for BOTH wt and mutant (decision deferred to PREREG_DAVIS_R2)."
+ ]
+}
