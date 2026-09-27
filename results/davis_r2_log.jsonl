@@ -8,3 +8,8 @@
 {"epoch": 8, "test_mse": 1.4147063493728638, "test_ci": 0.6704566843706031, "val_ci": null, "wall_s": 61.9}
 {"epoch": 9, "test_mse": 1.1264795064926147, "test_ci": 0.6764606513306745, "val_ci": null, "wall_s": 52.3}
 {"epoch": 10, "test_mse": 1.4948880672454834, "test_ci": 0.6830947648899989, "val_ci": null, "wall_s": 63.3}
+{"epoch": 11, "test_mse": 0.8881046772003174, "test_ci": 0.6836664071750181, "val_ci": null, "wall_s": 79.8}
+{"epoch": 12, "test_mse": 0.8226653933525085, "test_ci": 0.6896351490244252, "val_ci": null, "wall_s": 66.5}
+{"epoch": 13, "test_mse": 0.8329717516899109, "test_ci": 0.6936880277353332, "val_ci": null, "wall_s": 73.4}
+{"epoch": 14, "test_mse": 0.9815959930419922, "test_ci": 0.6937064826302682, "val_ci": null, "wall_s": 81.3}
+{"epoch": 15, "test_mse": 0.7372856140136719, "test_ci": 0.6962331951334825, "val_ci": null, "wall_s": 88.2}
