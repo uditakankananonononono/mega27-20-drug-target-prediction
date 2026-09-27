@@ -1,0 +1,3096 @@
+{
+ "AAK1": {
+  "base": "AAK1",
+  "start": 46,
+  "end": 315,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q2M2I8"
+ },
+ "ABL1(E255K)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(F317I)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(F317I)p": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(F317L)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(F317L)p": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(H396P)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(H396P)p": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(M351T)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(Q252H)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(Q252H)p": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(T315I)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(T315I)p": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1(Y253F)": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL1p": {
+  "base": "ABL1",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P00519)",
+  "uniprot": null
+ },
+ "ABL2": {
+  "base": "ABL2",
+  "start": 1,
+  "end": 1167,
+  "source": "full_length:seq_mismatch(P42684)",
+  "uniprot": null
+ },
+ "ACVR1": {
+  "base": "ACVR1",
+  "start": 208,
+  "end": 502,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q04771"
+ },
+ "ACVR1B": {
+  "base": "ACVR1B",
+  "start": 207,
+  "end": 497,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P36896"
+ },
+ "ACVR2A": {
+  "base": "ACVR2A",
+  "start": 192,
+  "end": 485,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P27037"
+ },
+ "ACVR2B": {
+  "base": "ACVR2B",
+  "start": 190,
+  "end": 480,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13705"
+ },
+ "ACVRL1": {
+  "base": "ACVRL1",
+  "start": 202,
+  "end": 492,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P37023"
+ },
+ "ADCK3": {
+  "base": "ADCK3",
+  "start": 329,
+  "end": 518,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8NI60"
+ },
+ "ADCK4": {
+  "base": "ADCK4",
+  "start": 191,
+  "end": 423,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96D53"
+ },
+ "AKT1": {
+  "base": "AKT1",
+  "start": 150,
+  "end": 408,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P31749"
+ },
+ "AKT2": {
+  "base": "AKT2",
+  "start": 152,
+  "end": 409,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P31751"
+ },
+ "AKT3": {
+  "base": "AKT3",
+  "start": 148,
+  "end": 405,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y243"
+ },
+ "ALK": {
+  "base": "ALK",
+  "start": 1116,
+  "end": 1392,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UM73"
+ },
+ "AMPK-alpha1": {
+  "base": "AMPK-alpha1",
+  "start": 1,
+  "end": 559,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "AMPK-alpha2": {
+  "base": "AMPK-alpha2",
+  "start": 1,
+  "end": 552,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "ANKK1": {
+  "base": "ANKK1",
+  "start": 22,
+  "end": 289,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8NFD2"
+ },
+ "ARK5": {
+  "base": "ARK5",
+  "start": 55,
+  "end": 306,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O60285"
+ },
+ "ASK1": {
+  "base": "ASK1",
+  "start": 680,
+  "end": 938,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q99683"
+ },
+ "ASK2": {
+  "base": "ASK2",
+  "start": 648,
+  "end": 906,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O95382"
+ },
+ "AURKA": {
+  "base": "AURKA",
+  "start": 133,
+  "end": 383,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "O14965"
+ },
+ "AURKB": {
+  "base": "AURKB",
+  "start": 77,
+  "end": 327,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96GD4"
+ },
+ "AURKC": {
+  "base": "AURKC",
+  "start": 43,
+  "end": 293,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UQB9"
+ },
+ "AXL": {
+  "base": "AXL",
+  "start": 536,
+  "end": 807,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P30530"
+ },
+ "BIKE": {
+  "base": "BIKE",
+  "start": 51,
+  "end": 316,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NSY1"
+ },
+ "BLK": {
+  "base": "BLK",
+  "start": 1,
+  "end": 599,
+  "source": "full_length:seq_mismatch(P51451)",
+  "uniprot": null
+ },
+ "BMPR1A": {
+  "base": "BMPR1A",
+  "start": 234,
+  "end": 525,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P36894"
+ },
+ "BMPR1B": {
+  "base": "BMPR1B",
+  "start": 204,
+  "end": 494,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O00238"
+ },
+ "BMPR2": {
+  "base": "BMPR2",
+  "start": 203,
+  "end": 504,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13873"
+ },
+ "BMX": {
+  "base": "BMX",
+  "start": 417,
+  "end": 675,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P51813"
+ },
+ "BRAF": {
+  "base": "BRAF",
+  "start": 457,
+  "end": 717,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P15056"
+ },
+ "BRAF(V600E)": {
+  "base": "BRAF",
+  "start": 457,
+  "end": 717,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P15056"
+ },
+ "BRK": {
+  "base": "BRK",
+  "start": 191,
+  "end": 445,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13882"
+ },
+ "BRSK1": {
+  "base": "BRSK1",
+  "start": 34,
+  "end": 285,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8TDC3"
+ },
+ "BRSK2": {
+  "base": "BRSK2",
+  "start": 19,
+  "end": 270,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8IWQ3"
+ },
+ "BTK": {
+  "base": "BTK",
+  "start": 1,
+  "end": 483,
+  "source": "full_length:seq_mismatch(Q06187)",
+  "uniprot": null
+ },
+ "CAMK1": {
+  "base": "CAMK1",
+  "start": 20,
+  "end": 276,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q14012"
+ },
+ "CAMK1D": {
+  "base": "CAMK1D",
+  "start": 23,
+  "end": 279,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8IU85"
+ },
+ "CAMK1G": {
+  "base": "CAMK1G",
+  "start": 23,
+  "end": 277,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96NX5"
+ },
+ "CAMK2A": {
+  "base": "CAMK2A",
+  "start": 13,
+  "end": 271,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UQM7"
+ },
+ "CAMK2B": {
+  "base": "CAMK2B",
+  "start": 14,
+  "end": 272,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13554"
+ },
+ "CAMK2D": {
+  "base": "CAMK2D",
+  "start": 14,
+  "end": 272,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13557"
+ },
+ "CAMK2G": {
+  "base": "CAMK2G",
+  "start": 14,
+  "end": 272,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "Q13555"
+ },
+ "CAMK4": {
+  "base": "CAMK4",
+  "start": 46,
+  "end": 300,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16566"
+ },
+ "CAMKK1": {
+  "base": "CAMKK1",
+  "start": 128,
+  "end": 409,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8N5S9"
+ },
+ "CAMKK2": {
+  "base": "CAMKK2",
+  "start": 165,
+  "end": 446,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96RR4"
+ },
+ "CASK": {
+  "base": "CASK",
+  "start": 1,
+  "end": 926,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "CDC2L1": {
+  "base": "CDC2L1",
+  "start": 1,
+  "end": 542,
+  "source": "full_length:seq_mismatch(P21127)",
+  "uniprot": null
+ },
+ "CDC2L2": {
+  "base": "CDC2L2",
+  "start": 1,
+  "end": 475,
+  "source": "full_length:seq_mismatch(Q9UQ88)",
+  "uniprot": null
+ },
+ "CDC2L5": {
+  "base": "CDC2L5",
+  "start": 1,
+  "end": 324,
+  "source": "full_length:seq_mismatch(Q14004)",
+  "uniprot": null
+ },
+ "CDK11": {
+  "base": "CDK11",
+  "start": 21,
+  "end": 335,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9BWU1"
+ },
+ "CDK2": {
+  "base": "CDK2",
+  "start": 4,
+  "end": 286,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P24941"
+ },
+ "CDK3": {
+  "base": "CDK3",
+  "start": 4,
+  "end": 286,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q00526"
+ },
+ "CDK4-cyclinD1": {
+  "base": "CDK4-cyclinD1",
+  "start": 1,
+  "end": 303,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "CDK4-cyclinD3": {
+  "base": "CDK4-cyclinD3",
+  "start": 1,
+  "end": 303,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "CDK5": {
+  "base": "CDK5",
+  "start": 4,
+  "end": 286,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q00535"
+ },
+ "CDK7": {
+  "base": "CDK7",
+  "start": 12,
+  "end": 295,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P50613"
+ },
+ "CDK8": {
+  "base": "CDK8",
+  "start": 21,
+  "end": 335,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49336"
+ },
+ "CDK9": {
+  "base": "CDK9",
+  "start": 19,
+  "end": 315,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P50750"
+ },
+ "CDKL1": {
+  "base": "CDKL1",
+  "start": 4,
+  "end": 287,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "Q00532"
+ },
+ "CDKL2": {
+  "base": "CDKL2",
+  "start": 4,
+  "end": 287,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q92772"
+ },
+ "CDKL3": {
+  "base": "CDKL3",
+  "start": 4,
+  "end": 286,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8IVW4"
+ },
+ "CDKL5": {
+  "base": "CDKL5",
+  "start": 1,
+  "end": 1030,
+  "source": "full_length:seq_mismatch(O76039)",
+  "uniprot": null
+ },
+ "CHEK1": {
+  "base": "CHEK1",
+  "start": 9,
+  "end": 265,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O14757"
+ },
+ "CHEK2": {
+  "base": "CHEK2",
+  "start": 220,
+  "end": 486,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O96017"
+ },
+ "CIT": {
+  "base": "CIT",
+  "start": 97,
+  "end": 360,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O14578"
+ },
+ "CLK1": {
+  "base": "CLK1",
+  "start": 161,
+  "end": 477,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49759"
+ },
+ "CLK2": {
+  "base": "CLK2",
+  "start": 163,
+  "end": 479,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49760"
+ },
+ "CLK3": {
+  "base": "CLK3",
+  "start": 304,
+  "end": 620,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49761"
+ },
+ "CLK4": {
+  "base": "CLK4",
+  "start": 159,
+  "end": 475,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9HAZ1"
+ },
+ "CSF1R": {
+  "base": "CSF1R",
+  "start": 582,
+  "end": 910,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P07333"
+ },
+ "CSK": {
+  "base": "CSK",
+  "start": 195,
+  "end": 449,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P41240"
+ },
+ "CSNK1A1": {
+  "base": "CSNK1A1",
+  "start": 17,
+  "end": 285,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P48729"
+ },
+ "CSNK1A1L": {
+  "base": "CSNK1A1L",
+  "start": 17,
+  "end": 285,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8N752"
+ },
+ "CSNK1D": {
+  "base": "CSNK1D",
+  "start": 9,
+  "end": 277,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P48730"
+ },
+ "CSNK1E": {
+  "base": "CSNK1E",
+  "start": 9,
+  "end": 277,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49674"
+ },
+ "CSNK1G1": {
+  "base": "CSNK1G1",
+  "start": 44,
+  "end": 315,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9HCP0"
+ },
+ "CSNK1G2": {
+  "base": "CSNK1G2",
+  "start": 46,
+  "end": 316,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P78368"
+ },
+ "CSNK1G3": {
+  "base": "CSNK1G3",
+  "start": 43,
+  "end": 313,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y6M4"
+ },
+ "CSNK2A1": {
+  "base": "CSNK2A1",
+  "start": 39,
+  "end": 324,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P68400"
+ },
+ "CSNK2A2": {
+  "base": "CSNK2A2",
+  "start": 40,
+  "end": 325,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P19784"
+ },
+ "CTK": {
+  "base": "CTK",
+  "start": 235,
+  "end": 482,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P42679"
+ },
+ "DAPK1": {
+  "base": "DAPK1",
+  "start": 13,
+  "end": 275,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P53355"
+ },
+ "DAPK2": {
+  "base": "DAPK2",
+  "start": 23,
+  "end": 285,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UIK4"
+ },
+ "DAPK3": {
+  "base": "DAPK3",
+  "start": 13,
+  "end": 275,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O43293"
+ },
+ "DCAMKL1": {
+  "base": "DCAMKL1",
+  "start": 390,
+  "end": 647,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O15075"
+ },
+ "DCAMKL2": {
+  "base": "DCAMKL2",
+  "start": 394,
+  "end": 651,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8N568"
+ },
+ "DCAMKL3": {
+  "base": "DCAMKL3",
+  "start": 356,
+  "end": 613,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9C098"
+ },
+ "DDR1": {
+  "base": "DDR1",
+  "start": 610,
+  "end": 905,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q08345"
+ },
+ "DDR2": {
+  "base": "DDR2",
+  "start": 563,
+  "end": 849,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16832"
+ },
+ "DLK": {
+  "base": "DLK",
+  "start": 1,
+  "end": 859,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "DMPK": {
+  "base": "DMPK",
+  "start": 71,
+  "end": 339,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q09013"
+ },
+ "DMPK2": {
+  "base": "DMPK2",
+  "start": 71,
+  "end": 337,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q6DT37"
+ },
+ "DRAK1": {
+  "base": "DRAK1",
+  "start": 61,
+  "end": 321,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UEE5"
+ },
+ "DRAK2": {
+  "base": "DRAK2",
+  "start": 33,
+  "end": 293,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O94768"
+ },
+ "DYRK1A": {
+  "base": "DYRK1A",
+  "start": 159,
+  "end": 479,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13627"
+ },
+ "DYRK1B": {
+  "base": "DYRK1B",
+  "start": 111,
+  "end": 431,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y463"
+ },
+ "DYRK2": {
+  "base": "DYRK2",
+  "start": 222,
+  "end": 535,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q92630"
+ },
+ "EGFR": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(E746A750del)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(G719C)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(G719S)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(L747E749del)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(L747S752del)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(L747T751del)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(L858R)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(L858RT790M)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(L861Q)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(S752I759del)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EGFR(T790M)": {
+  "base": "EGFR",
+  "start": 712,
+  "end": 979,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P00533"
+ },
+ "EIF2AK1": {
+  "base": "EIF2AK1",
+  "start": 167,
+  "end": 583,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9BQI3"
+ },
+ "EPHA1": {
+  "base": "EPHA1",
+  "start": 624,
+  "end": 884,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P21709"
+ },
+ "EPHA2": {
+  "base": "EPHA2",
+  "start": 613,
+  "end": 875,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P29317"
+ },
+ "EPHA3": {
+  "base": "EPHA3",
+  "start": 621,
+  "end": 882,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P29320"
+ },
+ "EPHA4": {
+  "base": "EPHA4",
+  "start": 621,
+  "end": 882,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P54764"
+ },
+ "EPHA5": {
+  "base": "EPHA5",
+  "start": 1,
+  "end": 1017,
+  "source": "full_length:seq_mismatch(P54756)",
+  "uniprot": null
+ },
+ "EPHA6": {
+  "base": "EPHA6",
+  "start": 1,
+  "end": 547,
+  "source": "full_length:seq_mismatch(Q9UF33)",
+  "uniprot": null
+ },
+ "EPHA7": {
+  "base": "EPHA7",
+  "start": 633,
+  "end": 894,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q15375"
+ },
+ "EPHA8": {
+  "base": "EPHA8",
+  "start": 635,
+  "end": 896,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P29322"
+ },
+ "EPHB1": {
+  "base": "EPHB1",
+  "start": 619,
+  "end": 882,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P54762"
+ },
+ "EPHB2": {
+  "base": "EPHB2",
+  "start": 1,
+  "end": 482,
+  "source": "full_length:seq_mismatch(P29323)",
+  "uniprot": null
+ },
+ "EPHB3": {
+  "base": "EPHB3",
+  "start": 633,
+  "end": 896,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P54753"
+ },
+ "EPHB4": {
+  "base": "EPHB4",
+  "start": 1,
+  "end": 935,
+  "source": "full_length:seq_mismatch(P54760)",
+  "uniprot": null
+ },
+ "EPHB6": {
+  "base": "EPHB6",
+  "start": 670,
+  "end": 919,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O15197"
+ },
+ "ERBB2": {
+  "base": "ERBB2",
+  "start": 720,
+  "end": 987,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P04626"
+ },
+ "ERBB3": {
+  "base": "ERBB3",
+  "start": 709,
+  "end": 966,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P21860"
+ },
+ "ERBB4": {
+  "base": "ERBB4",
+  "start": 718,
+  "end": 985,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q15303"
+ },
+ "ERK1": {
+  "base": "ERK1",
+  "start": 42,
+  "end": 330,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P27361"
+ },
+ "ERK2": {
+  "base": "ERK2",
+  "start": 25,
+  "end": 313,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P28482"
+ },
+ "ERK3": {
+  "base": "ERK3",
+  "start": 20,
+  "end": 316,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16659"
+ },
+ "ERK4": {
+  "base": "ERK4",
+  "start": 20,
+  "end": 312,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P31152"
+ },
+ "ERK5": {
+  "base": "ERK5",
+  "start": 55,
+  "end": 347,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13164"
+ },
+ "ERK8": {
+  "base": "ERK8",
+  "start": 13,
+  "end": 304,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8TD08"
+ },
+ "ERN1": {
+  "base": "ERN1",
+  "start": 571,
+  "end": 832,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O75460"
+ },
+ "FAK": {
+  "base": "FAK",
+  "start": 444,
+  "end": 702,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q05397"
+ },
+ "FER": {
+  "base": "FER",
+  "start": 563,
+  "end": 816,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P16591"
+ },
+ "FES": {
+  "base": "FES",
+  "start": 561,
+  "end": 822,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P07332"
+ },
+ "FGFR1": {
+  "base": "FGFR1",
+  "start": 478,
+  "end": 767,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P11362"
+ },
+ "FGFR2": {
+  "base": "FGFR2",
+  "start": 481,
+  "end": 770,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P21802"
+ },
+ "FGFR3": {
+  "base": "FGFR3",
+  "start": 1,
+  "end": 480,
+  "source": "full_length:seq_mismatch(P22607)",
+  "uniprot": null
+ },
+ "FGFR3(G697C)": {
+  "base": "FGFR3",
+  "start": 1,
+  "end": 480,
+  "source": "full_length:seq_mismatch(P22607)",
+  "uniprot": null
+ },
+ "FGFR4": {
+  "base": "FGFR4",
+  "start": 467,
+  "end": 755,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P22455"
+ },
+ "FGR": {
+  "base": "FGR",
+  "start": 263,
+  "end": 516,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P09769"
+ },
+ "FLT1": {
+  "base": "FLT1",
+  "start": 827,
+  "end": 1158,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P17948"
+ },
+ "FLT3": {
+  "base": "FLT3",
+  "start": 610,
+  "end": 943,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P36888"
+ },
+ "FLT3(D835H)": {
+  "base": "FLT3",
+  "start": 610,
+  "end": 943,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P36888"
+ },
+ "FLT3(D835Y)": {
+  "base": "FLT3",
+  "start": 610,
+  "end": 943,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P36888"
+ },
+ "FLT3(ITD)": {
+  "base": "FLT3",
+  "start": 610,
+  "end": 943,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P36888"
+ },
+ "FLT3(K663Q)": {
+  "base": "FLT3",
+  "start": 610,
+  "end": 943,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P36888"
+ },
+ "FLT3(N841I)": {
+  "base": "FLT3",
+  "start": 610,
+  "end": 943,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P36888"
+ },
+ "FLT3(R834Q)": {
+  "base": "FLT3",
+  "start": 610,
+  "end": 943,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P36888"
+ },
+ "FLT4": {
+  "base": "FLT4",
+  "start": 845,
+  "end": 1173,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P35916"
+ },
+ "FRK": {
+  "base": "FRK",
+  "start": 234,
+  "end": 491,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P42685"
+ },
+ "FYN": {
+  "base": "FYN",
+  "start": 271,
+  "end": 524,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P06241"
+ },
+ "GAK": {
+  "base": "GAK",
+  "start": 40,
+  "end": 314,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O14976"
+ },
+ "GCN2(KinDom2S808G)": {
+  "base": "GCN2",
+  "start": 590,
+  "end": 1001,
+  "source": "uniprot:Protein kinase 2",
+  "uniprot": "Q9P2K8"
+ },
+ "GRK1": {
+  "base": "GRK1",
+  "start": 190,
+  "end": 455,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q15835"
+ },
+ "GRK4": {
+  "base": "GRK4",
+  "start": 187,
+  "end": 449,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P32298"
+ },
+ "GRK7": {
+  "base": "GRK7",
+  "start": 191,
+  "end": 454,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8WTQ7"
+ },
+ "GSK3A": {
+  "base": "GSK3A",
+  "start": 119,
+  "end": 403,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49840"
+ },
+ "GSK3B": {
+  "base": "GSK3B",
+  "start": 56,
+  "end": 340,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49841"
+ },
+ "HCK": {
+  "base": "HCK",
+  "start": 262,
+  "end": 515,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P08631"
+ },
+ "HIPK1": {
+  "base": "HIPK1",
+  "start": 190,
+  "end": 518,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q86Z02"
+ },
+ "HIPK2": {
+  "base": "HIPK2",
+  "start": 199,
+  "end": 527,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H2X6"
+ },
+ "HIPK3": {
+  "base": "HIPK3",
+  "start": 197,
+  "end": 525,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H422"
+ },
+ "HIPK4": {
+  "base": "HIPK4",
+  "start": 11,
+  "end": 347,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8NE63"
+ },
+ "HPK1": {
+  "base": "HPK1",
+  "start": 17,
+  "end": 274,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q92918"
+ },
+ "HUNK": {
+  "base": "HUNK",
+  "start": 62,
+  "end": 320,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P57058"
+ },
+ "ICK": {
+  "base": "ICK",
+  "start": 4,
+  "end": 284,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UPZ9"
+ },
+ "IGF1R": {
+  "base": "IGF1R",
+  "start": 999,
+  "end": 1274,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P08069"
+ },
+ "IKK-alpha": {
+  "base": "IKK-alpha",
+  "start": 1,
+  "end": 745,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "IKK-beta": {
+  "base": "IKK-beta",
+  "start": 1,
+  "end": 756,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "IKK-epsilon": {
+  "base": "IKK-epsilon",
+  "start": 1,
+  "end": 716,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "INSR": {
+  "base": "INSR",
+  "start": 1023,
+  "end": 1298,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P06213"
+ },
+ "INSRR": {
+  "base": "INSRR",
+  "start": 979,
+  "end": 1254,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P14616"
+ },
+ "IRAK1": {
+  "base": "IRAK1",
+  "start": 212,
+  "end": 521,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P51617"
+ },
+ "IRAK3": {
+  "base": "IRAK3",
+  "start": 165,
+  "end": 452,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y616"
+ },
+ "IRAK4": {
+  "base": "IRAK4",
+  "start": 186,
+  "end": 454,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NWZ3"
+ },
+ "ITK": {
+  "base": "ITK",
+  "start": 363,
+  "end": 615,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q08881"
+ },
+ "JAK1(JH1domain-catalytic)": {
+  "base": "JAK1",
+  "start": 875,
+  "end": 1153,
+  "source": "uniprot:Protein kinase 2",
+  "uniprot": "P23458"
+ },
+ "JAK1(JH2domain-pseudokinase)": {
+  "base": "JAK1",
+  "start": 875,
+  "end": 1153,
+  "source": "uniprot:Protein kinase 2",
+  "uniprot": "P23458"
+ },
+ "JAK2(JH1domain-catalytic)": {
+  "base": "JAK2",
+  "start": 849,
+  "end": 1124,
+  "source": "uniprot:Protein kinase 2",
+  "uniprot": "O60674"
+ },
+ "JAK3(JH1domain-catalytic)": {
+  "base": "JAK3",
+  "start": 822,
+  "end": 1111,
+  "source": "uniprot:Protein kinase 2",
+  "uniprot": "P52333"
+ },
+ "JNK1": {
+  "base": "JNK1",
+  "start": 26,
+  "end": 321,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P45983"
+ },
+ "JNK2": {
+  "base": "JNK2",
+  "start": 26,
+  "end": 321,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P45984"
+ },
+ "JNK3": {
+  "base": "JNK3",
+  "start": 64,
+  "end": 359,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P53779"
+ },
+ "KIT": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "KIT(A829P)": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "KIT(D816H)": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "KIT(D816V)": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "KIT(L576P)": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "KIT(V559D)": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "KIT(V559D-T670I)": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "KIT(V559D-V654A)": {
+  "base": "KIT",
+  "start": 589,
+  "end": 937,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P10721"
+ },
+ "LATS1": {
+  "base": "LATS1",
+  "start": 705,
+  "end": 1010,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O95835"
+ },
+ "LATS2": {
+  "base": "LATS2",
+  "start": 668,
+  "end": 973,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NRM7"
+ },
+ "LCK": {
+  "base": "LCK",
+  "start": 245,
+  "end": 498,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P06239"
+ },
+ "LIMK1": {
+  "base": "LIMK1",
+  "start": 339,
+  "end": 604,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P53667"
+ },
+ "LIMK2": {
+  "base": "LIMK2",
+  "start": 331,
+  "end": 608,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P53671"
+ },
+ "LKB1": {
+  "base": "LKB1",
+  "start": 49,
+  "end": 309,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q15831"
+ },
+ "LOK": {
+  "base": "LOK",
+  "start": 36,
+  "end": 294,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O94804"
+ },
+ "LRRK2": {
+  "base": "LRRK2",
+  "start": 1879,
+  "end": 2138,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q5S007"
+ },
+ "LRRK2(G2019S)": {
+  "base": "LRRK2",
+  "start": 1879,
+  "end": 2138,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "Q5S007"
+ },
+ "LTK": {
+  "base": "LTK",
+  "start": 510,
+  "end": 786,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P29376"
+ },
+ "LYN": {
+  "base": "LYN",
+  "start": 1,
+  "end": 582,
+  "source": "full_length:seq_mismatch(P07948)",
+  "uniprot": null
+ },
+ "LZK": {
+  "base": "LZK",
+  "start": 168,
+  "end": 409,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O43283"
+ },
+ "MAK": {
+  "base": "MAK",
+  "start": 4,
+  "end": 284,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P20794"
+ },
+ "MAP3K1": {
+  "base": "MAP3K1",
+  "start": 1243,
+  "end": 1508,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13233"
+ },
+ "MAP3K15": {
+  "base": "MAP3K15",
+  "start": 652,
+  "end": 908,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q6ZN16"
+ },
+ "MAP3K2": {
+  "base": "MAP3K2",
+  "start": 357,
+  "end": 617,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y2U5"
+ },
+ "MAP3K3": {
+  "base": "MAP3K3",
+  "start": 362,
+  "end": 622,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q99759"
+ },
+ "MAP3K4": {
+  "base": "MAP3K4",
+  "start": 1343,
+  "end": 1601,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y6R4"
+ },
+ "MAP4K2": {
+  "base": "MAP4K2",
+  "start": 16,
+  "end": 273,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q12851"
+ },
+ "MAP4K3": {
+  "base": "MAP4K3",
+  "start": 16,
+  "end": 273,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8IVH8"
+ },
+ "MAP4K4": {
+  "base": "MAP4K4",
+  "start": 1,
+  "end": 1273,
+  "source": "full_length:seq_mismatch(O95819)",
+  "uniprot": null
+ },
+ "MAP4K5": {
+  "base": "MAP4K5",
+  "start": 20,
+  "end": 277,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "Q9Y4K4"
+ },
+ "MAPKAPK2": {
+  "base": "MAPKAPK2",
+  "start": 64,
+  "end": 325,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P49137"
+ },
+ "MAPKAPK5": {
+  "base": "MAPKAPK5",
+  "start": 22,
+  "end": 304,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8IW41"
+ },
+ "MARK1": {
+  "base": "MARK1",
+  "start": 60,
+  "end": 311,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9P0L2"
+ },
+ "MARK2": {
+  "base": "MARK2",
+  "start": 53,
+  "end": 304,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q7KZI7"
+ },
+ "MARK3": {
+  "base": "MARK3",
+  "start": 56,
+  "end": 307,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P27448"
+ },
+ "MARK4": {
+  "base": "MARK4",
+  "start": 59,
+  "end": 310,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96L34"
+ },
+ "MAST1": {
+  "base": "MAST1",
+  "start": 374,
+  "end": 647,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y2H9"
+ },
+ "MEK1": {
+  "base": "MEK1",
+  "start": 68,
+  "end": 361,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q02750"
+ },
+ "MEK2": {
+  "base": "MEK2",
+  "start": 72,
+  "end": 369,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P36507"
+ },
+ "MEK3": {
+  "base": "MEK3",
+  "start": 64,
+  "end": 325,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P46734"
+ },
+ "MEK4": {
+  "base": "MEK4",
+  "start": 102,
+  "end": 367,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P45985"
+ },
+ "MEK5": {
+  "base": "MEK5",
+  "start": 166,
+  "end": 409,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13163"
+ },
+ "MEK6": {
+  "base": "MEK6",
+  "start": 53,
+  "end": 314,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P52564"
+ },
+ "MELK": {
+  "base": "MELK",
+  "start": 11,
+  "end": 263,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q14680"
+ },
+ "MERTK": {
+  "base": "MERTK",
+  "start": 587,
+  "end": 858,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q12866"
+ },
+ "MET": {
+  "base": "MET",
+  "start": 1078,
+  "end": 1345,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P08581"
+ },
+ "MET(M1250T)": {
+  "base": "MET",
+  "start": 1078,
+  "end": 1345,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P08581"
+ },
+ "MET(Y1235D)": {
+  "base": "MET",
+  "start": 1078,
+  "end": 1345,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P08581"
+ },
+ "MINK": {
+  "base": "MINK",
+  "start": 25,
+  "end": 289,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8N4C8"
+ },
+ "MKK7": {
+  "base": "MKK7",
+  "start": 120,
+  "end": 380,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O14733"
+ },
+ "MKNK1": {
+  "base": "MKNK1",
+  "start": 49,
+  "end": 374,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9BUB5"
+ },
+ "MKNK2": {
+  "base": "MKNK2",
+  "start": 84,
+  "end": 388,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9HBH9"
+ },
+ "MLCK": {
+  "base": "MLCK",
+  "start": 1,
+  "end": 819,
+  "source": "full_length:seq_mismatch(Q15746)",
+  "uniprot": null
+ },
+ "MLK1": {
+  "base": "MLK1",
+  "start": 1,
+  "end": 373,
+  "source": "full_length:seq_mismatch(P80192)",
+  "uniprot": null
+ },
+ "MLK2": {
+  "base": "MLK2",
+  "start": 98,
+  "end": 360,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q02779"
+ },
+ "MLK3": {
+  "base": "MLK3",
+  "start": 117,
+  "end": 379,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16584"
+ },
+ "MRCKA": {
+  "base": "MRCKA",
+  "start": 1,
+  "end": 1732,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "MRCKB": {
+  "base": "MRCKB",
+  "start": 1,
+  "end": 1711,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "MST1": {
+  "base": "MST1",
+  "start": 1,
+  "end": 487,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "MST1R": {
+  "base": "MST1R",
+  "start": 1082,
+  "end": 1345,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "Q04912"
+ },
+ "MST2": {
+  "base": "MST2",
+  "start": 27,
+  "end": 278,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13188"
+ },
+ "MST3": {
+  "base": "MST3",
+  "start": 36,
+  "end": 286,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y6E0"
+ },
+ "MST4": {
+  "base": "MST4",
+  "start": 24,
+  "end": 274,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9P289"
+ },
+ "MTOR": {
+  "base": "MTOR",
+  "start": 1,
+  "end": 2549,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "MUSK": {
+  "base": "MUSK",
+  "start": 575,
+  "end": 856,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O15146"
+ },
+ "MYLK": {
+  "base": "MYLK",
+  "start": 1464,
+  "end": 1719,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q15746"
+ },
+ "MYLK2": {
+  "base": "MYLK2",
+  "start": 285,
+  "end": 540,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H1R3"
+ },
+ "MYLK4": {
+  "base": "MYLK4",
+  "start": 106,
+  "end": 361,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q86YV6"
+ },
+ "MYO3A": {
+  "base": "MYO3A",
+  "start": 21,
+  "end": 287,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8NEV4"
+ },
+ "MYO3B": {
+  "base": "MYO3B",
+  "start": 27,
+  "end": 293,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8WXR4"
+ },
+ "NDR1": {
+  "base": "NDR1",
+  "start": 89,
+  "end": 382,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q15208"
+ },
+ "NDR2": {
+  "base": "NDR2",
+  "start": 90,
+  "end": 383,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9Y2H1"
+ },
+ "NEK1": {
+  "base": "NEK1",
+  "start": 4,
+  "end": 258,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96PY6"
+ },
+ "NEK11": {
+  "base": "NEK11",
+  "start": 29,
+  "end": 287,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8NG66"
+ },
+ "NEK2": {
+  "base": "NEK2",
+  "start": 8,
+  "end": 271,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P51955"
+ },
+ "NEK3": {
+  "base": "NEK3",
+  "start": 4,
+  "end": 257,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P51956"
+ },
+ "NEK4": {
+  "base": "NEK4",
+  "start": 1,
+  "end": 451,
+  "source": "full_length:seq_mismatch(P51957)",
+  "uniprot": null
+ },
+ "NEK5": {
+  "base": "NEK5",
+  "start": 4,
+  "end": 259,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q6P3R8"
+ },
+ "NEK6": {
+  "base": "NEK6",
+  "start": 45,
+  "end": 310,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9HC98"
+ },
+ "NEK7": {
+  "base": "NEK7",
+  "start": 34,
+  "end": 299,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8TDX7"
+ },
+ "NEK9": {
+  "base": "NEK9",
+  "start": 52,
+  "end": 308,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8TD19"
+ },
+ "NIM1": {
+  "base": "NIM1",
+  "start": 74,
+  "end": 325,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8IY84"
+ },
+ "NLK": {
+  "base": "NLK",
+  "start": 138,
+  "end": 427,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UBE8"
+ },
+ "OSR1": {
+  "base": "OSR1",
+  "start": 1,
+  "end": 527,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "p38-alpha": {
+  "base": "p38-alpha",
+  "start": 1,
+  "end": 360,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "p38-beta": {
+  "base": "p38-beta",
+  "start": 1,
+  "end": 364,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "p38-delta": {
+  "base": "p38-delta",
+  "start": 1,
+  "end": 365,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "p38-gamma": {
+  "base": "p38-gamma",
+  "start": 1,
+  "end": 367,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PAK1": {
+  "base": "PAK1",
+  "start": 270,
+  "end": 521,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13153"
+ },
+ "PAK2": {
+  "base": "PAK2",
+  "start": 249,
+  "end": 499,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13177"
+ },
+ "PAK3": {
+  "base": "PAK3",
+  "start": 283,
+  "end": 534,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O75914"
+ },
+ "PAK4": {
+  "base": "PAK4",
+  "start": 321,
+  "end": 572,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O96013"
+ },
+ "PAK6": {
+  "base": "PAK6",
+  "start": 407,
+  "end": 658,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NQU5"
+ },
+ "PAK7": {
+  "base": "PAK7",
+  "start": 449,
+  "end": 700,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9P286"
+ },
+ "PCTK1": {
+  "base": "PCTK1",
+  "start": 1,
+  "end": 448,
+  "source": "full_length:seq_mismatch(Q00536)",
+  "uniprot": null
+ },
+ "PCTK2": {
+  "base": "PCTK2",
+  "start": 192,
+  "end": 473,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q00537"
+ },
+ "PCTK3": {
+  "base": "PCTK3",
+  "start": 1,
+  "end": 436,
+  "source": "full_length:seq_mismatch(Q07002)",
+  "uniprot": null
+ },
+ "PDGFRA": {
+  "base": "PDGFRA",
+  "start": 593,
+  "end": 954,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P16234"
+ },
+ "PDGFRB": {
+  "base": "PDGFRB",
+  "start": 1,
+  "end": 777,
+  "source": "full_length:seq_mismatch(P09619)",
+  "uniprot": null
+ },
+ "PDPK1": {
+  "base": "PDPK1",
+  "start": 82,
+  "end": 342,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O15530"
+ },
+ "PFCDPK1(Pfalciparum)": {
+  "base": "PFCDPK1",
+  "start": 1,
+  "end": 524,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PFPK5(Pfalciparum)": {
+  "base": "PFPK5",
+  "start": 1,
+  "end": 288,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PFTAIRE2": {
+  "base": "PFTAIRE2",
+  "start": 1,
+  "end": 435,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PFTK1": {
+  "base": "PFTK1",
+  "start": 135,
+  "end": 419,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O94921"
+ },
+ "PHKG1": {
+  "base": "PHKG1",
+  "start": 20,
+  "end": 288,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16816"
+ },
+ "PHKG2": {
+  "base": "PHKG2",
+  "start": 24,
+  "end": 291,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P15735"
+ },
+ "PIK3C2B": {
+  "base": "PIK3C2B",
+  "start": 1,
+  "end": 1634,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3C2G": {
+  "base": "PIK3C2G",
+  "start": 1,
+  "end": 1445,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(C420R)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(E542K)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(E545A)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(E545K)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(H1047L)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(H1047Y)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(I800L)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(M1043I)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CA(Q546K)": {
+  "base": "PIK3CA",
+  "start": 1,
+  "end": 1069,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CB": {
+  "base": "PIK3CB",
+  "start": 1,
+  "end": 1070,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CD": {
+  "base": "PIK3CD",
+  "start": 1,
+  "end": 1044,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK3CG": {
+  "base": "PIK3CG",
+  "start": 1,
+  "end": 1102,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIK4CB": {
+  "base": "PIK4CB",
+  "start": 1,
+  "end": 816,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIM1": {
+  "base": "PIM1",
+  "start": 129,
+  "end": 381,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P11309"
+ },
+ "PIM2": {
+  "base": "PIM2",
+  "start": 32,
+  "end": 286,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9P1W9"
+ },
+ "PIM3": {
+  "base": "PIM3",
+  "start": 40,
+  "end": 293,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q86V86"
+ },
+ "PIP5K1A": {
+  "base": "PIP5K1A",
+  "start": 1,
+  "end": 562,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIP5K1C": {
+  "base": "PIP5K1C",
+  "start": 1,
+  "end": 668,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIP5K2B": {
+  "base": "PIP5K2B",
+  "start": 1,
+  "end": 416,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PIP5K2C": {
+  "base": "PIP5K2C",
+  "start": 1,
+  "end": 421,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PKAC-alpha": {
+  "base": "PKAC-alpha",
+  "start": 1,
+  "end": 351,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PKAC-beta": {
+  "base": "PKAC-beta",
+  "start": 1,
+  "end": 351,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PKMYT1": {
+  "base": "PKMYT1",
+  "start": 110,
+  "end": 359,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q99640"
+ },
+ "PKN1": {
+  "base": "PKN1",
+  "start": 615,
+  "end": 874,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16512"
+ },
+ "PKN2": {
+  "base": "PKN2",
+  "start": 657,
+  "end": 916,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16513"
+ },
+ "PKNB(Mtuberculosis)": {
+  "base": "PKNB",
+  "start": 1,
+  "end": 626,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "PLK1": {
+  "base": "PLK1",
+  "start": 53,
+  "end": 305,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P53350"
+ },
+ "PLK2": {
+  "base": "PLK2",
+  "start": 82,
+  "end": 334,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NYY3"
+ },
+ "PLK3": {
+  "base": "PLK3",
+  "start": 62,
+  "end": 314,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H4B4"
+ },
+ "PLK4": {
+  "base": "PLK4",
+  "start": 12,
+  "end": 265,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O00444"
+ },
+ "PRKCD": {
+  "base": "PRKCD",
+  "start": 349,
+  "end": 603,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q05655"
+ },
+ "PRKCE": {
+  "base": "PRKCE",
+  "start": 408,
+  "end": 668,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q02156"
+ },
+ "PRKCH": {
+  "base": "PRKCH",
+  "start": 355,
+  "end": 614,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P24723"
+ },
+ "PRKCI": {
+  "base": "PRKCI",
+  "start": 254,
+  "end": 522,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P41743"
+ },
+ "PRKCQ": {
+  "base": "PRKCQ",
+  "start": 380,
+  "end": 634,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q04759"
+ },
+ "PRKD1": {
+  "base": "PRKD1",
+  "start": 583,
+  "end": 839,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q15139"
+ },
+ "PRKD2": {
+  "base": "PRKD2",
+  "start": 551,
+  "end": 807,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "Q9BZL6"
+ },
+ "PRKD3": {
+  "base": "PRKD3",
+  "start": 576,
+  "end": 832,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O94806"
+ },
+ "PRKG1": {
+  "base": "PRKG1",
+  "start": 360,
+  "end": 619,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13976"
+ },
+ "PRKG2": {
+  "base": "PRKG2",
+  "start": 453,
+  "end": 711,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13237"
+ },
+ "PRKR": {
+  "base": "PRKR",
+  "start": 1,
+  "end": 513,
+  "source": "full_length:seq_mismatch(P19525)",
+  "uniprot": null
+ },
+ "PRKX": {
+  "base": "PRKX",
+  "start": 49,
+  "end": 303,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P51817"
+ },
+ "PRP4": {
+  "base": "PRP4",
+  "start": 687,
+  "end": 1006,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13523"
+ },
+ "PYK2": {
+  "base": "PYK2",
+  "start": 425,
+  "end": 683,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q14289"
+ },
+ "QSK": {
+  "base": "QSK",
+  "start": 1,
+  "end": 1263,
+  "source": "full_length:seq_mismatch(Q9Y2K2)",
+  "uniprot": null
+ },
+ "RAF1": {
+  "base": "RAF1",
+  "start": 349,
+  "end": 609,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P04049"
+ },
+ "RET": {
+  "base": "RET",
+  "start": 1,
+  "end": 458,
+  "source": "full_length:seq_mismatch(P07949)",
+  "uniprot": null
+ },
+ "RET(M918T)": {
+  "base": "RET",
+  "start": 1,
+  "end": 458,
+  "source": "full_length:seq_mismatch(P07949)",
+  "uniprot": null
+ },
+ "RET(V804L)": {
+  "base": "RET",
+  "start": 1,
+  "end": 458,
+  "source": "full_length:seq_mismatch(P07949)",
+  "uniprot": null
+ },
+ "RET(V804M)": {
+  "base": "RET",
+  "start": 1,
+  "end": 458,
+  "source": "full_length:seq_mismatch(P07949)",
+  "uniprot": null
+ },
+ "RIOK1": {
+  "base": "RIOK1",
+  "start": 180,
+  "end": 479,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9BRS2"
+ },
+ "RIOK2": {
+  "base": "RIOK2",
+  "start": 97,
+  "end": 272,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9BVS4"
+ },
+ "RIOK3": {
+  "base": "RIOK3",
+  "start": 251,
+  "end": 519,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O14730"
+ },
+ "RIPK1": {
+  "base": "RIPK1",
+  "start": 17,
+  "end": 289,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13546"
+ },
+ "RIPK2": {
+  "base": "RIPK2",
+  "start": 18,
+  "end": 294,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O43353"
+ },
+ "RIPK4": {
+  "base": "RIPK4",
+  "start": 1,
+  "end": 784,
+  "source": "full_length:seq_mismatch(P57078)",
+  "uniprot": null
+ },
+ "RIPK5": {
+  "base": "RIPK5",
+  "start": 652,
+  "end": 906,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q6XUX3"
+ },
+ "ROCK1": {
+  "base": "ROCK1",
+  "start": 76,
+  "end": 338,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13464"
+ },
+ "ROCK2": {
+  "base": "ROCK2",
+  "start": 1,
+  "end": 703,
+  "source": "full_length:seq_mismatch(O75116)",
+  "uniprot": null
+ },
+ "ROS1": {
+  "base": "ROS1",
+  "start": 1945,
+  "end": 2222,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P08922"
+ },
+ "RPS6KA4(KinDom.1-N-terminal)": {
+  "base": "RPS6KA4",
+  "start": 33,
+  "end": 301,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "O75676"
+ },
+ "RPS6KA4(KinDom.2-C-terminal)": {
+  "base": "RPS6KA4",
+  "start": 33,
+  "end": 301,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "O75676"
+ },
+ "RPS6KA5(KinDom.1-N-terminal)": {
+  "base": "RPS6KA5",
+  "start": 49,
+  "end": 318,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "O75582"
+ },
+ "RPS6KA5(KinDom.2-C-terminal)": {
+  "base": "RPS6KA5",
+  "start": 49,
+  "end": 318,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "O75582"
+ },
+ "RSK1(KinDom.1-N-terminal)": {
+  "base": "RSK1",
+  "start": 62,
+  "end": 321,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "Q15418"
+ },
+ "RSK1(KinDom.2-C-terminal)": {
+  "base": "RSK1",
+  "start": 62,
+  "end": 321,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "Q15418"
+ },
+ "RSK2(KinDom.1-N-terminal)": {
+  "base": "RSK2",
+  "start": 68,
+  "end": 327,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "P51812"
+ },
+ "RSK3(KinDom.1-N-terminal)": {
+  "base": "RSK3",
+  "start": 59,
+  "end": 318,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "Q15349"
+ },
+ "RSK3(KinDom.2-C-terminal)": {
+  "base": "RSK3",
+  "start": 59,
+  "end": 318,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "Q15349"
+ },
+ "RSK4(KinDom.1-N-terminal)": {
+  "base": "RSK4",
+  "start": 73,
+  "end": 330,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "Q9UK32"
+ },
+ "RSK4(KinDom.2-C-terminal)": {
+  "base": "RSK4",
+  "start": 73,
+  "end": 330,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "Q9UK32"
+ },
+ "S6K1": {
+  "base": "S6K1",
+  "start": 1,
+  "end": 525,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "SBK1": {
+  "base": "SBK1",
+  "start": 53,
+  "end": 318,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q52WX2"
+ },
+ "SgK110": {
+  "base": "SgK110",
+  "start": 43,
+  "end": 309,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P0C264"
+ },
+ "SGK3": {
+  "base": "SGK3",
+  "start": 162,
+  "end": 419,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96BR1"
+ },
+ "SIK": {
+  "base": "SIK",
+  "start": 27,
+  "end": 278,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P57059"
+ },
+ "SIK2": {
+  "base": "SIK2",
+  "start": 20,
+  "end": 271,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H0K1"
+ },
+ "SLK": {
+  "base": "SLK",
+  "start": 34,
+  "end": 292,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H2G2"
+ },
+ "SNARK": {
+  "base": "SNARK",
+  "start": 53,
+  "end": 303,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H093"
+ },
+ "SNRK": {
+  "base": "SNRK",
+  "start": 16,
+  "end": 269,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NRH2"
+ },
+ "SRC": {
+  "base": "SRC",
+  "start": 270,
+  "end": 523,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P12931"
+ },
+ "SRMS": {
+  "base": "SRMS",
+  "start": 230,
+  "end": 488,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H3Y6"
+ },
+ "SRPK1": {
+  "base": "SRPK1",
+  "start": 80,
+  "end": 653,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q96SB4"
+ },
+ "SRPK2": {
+  "base": "SRPK2",
+  "start": 81,
+  "end": 684,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P78362"
+ },
+ "SRPK3": {
+  "base": "SRPK3",
+  "start": 79,
+  "end": 565,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UPE1"
+ },
+ "STK16": {
+  "base": "STK16",
+  "start": 20,
+  "end": 293,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O75716"
+ },
+ "STK33": {
+  "base": "STK33",
+  "start": 116,
+  "end": 381,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9BYT3"
+ },
+ "STK35": {
+  "base": "STK35",
+  "start": 202,
+  "end": 530,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8TDR2"
+ },
+ "STK36": {
+  "base": "STK36",
+  "start": 4,
+  "end": 254,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NRP7"
+ },
+ "STK39": {
+  "base": "STK39",
+  "start": 63,
+  "end": 337,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UEW8"
+ },
+ "SYK": {
+  "base": "SYK",
+  "start": 371,
+  "end": 631,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P43405"
+ },
+ "TAK1": {
+  "base": "TAK1",
+  "start": 36,
+  "end": 291,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O43318"
+ },
+ "TAOK1": {
+  "base": "TAOK1",
+  "start": 28,
+  "end": 281,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q7L7X3"
+ },
+ "TAOK2": {
+  "base": "TAOK2",
+  "start": 28,
+  "end": 281,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UL54"
+ },
+ "TAOK3": {
+  "base": "TAOK3",
+  "start": 24,
+  "end": 277,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9H2K8"
+ },
+ "TBK1": {
+  "base": "TBK1",
+  "start": 9,
+  "end": 310,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UHD2"
+ },
+ "TEC": {
+  "base": "TEC",
+  "start": 1,
+  "end": 631,
+  "source": "full_length",
+  "uniprot": null
+ },
+ "TESK1": {
+  "base": "TESK1",
+  "start": 1,
+  "end": 244,
+  "source": "full_length:seq_mismatch(Q15569)",
+  "uniprot": null
+ },
+ "TGFBR1": {
+  "base": "TGFBR1",
+  "start": 205,
+  "end": 495,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P36897"
+ },
+ "TGFBR2": {
+  "base": "TGFBR2",
+  "start": 244,
+  "end": 544,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P37173"
+ },
+ "TIE1": {
+  "base": "TIE1",
+  "start": 839,
+  "end": 1118,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P35590"
+ },
+ "TIE2": {
+  "base": "TIE2",
+  "start": 1,
+  "end": 1157,
+  "source": "full_length:seq_mismatch(Q02763)",
+  "uniprot": null
+ },
+ "TLK1": {
+  "base": "TLK1",
+  "start": 456,
+  "end": 734,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UKI8"
+ },
+ "TLK2": {
+  "base": "TLK2",
+  "start": 462,
+  "end": 741,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q86UE8"
+ },
+ "TNIK": {
+  "base": "TNIK",
+  "start": 25,
+  "end": 289,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9UKE5"
+ },
+ "TNK1": {
+  "base": "TNK1",
+  "start": 116,
+  "end": 377,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q13470"
+ },
+ "TNK2": {
+  "base": "TNK2",
+  "start": 126,
+  "end": 385,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q07912"
+ },
+ "TNNI3K": {
+  "base": "TNNI3K",
+  "start": 463,
+  "end": 723,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q59H18"
+ },
+ "TRKA": {
+  "base": "TRKA",
+  "start": 1,
+  "end": 790,
+  "source": "full_length:seq_mismatch(P04629)",
+  "uniprot": null
+ },
+ "TRKB": {
+  "base": "TRKB",
+  "start": 1,
+  "end": 477,
+  "source": "full_length:seq_mismatch(Q16620)",
+  "uniprot": null
+ },
+ "TRKC": {
+  "base": "TRKC",
+  "start": 538,
+  "end": 839,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q16288"
+ },
+ "TRPM6": {
+  "base": "TRPM6",
+  "start": 1750,
+  "end": 1980,
+  "source": "uniprot:Alpha-type protein kinase",
+  "uniprot": "Q9BX84"
+ },
+ "TSSK1B": {
+  "base": "TSSK1B",
+  "start": 12,
+  "end": 272,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9BXA7"
+ },
+ "TTK": {
+  "base": "TTK",
+  "start": 525,
+  "end": 791,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P33981"
+ },
+ "TXK": {
+  "base": "TXK",
+  "start": 271,
+  "end": 527,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P42681"
+ },
+ "TYK2(JH1domain-catalytic)": {
+  "base": "TYK2",
+  "start": 589,
+  "end": 875,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "P29597"
+ },
+ "TYK2(JH2domain-pseudokinase)": {
+  "base": "TYK2",
+  "start": 589,
+  "end": 875,
+  "source": "uniprot:Protein kinase 1",
+  "uniprot": "P29597"
+ },
+ "TYRO3": {
+  "base": "TYRO3",
+  "start": 518,
+  "end": 790,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q06418"
+ },
+ "ULK1": {
+  "base": "ULK1",
+  "start": 16,
+  "end": 278,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O75385"
+ },
+ "ULK2": {
+  "base": "ULK2",
+  "start": 9,
+  "end": 271,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8IYT8"
+ },
+ "ULK3": {
+  "base": "ULK3",
+  "start": 14,
+  "end": 270,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q6PHR2"
+ },
+ "VEGFR2": {
+  "base": "VEGFR2",
+  "start": 834,
+  "end": 1162,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P35968"
+ },
+ "VRK2": {
+  "base": "VRK2",
+  "start": 29,
+  "end": 319,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q86Y07"
+ },
+ "WEE1": {
+  "base": "WEE1",
+  "start": 299,
+  "end": 569,
+  "source": "uniprot-lenmatch:Protein kinase",
+  "uniprot": "P30291"
+ },
+ "WEE2": {
+  "base": "WEE2",
+  "start": 212,
+  "end": 486,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P0C1S8"
+ },
+ "YANK1": {
+  "base": "YANK1",
+  "start": 23,
+  "end": 281,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q8WU08"
+ },
+ "YANK2": {
+  "base": "YANK2",
+  "start": 23,
+  "end": 283,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NY57"
+ },
+ "YANK3": {
+  "base": "YANK3",
+  "start": 93,
+  "end": 353,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q86UX6"
+ },
+ "YES": {
+  "base": "YES",
+  "start": 277,
+  "end": 530,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P07947"
+ },
+ "YSK1": {
+  "base": "YSK1",
+  "start": 20,
+  "end": 270,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "O00506"
+ },
+ "YSK4": {
+  "base": "YSK4",
+  "start": 1061,
+  "end": 1324,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q56UN5"
+ },
+ "ZAK": {
+  "base": "ZAK",
+  "start": 16,
+  "end": 277,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "Q9NYL2"
+ },
+ "ZAP70": {
+  "base": "ZAP70",
+  "start": 338,
+  "end": 600,
+  "source": "uniprot:Protein kinase",
+  "uniprot": "P43403"
+ }
+}
