@@ -107,7 +107,7 @@ def prot_vectors(model, store, target_ids, bc):
     j = 0
     while j < len(order):
         L = int(seqlen[order[j]]) + 2
-        mb = max(1, min(8, int(1_200_000 / (L * L))))
+        mb = max(1, min(8, int(800_000 / (L * L))))
         ts = order[j:j + mb]; j += mb
         _, _, toks = bc([(str(t), store.seqs[t]) for t in ts])
         h, pad = model.esm_forward(toks)
@@ -143,7 +143,7 @@ def predict(model, store, pairs, bc, bs=256):
         j = 0
         while j < len(chunk_idx):
             L = int(seqlen[pairs[chunk_idx[j], 1]]) + 2
-            mb = max(1, min(8, int(1_200_000 / (L * L))))
+            mb = max(1, min(8, int(800_000 / (L * L))))
             sub = chunk_idx[j:j + mb]; j += mb
             x, a_norm, mask, toks = store.batch(pairs[sub], bc)
             for k, p_ in zip(sub, model(x, a_norm, mask, toks).numpy()):
@@ -247,7 +247,7 @@ def main():
             j = 0
             while j < len(idx):
                 L = int(seqlen[pairs[idx[j], 1]]) + 2
-                mb = max(1, min(8, int(1_200_000 / (L * L))))
+                mb = max(1, min(8, int(800_000 / (L * L))))
                 sub_idx = idx[j:j + mb]; j += mb
                 x, a_norm, mask, toks = store.batch(pairs[sub_idx], bc)
                 pred = net(x, a_norm, mask, toks)

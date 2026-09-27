@@ -1,1 +1,2 @@
 {"chunk": 1, "train_mse": 0.0, "val_mse": 1.4976, "val_ci": 0.57, "best_val_ci": 0.57, "stall": 0, "wall_s": 65.7}
+{"chunk": 2, "train_mse": 3.8371, "val_mse": 1.279, "val_ci": 0.5988, "best_val_ci": 0.5988, "stall": 0, "wall_s": 91.6}
