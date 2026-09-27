@@ -1,0 +1,294 @@
+Top 20 weaknesses + what to add
+1. Weakness: Model novelty is limited
+Judge question:
+
+"You used GNN + CNN. What is the new algorithm?"
+
+Current models are standard architectures:
+
+graph convolution
+sequence CNN
+attention pooling
+
+Add:
+
+Develop a true methodological contribution:
+
+Examples:
+
+mutation-aware protein encoder
+graph transformer ligand encoder
+equivariant molecular representation
+uncertainty-aware affinity prediction
+2. Weakness: The strongest discovery is dataset auditing, not prediction
+
+Ironically, the benchmark defect is more novel than the ML model.
+
+Add:
+
+Make the auditor a formal CBIO contribution.
+
+Benchmark:
+
+Existing datasets:
+
+DAVIS
+KIBA
+BindingDB
+PDBbind
+
+Run automatic audits:
+
+sequence-label mismatch
+duplicate entities
+impossible mutations
+inconsistent identifiers
+
+Create a "dataset integrity score."
+
+This could become the main contribution.
+
+3. Weakness: No corrected DAVIS benchmark training
+
+You identify the problem, but the final corrected ML result is missing.
+
+Add:
+
+Build:
+
+DAVIS-clean:
+
+replace mutant sequences
+add mutation features
+retrain models
+
+Compare:
+
+Original DAVIS vs corrected DAVIS.
+
+Question:
+
+Does performance change?
+
+This would be extremely strong.
+
+4. Weakness: No external benchmark validation
+
+The model is only evaluated on DAVIS.
+
+Add:
+
+Test on:
+
+KIBA
+BindingDB
+PDBbind
+
+Even if performance is lower, robustness matters.
+
+5. Weakness: DeepDTA comparison is unfair because compute differs
+
+The paper admits:
+
+smaller encoders
+limited training budget
+DeepDTA reference gap
+
+Add:
+
+Retrain all baselines under identical conditions:
+
+Same:
+
+epochs
+hardware
+data split
+preprocessing
+6. Weakness: Random split may inflate performance
+
+Drug-target datasets have leakage problems.
+
+Add:
+
+Harder splits:
+
+Drug-disjoint split
+
+No drug appears in train/test.
+
+Protein-disjoint split
+
+No kinase family overlap.
+
+Scaffold split
+
+No chemical scaffold overlap.
+
+This is a major CBIO expectation.
+
+7. Weakness: No uncertainty estimation
+
+Affinity prediction needs confidence.
+
+Add:
+
+Add:
+
+Bayesian neural network
+ensemble variance
+Monte Carlo dropout
+
+Report:
+
+Prediction confidence.
+
+8. Weakness: No interpretability
+
+A judge asks:
+
+"Why does the model predict this interaction?"
+
+Add:
+
+For proteins:
+
+residue attention maps
+saliency analysis
+
+For drugs:
+
+important atoms/substructures
+9. Weakness: Attention mechanism failed but not deeply analyzed
+
+Attention pooling did not beat CNN:
+
+CNN:
+C = 0.7080
+
+Attention:
+C = 0.7060
+
+Add:
+
+Analyze:
+
+where attention fails
+whether attention focuses on biologically meaningful residues
+correlation with binding domains
+10. Weakness: Range compression problem is described but solution is weak
+
+The weighted loss failed.
+
+Add:
+
+Try:
+
+focal regression loss
+quantile regression
+ranking loss
+pairwise affinity loss
+contrastive learning
+
+This is a real ML contribution.
+
+11. Weakness: No comparison against modern protein language models
+
+Current protein modeling has moved beyond CNNs.
+
+Add:
+
+Compare:
+
+ESM embeddings
+ProtT5
+protein transformers
+
+Even frozen embeddings would be valuable.
+
+12. Weakness: No modern molecular representation comparison
+Add:
+
+Compare ligand representations:
+
+Morgan fingerprints
+GNN
+Graph Transformer
+SMILES Transformer
+13. Weakness: Mutation correction is incomplete
+
+The rescue experiment shows prediction separation but weak correlation.
+
+Add:
+
+Introduce explicit mutation representation:
+
+Input:
+
+wild-type sequence + mutation position + amino acid substitution.
+
+14. Weakness: Mutation window limitation
+
+The paper notes KIT(D816V) remains identical because outside the 600-residue window.
+
+Add:
+
+Use:
+
+full-length proteins
+residue-aware transformers
+mutation-centered windows
+15. Weakness: No prospective prediction challenge
+Add:
+
+Blind evaluation:
+
+Train on older drugs.
+
+Predict:
+
+newer kinase inhibitors.
+
+16. Weakness: Tool validation is internal
+
+The auditor has hermetic tests.
+
+Good.
+
+But:
+
+Add:
+
+Release benchmark audit:
+
+Run on:
+
+public datasets
+community repositories
+
+Show discovery of additional defects.
+
+17. Weakness: Biological interpretation is limited
+
+Affinity prediction alone is computational.
+
+Add:
+
+Connect predictions to:
+
+resistance mutations
+pathway effects
+approved drugs
+clinical kinase relevance
+18. Weakness: Limited dataset scope
+
+DAVIS = kinases only.
+
+Paper acknowledges this limitation.
+
+Add:
+
+Demonstrate transfer:
+
+GPCR dataset
+ion channels
+other protein classes
