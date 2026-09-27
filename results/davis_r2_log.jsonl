@@ -1,0 +1,5 @@
+{"epoch": 1, "test_mse": 0.9986538887023926, "test_ci": 0.5826790779536294, "val_ci": null, "wall_s": 76.5}
+{"epoch": 2, "test_mse": 0.900005042552948, "test_ci": 0.6030799305238296, "val_ci": null, "wall_s": 71.4}
+{"epoch": 3, "test_mse": 1.1521669626235962, "test_ci": 0.6056965436355652, "val_ci": null, "wall_s": 71.4}
+{"epoch": 4, "test_mse": 0.8769416213035583, "test_ci": 0.6185857179329354, "val_ci": null, "wall_s": 62.0}
+{"epoch": 5, "test_mse": 0.9781045317649841, "test_ci": 0.6334291201088976, "val_ci": null, "wall_s": 61.2}
