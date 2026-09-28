@@ -246,7 +246,7 @@ def main():
             opt.zero_grad()
             j = 0
             while j < len(idx):
-                L = int(seqlen[pairs[idx[j], 1]]) + 2
+                L = int(seqlen[pairs[idx[j:j + 8], 1]].max()) + 2
                 mb = max(1, min(8, int(800_000 / (L * L))))
                 sub_idx = idx[j:j + mb]; j += mb
                 x, a_norm, mask, toks = store.batch(pairs[sub_idx], bc)
