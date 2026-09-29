@@ -19,3 +19,4 @@
 {"chunk": 19, "train_mse": 2.4008, "val_mse": 0.9657, "val_ci": 0.7049, "best_val_ci": 0.7049, "stall": 0, "wall_s": 69.2}
 {"chunk": 20, "train_mse": 2.4885, "val_mse": 1.129, "val_ci": 0.7083, "best_val_ci": 0.7083, "stall": 0, "wall_s": 75.1}
 {"chunk": 21, "train_mse": 2.3009, "val_mse": 0.7837, "val_ci": 0.7099, "best_val_ci": 0.7099, "stall": 1, "wall_s": 63.6}
+{"chunk": 22, "train_mse": 2.367, "val_mse": 0.968, "val_ci": 0.7128, "best_val_ci": 0.7128, "stall": 0, "wall_s": 69.4}
