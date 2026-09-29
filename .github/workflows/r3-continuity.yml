@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 180
     env:
       R3_CKPT_TRANSFER_KEY: ${{ secrets.R3_CKPT_TRANSFER_KEY }}
-      TORCH_HOME: ${{ runner.temp }}/torch
+      TORCH_HOME: /home/runner/.cache/torch
     steps:
       - uses: actions/checkout@v4
         with:
