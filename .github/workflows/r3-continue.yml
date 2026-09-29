@@ -1,0 +1,66 @@
+name: R3 locked encrypted continuation
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        required: true
+        description: Prior verified Actions run ID
+      source_cipher_sha:
+        required: true
+        description: SHA256 of source encrypted checkpoint
+      source_hmac:
+        required: true
+        description: HMAC-SHA256 of source encrypted checkpoint (not a key)
+      source_plain_sha:
+        required: true
+        description: SHA256 of decrypted source checkpoint
+      source_chunk:
+        required: true
+        description: Completed chunks in source checkpoint
+      expected_next_chunk:
+        required: true
+        description: Completed chunks expected after this job
+permissions:
+  contents: read
+  actions: read
+jobs:
+  continuation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      R3_CKPT_TRANSFER_KEY: ${{ secrets.R3_CKPT_TRANSFER_KEY }}
+      GH_TOKEN: ${{ github.token }}
+      TORCH_HOME: /home/runner/.cache/torch
+      SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+      SOURCE_CIPHER_SHA: ${{ inputs.source_cipher_sha }}
+      SOURCE_HMAC: ${{ inputs.source_hmac }}
+      SOURCE_PLAIN_SHA: ${{ inputs.source_plain_sha }}
+      SOURCE_CHUNK: ${{ inputs.source_chunk }}
+      EXPECTED_NEXT_CHUNK: ${{ inputs.expected_next_chunk }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install exact CPU package versions
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.14.0+cpu'
+          python -m pip install 'numpy==2.2.6' 'scipy==1.15.3' 'rdkit==2026.3.6' 'tqdm==4.57.0'
+      - name: Verify and advance one locked chunk
+        run: bash scripts/r3_actions_continue.sh
+      - name: Upload encrypted checkpoint and metrics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r3-continuity-encrypted
+          path: |
+            .r3-private/comparison.enc
+            .r3-private/comparison.sha256
+            .r3-private/comparison.hmac
+            .r3-private/plain-checkpoint.sha256
+            .r3-private/comparison-log.jsonl
+            .r3-private/comparison-status.json
+          retention-days: 7
