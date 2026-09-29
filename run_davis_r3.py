@@ -182,7 +182,7 @@ def main():
     print(f"crop: {len(cropped) - n_full} domain-cropped, {n_full} full-length "
           f"fallbacks ({n_trunc} context-capped at 1022) - declared", flush=True)
 
-    esm, alphabet = torch.hub.load("facebookresearch/esm:main",
+    esm, alphabet = torch.hub.load("facebookresearch/esm:" + os.environ.get("ESM_REPO_REF", "main"),
                                    "esm2_t6_8M_UR50D", verbose=False)
     esm.eval()
     bc = alphabet.get_batch_converter()
