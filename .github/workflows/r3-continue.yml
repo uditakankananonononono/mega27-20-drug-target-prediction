@@ -64,3 +64,13 @@ jobs:
             .r3-private/comparison-log.jsonl
             .r3-private/comparison-status.json
           retention-days: 7
+      - name: Upload terminal trainer evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r3-terminal-evidence
+          if-no-files-found: warn
+          path: |
+            .r3-private/training.out
+            results/davis_r3_verdict.json
+          retention-days: 7
