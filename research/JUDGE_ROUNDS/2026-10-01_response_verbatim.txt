@@ -1,0 +1,392 @@
+Your three lanes have a common problem: the next useful contribution should change the scientific question, not move the performance target. Given the locked negatives, I would steer toward diagnostic/measurement contributions where the existing predictions and cohorts can answer something new.
+
+Lane 10 — pediatric pneumonia
+Different falsifiable question
+
+Does the frozen model's cross-dataset failure arise primarily from probability misalignment, operating-point instability, or subgroup/site-dependent ranking error—and can those failure modes be separated without retraining the classifier?
+
+This is materially different from “can we calibrate it better?” The object of study becomes a failure-decomposition tool for frozen medical-imaging models.
+
+Your existing data are unusually suitable because you already have:
+
+three frozen-seed prediction streams,
+
+624 test images,
+
+the 16-image validation set,
+
+the image census/audit,
+
+the recovered unchanged-checkpoint evaluation.
+
+Zech et al. demonstrated that pneumonia models can exploit hospital/system information and that internal performance can substantially exceed external performance. 
+PLOS
+ The September 2026 pediatric study you identified is particularly close conceptually because it explicitly separates discrimination, calibration and fixed-operating-point transport rather than collapsing them into AUROC. 
+arXiv
+
+The novelty therefore cannot simply be “we separately report calibration.” That territory is already occupied.
+
+Concrete deliverable
+
+A Frozen Transport Failure Decomposition:
+
+seed-to-seed ranking agreement;
+
+discrimination degradation;
+
+calibration error;
+
+fixed-threshold sensitivity/specificity/alert-rate transport;
+
+error concentration by whatever pre-existing, non-outcome-derived image strata are defensible from the audit;
+
+whether the same failures occur consistently across the three frozen seeds.
+
+The useful output would be a failure matrix, not a new model.
+
+Novelty risk
+
+Moderate-high.
+
+The broad conceptual space is already strongly represented by Zech and the 2026 pediatric transport paper. Your potential distinction is the explicit decomposition of a frozen, low-resource pediatric transfer experiment into seed-stability × calibration × operating-point × audit-defined strata, especially if the analysis reveals a failure mode not captured by ordinary calibration reporting.
+
+If the result is merely “calibration is bad and transport is bad,” stop. That is not sufficiently new.
+
+Minimum source/data check
+
+Before developing anything:
+
+independently retrieve the full September 2026 paper and supplementary material;
+
+determine exactly which calibration metrics, operating-point analyses, adaptation procedures and subgroup analyses they already perform;
+
+verify the pediatric source/test datasets and labels;
+
+verify that your 16-image threshold-selection set is genuinely isolated from the 624-image test set;
+
+audit whether the image census contains non-outcome-derived attributes available before prediction that can legitimately define strata.
+
+The threshold-selection process is particularly important: do not retroactively characterize the 16 images in a way that turns them into a hidden tuning device.
+
+Development / validation / test
+
+Development: methodology and strata definitions only, using the existing predictions and metadata.
+
+Validation: if a calibration/failure statistic requires a choice of estimator or parameter, make that choice using the already-designated validation material—not the 624 test images.
+
+Test: one untouched analysis of the 624 images under the preregistered definitions.
+
+The three frozen seeds should be treated as repeated manifestations of the same locked experiment, not opportunities to select the most favorable seed.
+
+Proposed falsification gate
+
+One possible preregistered gate:
+
+The decomposition must demonstrate at least one reproducible failure component that is statistically distinguishable from the others across the three frozen seeds, without changing the model, threshold, or test-set membership.
+
+For example, if calibration degradation is indistinguishable from random/seed variation and operating-point failure is simply a consequence of ranking degradation, the proposed tool has failed to establish a distinct diagnostic phenomenon.
+
+I would not preregister “ECE must improve,” because that converts the project back into optimization.
+
+Stop condition
+
+Stop this lane if the independent literature check shows that essentially the same decomposition has already been performed, or if the existing predictions cannot distinguish at least two meaningful failure mechanisms.
+
+Also: close the missing ECE reporting gap transparently. Do not use it as a reason to reopen model selection.
+
+Lane 16 — breast-cancer relapse
+
+This lane is actually more interesting as a negative/null-analysis problem than as another predictor.
+
+Your locked results—GSE2034 AUC 0.5117 and SCAN-B OS AUC 0.5075 with lower bounds below 0.48, plus the stability-panel null result—strongly argue against trying another signature architecture.
+
+Different falsifiable question
+
+Is the apparent cross-cohort “predictive signal” in breast-cancer expression data distinguishable from a null distribution once the entire feature-selection/prediction procedure is subjected to cohort-preserving permutation and cross-cohort stability analysis?
+
+In other words:
+
+Can we build an empirical null-calibrated transferability diagnostic that tells whether a proposed molecular relapse signal is actually stronger than what the same pipeline generates from outcome-preserving/randomized expression structure?
+
+That is different from “find a better relapse predictor.”
+
+Closest prior art
+
+There is extensive prior art on prognostic expression signatures and external validation. For example, the classic 70-gene breast-cancer signature established the general paradigm of gene-expression prognosis prediction. 
+DOI
+
+More recent relapse-signature work still reports externally validated signatures, including GSE2034; one example reports an AUC around 0.61 in GSE2034 rather than anything close to perfect prediction. 
+Frontiers
++1
+
+That actually strengthens the reason to avoid claiming that a near-null result is “a new biomarker.” The scientifically interesting question is how much apparent molecular transferability survives an explicitly null-calibrated pipeline.
+
+Concrete deliverable
+
+A Cross-Cohort Null Calibration / Transferability Audit.
+
+For each locked cohort:
+
+observed cross-cohort AUC;
+
+identical-pipeline permutation null;
+
+null median and quantiles;
+
+stability across feature panels;
+
+direction consistency;
+
+cohort-to-cohort rank preservation;
+
+comparison against a simple prespecified baseline.
+
+The important object becomes:
+
+observed transfer signalvs.pipeline-generated null transfer signal.
+
+Your existing result—stable 268 versus null median 426, p=0.980198—is potentially valuable precisely because it is negative.
+
+Novelty risk
+
+Moderate.
+
+Permutation testing itself is obviously not novel. Neither is external validation.
+
+The possible contribution is narrower: a standardized null-calibrated transferability diagnostic applied to molecular prognostic signatures across genuinely independent cohorts, with the null generated through the same feature-selection/model-development machinery.
+
+That distinction needs a serious literature search before being claimed.
+
+Minimum source/data check
+
+Independently verify:
+
+exact GSE2034 endpoint definition and follow-up;
+
+SCAN-B endpoint definition;
+
+whether “relapse,” “RFS,” “OS,” etc. are being treated as interchangeable anywhere;
+
+preprocessing/platform differences;
+
+whether existing publications have already used permutation-calibrated cross-cohort transfer statistics of essentially this form;
+
+whether the locked feature panel can be reconstructed without looking at the replication outcomes.
+
+The treatment-response paper you mentioned should remain conceptually separate: pCR prediction is not relapse prediction, and predictive association is not evidence that treatment changes outcome causally.
+
+Development / validation / test
+
+Development: define the null-generation mechanism and statistic on a development cohort only.
+
+Validation: freeze the statistic and confirm that it behaves as intended on a separate cohort or simulated null datasets constructed without touching the final test labels.
+
+Test: apply once to the locked GSE2034/SCAN-B evaluation under the existing protocol.
+
+Crucially, do not select a threshold such as 0.975 after seeing replication results. If 0.975 is locked, it remains locked.
+
+Proposed falsification gate
+
+A clean candidate:
+
+The proposed transfer statistic must reject the null at a preregistered level on a positive-control dataset known independently to contain reproducible prognostic structure, while maintaining the prespecified null behavior on permuted data.
+
+That is much stronger than demanding that your breast-cancer model succeed.
+
+Then your actual locked cohorts can legitimately yield a negative result.
+
+If you cannot establish a suitable positive-control dataset independently, I would not use a “positive-control gate”; instead, make the contribution a characterization of null behavior and explicitly limit its scope.
+
+Stop condition
+
+Stop if the null-calibrated statistic is not demonstrably different from ordinary permutation testing, or if literature review shows an essentially identical method.
+
+Also stop if the only way to obtain separation is to alter the locked feature-selection, cohort definitions, endpoint, or 0.975 threshold.
+
+Lane 20 — DAVIS
+
+This is the lane where your original novelty space has been most seriously compressed by new literature.
+
+The prior-art check confirms that DAVIS-complete is not merely adjacent—it directly occupies the modification-aware-DAVIS benchmark space you were approaching. The NeurIPS 2025 paper adds 4,032 kinase–ligand pairs covering substitutions, insertions, deletions and phosphorylation across 56 modified sequences and proposes WT→modification and few-shot modification benchmarks. 
+NeurIPS Proceedings
++1
+
+So “we evaluate mutant proteins rather than WT proteins” is no longer a defensible novelty claim.
+
+Different falsifiable question
+
+I would shift from prediction performance on modified DAVIS to:
+
+How much of apparent modification-generalization performance can be explained by protein/ligand overlap, mutation identity, or modification-family similarity—and can a matched similarity-controlled comparator expose when a model is interpolating rather than genuinely generalizing across modifications?
+
+That is a benchmark-audit / confounding-discovery question, not another model race.
+
+The 54 mutant entries identical to WT that you already found make this especially concrete: first determine whether this is a data-integrity phenomenon, a representation/normalization phenomenon, or simply an artifact of how the source entries encode modifications.
+
+Closest prior art
+
+The closest is unequivocally Wu et al., DAVIS-complete. It explicitly introduces modification-aware DAVIS and three modification-generalization settings. 
+NeurIPS Proceedings
++1
+
+There is also strong adjacent prior art on leakage-controlled protein–ligand evaluation. PDBbind CleanSplit showed that conventional benchmark performance can be substantially inflated by protein/ligand similarity and proposed strict similarity-controlled splits. 
+Nature
++1
+
+And the 2026 Leak Proof PDBBind work explicitly controls both protein and ligand similarity, rather than treating a protein-only split as sufficient. 
+American Chemical Society Publications
++1
+
+Therefore, “we made a clean split” is not novel either.
+
+Concrete deliverable
+
+A Modification-Identity / Similarity Audit for DAVIS-complete:
+
+For every modified protein:
+
+sequence identity to its WT counterpart;
+
+exact modification identity;
+
+modification-family membership;
+
+protein-family similarity;
+
+ligand overlap/similarity;
+
+whether WT and modified forms appear across development/validation/test;
+
+whether supposedly different mutant entries are sequence-identical;
+
+whether labels/measurements are duplicated or inherited.
+
+Then construct a matched comparator where the only intended difference is the modification relationship.
+
+The scientific question becomes:
+
+Does the model's apparent WT→modified generalization persist after matching away the easiest sources of structural and ligand overlap?
+
+Novelty risk
+
+High.
+
+This is the most important warning of the three lanes.
+
+DAVIS-complete already provides:
+
+modification-aware data,
+
+4,032 added pairs,
+
+56 modified sequences,
+
+11 kinases,
+
+WT→modification evaluation,
+
+few-shot modification evaluation. 
+Dataset Catalog
++1
+
+So a paper whose main conclusion is simply “modified DAVIS is harder” would be derivative.
+
+Your potential novelty is the audit of what those benchmark scores actually mean under identity-controlled matching, especially if the 54 apparently unchanged mutant entries survive independent source verification and reveal a systematic data-integrity issue.
+
+Minimum source/data check
+
+This should be unusually strict.
+
+Independently verify:
+
+the original DAVIS source records;
+
+DAVIS-complete's 4,032 additions;
+
+the 56 modified sequences;
+
+the exact representation of every one of your 54 mutant=WT cases;
+
+whether “identical” means identical raw sequence, canonicalized sequence, or simply a preprocessing artifact;
+
+DAVIS-complete's train/validation/test definitions;
+
+its overlap analysis;
+
+whether your proposed matched split already exists in their supplementary material.
+
+The last point is essential because their paper explicitly analyzes overlap with other structural resources and reports protein/ligand and protein–ligand overlaps. 
+OpenReview
+
+Development / validation / test
+
+Development: independently construct the audit and similarity definitions. No performance evaluation needed.
+
+Validation: use a subset of entries to verify that the audit correctly identifies known WT/modification relationships and known duplicates.
+
+Test: freeze the matching algorithm, then apply it to the remaining benchmark.
+
+Only after that should model predictions be compared.
+
+Do not use the final test performance to decide what similarity thresholds constitute a “matched” pair.
+
+Proposed falsification gate
+
+A strong candidate:
+
+After preregistered protein-sequence, ligand-similarity, and modification-family matching, the claimed generalization effect must remain distinguishable from a matched null comparator.
+
+If it disappears, that is the result.
+
+Even stronger: preregister a data-integrity gate:
+
+Every candidate WT-identical mutant must be independently traceable to a source record whose modification is represented in the sequence/annotation exactly as claimed.
+
+If a substantial fraction cannot pass that audit, the benchmark-integrity finding itself becomes the main result; do not quietly repair the dataset and continue as though nothing happened.
+
+Stop condition
+
+Stop the performance arm if:
+
+DAVIS-complete already performs essentially the same matched-comparator analysis;
+
+the 54 entries are explained entirely by an already documented representation convention;
+
+the matched comparator leaves no scientifically interpretable distinction;
+
+or the only route to a new result is changing the split after seeing predictions.
+
+Cross-lane recommendation
+
+I would not spend the next cycle trying to rescue the three failed predictive claims.
+
+Lane	Proposed new object	Main scientific question	Novelty risk
+10	Frozen transport-failure decomposition	What kind of failure is actually occurring?	Moderate-high
+16	Null-calibrated transferability audit	Is apparent molecular transfer distinguishable from pipeline-generated null signal?	Moderate
+20	Modification/similarity integrity audit	Does modified-DAVIS generalization survive identity-controlled matching?	High
+
+There is also a useful asymmetry here:
+
+Lane 10 has the strongest existing experimental substrate. You already have three frozen seeds, external predictions, validation/test separation and an image audit.
+
+Lane 16 has the cleanest null-science opportunity. The near-chance results and permutation result make it possible to ask a methodological question without pretending a biomarker exists.
+
+Lane 20 has the most potentially interesting data-integrity angle, but also the greatest prior-art collision. DAVIS-complete is now the benchmark you must beat conceptually, not by obtaining a higher score. 
+NeurIPS Proceedings
++1
+
+Repository treatment
+
+I would preserve the project history as four explicit layers:
+
+LOCKED ORIGINAL PROTOCOL
+
+LOCKED RESULTS / FAILED GATES
+
+POST-HOC STEERING ANALYSIS
+
+PROPOSED NEW PROTOCOL — NOT YET EVALUATED
+
+The failed results should remain fully reproducible in the repository. In the eventual paper, they can be compressed into a concise failed-arm/results section, but the underlying predictions, seeds, thresholds, permutation outputs and interrupted-run recovery record should not be discarded or silently replaced.
+
+And importantly, none of the proposed gates above should be treated as active yet. They are candidate falsification criteria only; independent source verification and preregistration should precede any new evaluation, exactly as you specified.

@@ -1,0 +1,16 @@
+{
+ "stopped_at_chunk": 40,
+ "stop_reason": "chunk_cap_40",
+ "final_val_ci": 0.7337111904535643,
+ "best_val_ci": 0.7419244919292435,
+ "falsification_gate_val_ci_ge_0.80": false,
+ "test_ci": 0.7233740663239825,
+ "test_mse": 1.19143545627594,
+ "primary_gate": {
+  "test_ci_gt_0.878": false,
+  "test_mse_lt_0.261": false,
+  "MET": false
+ },
+ "n_full_length_fallbacks": 94,
+ "labels_splits_val_locks": "verbatim R2 carries (pKd, setting1, 1200/rng0)"
+}

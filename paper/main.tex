@@ -5,7 +5,7 @@
 \usepackage[margin=1in]{geometry}
 \title{Graph--Sequence Deep Models for Kinase Drug--Target Affinity:\\
 Verified Benchmarks, Failure Modes, and a Dataset-Level Defect in DAVIS}
-\author{}
+\author{Udita Phookan}
 \date{September 2026}
 \begin{document}
 \maketitle
@@ -18,8 +18,7 @@ evidence. Auditing the benchmark itself, we find a dataset-level defect
 in the widely used DeepDTA distribution of DAVIS: all 54 mutant kinase
 entries ship sequences byte-identical to their wild types while their
 affinity labels differ by up to 4.49 pK$_d$, making mutation effects
-structurally unlearnable. We release a small auditor that reproduces the
-defect on any name/sequence/label dataset.
+structurally unlearnable. We provide a small auditor that reproduces this input defect. Modification-aware DAVIS curation predates this audit; our contribution is a diagnostic replication, not a claim of first discovery. The locked R3 run is negative under both preregistered validation and test gates.
 \end{abstract}
 
 \section{Problem and data}
@@ -119,6 +118,16 @@ stochastic gradient passes over the 25k training pairs. (ii) A fixed
 verdict protocol for the strong-binder question. Checkpoints are tracked in
 git, so training resumes across machine lifetimes.
 
+
+\section{Locked R3 terminal negative and prior-art boundary}
+The R3 continuation reached its preregistered 40-chunk cap without changing the locked protocol. The single terminal evaluation gave test concordance index $0.7233740663$ and test MSE $1.1914354563$. The primary gates, test CI $>0.878$ and MSE $<0.261$, both failed. Final validation CI was $0.7337111905$, below the falsification threshold $0.80$; best validation CI was $0.7419244919$. The final checkpoint records chunk 40, batch zero, done true and stall two. These numbers are from the original terminal verdict and output, authenticated against the encrypted checkpoint and the complete incoming log prefix. Completing this experiment does not complete the project criteria.
+
+The earlier results in this paper used repeated test monitoring and are exploratory. They must not be merged with the preregistered R3 single-terminal-test evidence or used to claim a locked benchmark win. R3's poor outcome does not establish a causal explanation such as insufficient compute or model size without a matched ablation.
+
+Novelty also needs a narrower boundary. Wu et al., \emph{Towards Precision Protein-Ligand Affinity Prediction Benchmark: A Complete and Modification-Aware DAVIS Dataset} (NeurIPS 2025; arXiv:2512.00708), already curate modified kinase sequences, address domain annotation and study wild-type-to-modification generalization. Our identical-input audit is therefore a replication-oriented diagnostic contribution, not a first discovery of the need for modification-aware DAVIS. The exact overlap between the two audits and any residual tool novelty remain open. Their modified benchmark is not interchangeable with our original DAVIS split, and no score from it is a matched comparator for R3.
+
+No threshold change, test reselection, chunk 41 or restart is supported by this negative. A new hypothesis needs its own literature and comparator audit and preregistration before evaluation.
+
 \section{Results}
 All numbers are read from committed files: \texttt{results/davis\_log.jsonl},
 \texttt{results/davis\_log\_attn.jsonl}, \texttt{results/strong\_eval\_log.jsonl}.
@@ -128,8 +137,7 @@ $C = 0.7060$ at epoch 52 before plateauing ($0.7056$ at epoch 59, its
 last). The attention-pooled encoder therefore does \emph{not} beat the
 CNN on the fixed protocol; we record that head-to-head verdict plainly.
 Both sit well below the DeepDTA reference $C = 0.878$; we state that gap
-plainly and attribute it to training budget (single-pass chunks versus
-full-batch training) and to our smaller encoders. Section~\ref{sec:audit}
+plainly. Training budget and encoder size are hypotheses, not demonstrated causes of the gap. Section~\ref{sec:audit}
 adds a caveat that applies to \emph{all} DAVIS CI scores, including both
 of ours and the DeepDTA reference.
 \begin{figure}

@@ -1,0 +1,6 @@
+crop: 348 domain-cropped, 94 full-length fallbacks (38 context-capped at 1022) - declared
+Downloading: "https://github.com/facebookresearch/esm/zipball/2b369911bb5b4b0dda914521b9475cad1656b2ac" to /home/runner/.cache/torch/hub/2b369911bb5b4b0dda914521b9475cad1656b2ac.zip
+Downloading: "https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t6_8M_UR50D-contact-regression.pt" to /home/runner/.cache/torch/hub/checkpoints/esm2_t6_8M_UR50D-contact-regression.pt
+resumed chunk 39 batch 0 best_val 0.7419 stall 1 done False
+CHUNK {'chunk': 40, 'train_mse': 2.2679, 'val_mse': 1.1507, 'val_ci': np.float64(0.7337), 'best_val_ci': np.float64(0.7419), 'stall': 2, 'wall_s': 1272.1}
+R3 STOPPED {"stopped_at_chunk": 40, "stop_reason": "chunk_cap_40", "final_val_ci": 0.7337111904535643, "best_val_ci": 0.7419244919292435, "falsification_gate_val_ci_ge_0.80": false, "test_ci": 0.7233740663239825, "test_mse": 1.19143545627594, "primary_gate": {"test_ci_gt_0.878": false, "test_mse_lt_0.261": false, "MET": false}, "n_full_length_fallbacks": 94, "labels_splits_val_locks": "verbatim R2 carries (pKd, setting1, 1200/rng0)"}
