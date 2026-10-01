@@ -47,7 +47,7 @@ Baseline CNN over residue one-hots $S \in \{0,1\}^{L \times 21}$:
   h^{(l+1)} = \phi\!\big( W^{(l)} * h^{(l)} \big), \qquad
   z_{\mathrm{prot}} = \frac{1}{L}\sum_{i} h^{(L)}_i .
 \end{equation}
-Attention-pooled variant (fix for mutation blindness), with mask
+Attention pooling tests an encoder hypothesis. It cannot separate identical inputs. With mask
 $m_i = \mathbb{1}[\text{residue } i \text{ real}]$:
 \begin{equation}
   \alpha = \mathrm{softmax}\!\big( (U h_i) + \log m_i \big), \qquad
@@ -69,9 +69,10 @@ binders:
 \section{Metrics}
 Ranking quality by the concordance index over held-out pairs:
 \begin{equation}
-  C = \frac{\sum_{i<j} \mathbb{1}[y_i > y_j]\,
-    \big( \mathbb{1}[\hat y_i > \hat y_j] + \tfrac12 \mathbb{1}[\hat y_i = \hat y_j]\big)}
-  {\sum_{i<j} \mathbb{1}[y_i \ne y_j]} .
+  C = \frac{\sum_{i<j:y_i\ne y_j}
+    \big(\mathbb{1}[(y_i-y_j)(\hat y_i-\hat y_j)>0]
+    +\tfrac12\mathbb{1}[\hat y_i=\hat y_j]\big)}
+    {\sum_{i<j}\mathbb{1}[y_i\ne y_j]} .
 \end{equation}
 Calibration on strong binders ($y \ge 7$): we report
 $\bar{\hat y}_{\mathrm{strong}}$, $\bar y_{\mathrm{strong}}$, and
