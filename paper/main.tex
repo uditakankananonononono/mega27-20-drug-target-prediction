@@ -17,8 +17,8 @@ affinity range-compression failure mode, and evaluate two fixes
 evidence. Auditing the benchmark itself, we find a dataset-level defect
 in the widely used DeepDTA distribution of DAVIS: all 54 mutant kinase
 entries ship sequences byte-identical to their wild types while their
-affinity labels differ by up to 4.49 pK$_d$, making mutation effects
-structurally unlearnable. We provide a small auditor that reproduces this input defect. Modification-aware DAVIS curation predates this audit; our contribution is a diagnostic replication, not a claim of first discovery. The locked R3 run is negative under both preregistered validation and test gates.
+affinity labels differ by up to 4.49 pK$_d$, preventing a deterministic ligand-plus-sequence-only model from
+representing separate WT/mutant responses. We provide a small auditor that reproduces this input defect. Modification-aware DAVIS curation predates this audit; our contribution is a diagnostic replication, not a claim of first discovery. The locked R3 run is negative under both preregistered validation and test gates.
 \end{abstract}
 
 \section{Problem and data}
@@ -106,11 +106,12 @@ pK$_d$ units of pure bias before any variance term.
 bit-identical predictions for DAVIS point mutants to truncation at
 $L=600$ plus global mean pooling. Section~\ref{sec:audit} shows the true
 cause is upstream of any model choice: the shipped mutant sequences are
-byte-identical to wild type, so \emph{every} sequence-based model gives
-bit-identical WT/mutant predictions on this distribution.
+byte-identical to wild type, so a deterministic predictor using only the same ligand and shipped
+sequence has identical WT/mutant inputs. A model given target identifiers,
+variant metadata, structure, or another input need not obey that identity.
 
 \section{Training protocol}
-Compute is sandbox-limited, so training runs in committed chunks: each call
+Earlier training used limited compute and committed chunks: each call
 resumes the checkpoint, trains one pass over a subset, evaluates the full
 held-out test split, and appends one line to a committed JSONL log. Two
 subset regimes are used deliberately. (i) Random 8k-pair subsets act as
@@ -156,8 +157,8 @@ and global $C$ and strong-binder calibration trade off against each other.
 We therefore record the weighted loss as insufficient: it does not repair
 range compression. The attention-pooled encoder, our structural fix
 attempt, also does not beat the CNN baseline (Sec.~\ref{sec:audit}
-explains why no architecture could fix the mutation blindness on this
-data).
+explains the identical-input restriction for deterministic
+ligand-plus-sequence-only predictors).
 
 \section{A dataset-level defect in DAVIS-as-distributed}
 \label{sec:audit}
@@ -175,10 +176,11 @@ $|\Delta| = 4.49$ pK$_d$. The clinically canonical case is reproduced
 exactly: imatinib binds ABL1 at pK$_d = 8.96$ but the gatekeeper mutant
 ABL1(T315I) at pK$_d = 5.00$ ($\Delta = -3.96$), and KIT at pK$_d = 7.89$
 vs KIT(D816V) at $6.01$ ($\Delta = -1.88$).
-\paragraph{Consequence.} From any sequence-based model's perspective, a
+\paragraph{Consequence.} For a deterministic ligand-plus-sequence-only predictor, a
 mutant column and its wild-type column are the \emph{same input} with two
-different label vectors; the WT-vs-mutant differences are unlearnable
-label noise. Every published concordance number on this distribution ---
+different label vectors. Their separate deterministic label vectors cannot
+be represented from those inputs alone. This is representation-induced
+ambiguity, not evidence that the biological differences are random noise. Every published concordance number on this distribution ---
 the DeepDTA reference 0.878 and both of our tracks included --- is
 computed on a matrix where 12.2\% of targets carry mutation labels with
 zero mutation signal. Mutation-sensitivity tests (our planned
@@ -230,9 +232,9 @@ redistributions may differ and should be re-audited with the shipped tool;
 and the screen's external corroboration is qualitative (presence of
 independent evidence), not a prospective validation.
 \section{Reproducibility}
-Every number above regenerates from \texttt{results/*.json(l)} and the
-committed scripts (46 passing hermetic tests with one warning; no network
-in tests). The training
+Historical values above are recorded in \texttt{results/*.json(l)} and the
+committed scripts (a historical report of 46 passing hermetic tests with one warning;
+not reverified in the rebuilt environment, which lacks torch and rdkit). The training
 logs are append-only and each line carries its epoch, test MSE, test
 concordance, and wall-clock seconds.
 
