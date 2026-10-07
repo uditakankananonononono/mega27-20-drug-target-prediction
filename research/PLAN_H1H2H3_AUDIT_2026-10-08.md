@@ -1,0 +1,7 @@
+# Frozen plan: descriptive audit H1+H3+H2 (written before any computation). No lock, no novelty claim, no R3 change.
+Data: pinned files, data/davis_pin/SOURCES_SHA256.md. Label = pKd = -log10(Kd/1e9). Row index = flat row-major index over the 68x442 matrix (DeepDTA convention, no NaN so all 30056 rows). Fold = DeepDTA setting 1: 5 train folds, 1 test fold; train pool = union of the 5 train-fold lists as given (read the file; report its structure first).
+H1: (a) count of test rows whose exact (ligand SMILES, protein sequence) key appears in the train pool; (b) among those, mean squared difference between test label and mean train label of the same key; (c) same count for 100 seeded random row splits with the same test size (seeds 0-99), report min/median/max. Also number of protein entries sharing a sequence.
+H3: additive model pred = mu + a_ligand + b_protein (alternating least squares on pKd, 20 sweeps, ridge lambda=1.0 fixed in advance, unseen ligand or protein falls back to mu). Fit on train pool, report test MSE and a Harrell concordance index. Comparators: global-mean MSE, ligand-mean-only, protein-mean-only. No tuning, one run.
+H2: floor on all rows (done: 0.0322), floor on train-pool rows and on test rows separately, shuffled-label control (20 seeded shuffles, median), ligand-only key and protein-sequence-only key floors.
+H5 note: record whether duplicate-sequence entries have label disagreement (descriptive only; no annotations fetched).
+Report every number as measured, including unfavorable ones. Stdlib+numpy only.
